@@ -1,0 +1,14 @@
+identifiers:
+
+	Note that unsigned variable types persist identifiers:
+		eg. an unsigned int = i_unsignedinteger
+
+	s_ = string
+	f_ = float
+	i_ = integer
+	c_ = char
+	b_ = boolean
+	a_ = action
+	f_ = file
+	u_ = anything unity related
+	v_ = any vector
