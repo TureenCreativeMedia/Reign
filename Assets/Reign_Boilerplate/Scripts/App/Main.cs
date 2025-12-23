@@ -51,7 +51,7 @@ namespace reign
 
             a_OnWake?.Invoke(); // Waking: will happen once
 
-            if (!string.IsNullOrEmpty(s_StartScene))
+            if (!string.IsNullOrEmpty(s_StartScene) && UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != s_StartScene)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(s_StartScene); // If start scene isn't null, leap to on runtime.
             }

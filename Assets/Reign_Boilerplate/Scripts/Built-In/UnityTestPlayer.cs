@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,7 +7,6 @@ namespace reign
     public class UnityTestPlayer : MonoBehaviour
     {
         [SerializeField] InputAction u_ControlScheme;
-        [SerializeField] InputAction u_CameraScheme;
 
         [SerializeField] CharacterController u_characterController;
         GameObject u_camera;
@@ -16,12 +16,13 @@ namespace reign
         private void Awake()
         {
             u_camera = gameObject;
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnEnable()
         {
             u_ControlScheme.Enable();
-            u_CameraScheme.Enable();
 
             Main.a_OnFrame += PlayerUpdate;
         }
@@ -29,22 +30,26 @@ namespace reign
         private void OnDisable()
         {
             u_ControlScheme.Disable();
-            u_CameraScheme.Disable();
 
             Main.a_OnFrame -= PlayerUpdate;
         }
+        
+        const float f_RotationSpeed = 4.0f;
+        const float f_MoveSpeed = 6.0f;
 
         void PlayerUpdate()
         {
             // WASD
             v_direction = u_ControlScheme.ReadValue<Vector2>();
-            v_rotation =  u_CameraScheme.ReadValue<Vector2>();
 
-            Vector3 move = new Vector3(v_direction.x, v_direction.y, 0);
-            Vector3 rot = new Vector3(-v_rotation.y, v_rotation.x, 0);
+            // Mouse
+            v_rotation.y += Input.GetAxis("Mouse X");
+            v_rotation.x += -Input.GetAxis("Mouse Y");
 
-            u_camera.transform.localRotation = Quaternion.Euler(u_camera.transform.rotation.eulerAngles + rot * Time.deltaTime * 370);
-            u_characterController.Move(move * Time.deltaTime);
+            Vector3 move = u_camera.transform.right * v_direction.x + u_camera.transform.forward * v_direction.y;
+
+            u_camera.transform.localRotation = Quaternion.Euler(v_rotation * f_RotationSpeed);
+            u_characterController.Move(f_MoveSpeed * Time.deltaTime * move);
         }
     }
 }

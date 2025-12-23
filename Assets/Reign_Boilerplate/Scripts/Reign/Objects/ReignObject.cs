@@ -30,24 +30,38 @@ namespace reign
             }
         }
 
-        public void SetObjectVisibility(bool visible, bool perishScriptActivity)
+        public void SetObjectVisibility(bool visible)
         {
-            if (perishScriptActivity)
+            if (u_ObjectRenderer != null)
             {
-                gameObject.SetActive(visible);
+                u_ObjectRenderer.enabled = visible;
             }
             else
             {
-                if (u_ObjectRenderer != null)
-                {
-                    u_ObjectRenderer.enabled = visible;
-                }
-                else
-                {
-                    gameObject.GetComponent<Renderer>().enabled = visible;
-                }
+                gameObject.GetComponent<Renderer>().enabled = visible;
             }
             a_OnChangeVisibility?.Invoke();
+        }
+
+        public enum SocketType { Set, Remove }
+        public void SetSocket(GameObject gameObject, SocketType socketType = SocketType.Set, bool stopPhysics = true)
+        {
+            if(stopPhysics)
+            {
+                var rb = gameObject.GetComponent<Rigidbody>();
+
+                if (rb != null) rb.isKinematic = (socketType == SocketType.Set);
+            }
+
+            if (socketType == SocketType.Set)
+            {
+                this.gameObject.transform.SetParent(gameObject.transform);
+                this.gameObject.transform.position = gameObject.transform.position;
+            }
+            else
+            {
+                this.gameObject.transform.SetParent(null); // Return to scene hierarchy
+            }
         }
 
         public virtual void ObjectUpdateTime(float delta)

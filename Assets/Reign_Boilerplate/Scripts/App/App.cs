@@ -4,6 +4,7 @@ namespace reign
 {
     public class AppSettings
     {
+        public int targetrefreshrate;
         public string versionname;
         public bool developmentbuild;
     }
@@ -16,6 +17,14 @@ namespace reign
         {
             AppSettings data = JsonUtility.FromJson<AppSettings>(jsonFile.text);
             u_localdata = data;
+
+            SetRefreshRate();
+        }
+
+        public static void SetRefreshRate()
+        {
+            Screen.SetResolution(1280, 720, false);
+            Application.targetFrameRate = u_localdata.targetrefreshrate;
         }
     }
 }
