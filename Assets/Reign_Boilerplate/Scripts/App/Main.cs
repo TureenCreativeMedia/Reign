@@ -10,6 +10,8 @@ namespace reign
 
         public static Main Instance;
 
+        public string s_RuntimeKey;
+
         public static Action a_OnFrame;
         public static Action<float> a_OnTimePassed;
 
@@ -28,6 +30,11 @@ namespace reign
             if (f_DeltaCount > 1.0f)
             {
                 f_DeltaCount = 0.0f;
+            }
+
+            if (InputSystem.GetInput("F11", InputSystem.KeyType.Down))
+            {
+                Screen.SetResolution(Screen.width, Screen.height, !Screen.fullScreen);
             }
 
             a_OnFrame?.Invoke();

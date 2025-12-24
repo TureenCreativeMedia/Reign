@@ -11,6 +11,7 @@ namespace reign
     [Serializable]
     public class PlayerData
     {
+        public Resolution u_ScreenResolution; // Screen resolution, by default what monitor it runs on.
     }
 
     public class SaveSystem : MonoBehaviour
@@ -30,7 +31,7 @@ namespace reign
 
         private void Awake()
         {
-            s_Path = Path.Combine(Application.persistentDataPath, "save.tureen");
+            s_Path = Path.Combine(Application.persistentDataPath, "savefile.save");
             Load();
         }
 
@@ -100,6 +101,8 @@ namespace reign
 
             // Add each data variable relevant to each saved
             // eg. u_PlayerData.variable = data.variable
+
+            u_PlayerData.u_ScreenResolution = data.u_ScreenResolution;
         }
     }
 }

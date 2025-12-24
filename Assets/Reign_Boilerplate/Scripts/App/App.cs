@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace reign
 {
@@ -23,7 +24,12 @@ namespace reign
 
         public static void SetRefreshRate()
         {
-            Screen.SetResolution(1280, 720, false);
+            Resolution u_SavedResolution = new();
+            u_SavedResolution.width = SaveSystem.u_PlayerData.u_ScreenResolution.width;
+            u_SavedResolution.height = SaveSystem.u_PlayerData.u_ScreenResolution.height;
+            u_SavedResolution.refreshRateRatio = SaveSystem.u_PlayerData.u_ScreenResolution.refreshRateRatio;
+
+            Screen.SetResolution(u_SavedResolution.width, u_SavedResolution.height, FullScreenMode.MaximizedWindow, u_SavedResolution.refreshRateRatio);
             Application.targetFrameRate = u_localdata.targetrefreshrate;
         }
     }

@@ -1,5 +1,5 @@
 {
-    "targetrefreshrate": 60,
+    "targetrefreshrate": 6000,
     "versionname": "0.0.0.0",
     "developmentbuild": true
 }

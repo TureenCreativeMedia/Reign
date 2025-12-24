@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 namespace reign
 {
@@ -27,7 +26,7 @@ namespace reign
         {
             if (u_Obj != null) return;
 
-            if(Input.GetKeyDown(KeyCode.E))
+            if(InputSystem.GetInput("E", InputSystem.KeyType.Down))
             {
                 RaycastHit hit;
                 if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
@@ -36,7 +35,7 @@ namespace reign
 
                     u_Obj = hit.collider.gameObject.GetComponent<ReignObject>();
 
-                    PickUp();
+                    if(u_Obj != null) PickUp();
                 }
             }
         }

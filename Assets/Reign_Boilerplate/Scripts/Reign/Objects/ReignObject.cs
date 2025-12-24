@@ -64,6 +64,11 @@ namespace reign
             }
         }
 
+        public void TeleportObject(Vector3 position)
+        {
+
+        }
+
         public virtual void ObjectUpdateTime(float delta)
         {
 
