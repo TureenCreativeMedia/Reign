@@ -26,21 +26,13 @@ namespace reign
         {
             var u_ScriptCall = other.GetComponents<MonoBehaviour>(); // Get relevant scripts
 
-            ToggleScripts(u_ScriptCall, false); // Stop updating
+            Extensions.Misc.ToggleScriptArray(u_ScriptCall, false); // Stop updating
 
             other.transform.position = v_TeleportPosition; // Teleport
 
-            yield return new WaitForSeconds(0.02f); // Wait a frame
+            yield return new WaitForSeconds(0.02f); // Wait shortly
 
-            ToggleScripts(u_ScriptCall, true); // Re-enable
+            Extensions.Misc.ToggleScriptArray(u_ScriptCall, true); // Re-enable
         } 
-
-        public virtual void ToggleScripts(MonoBehaviour[] scripts, bool enabled)
-        {
-            foreach(MonoBehaviour script in scripts)
-            {
-                script.enabled = enabled;
-            }
-        }
     }
 }

@@ -8,6 +8,8 @@ namespace reign
         public static Action a_OnChangeVisibility;
 
         Renderer u_ObjectRenderer;
+        Transform u_OriginParent;
+        
         [SerializeField] bool b_PrecacheRenderer;
 
         private void OnEnable()
@@ -28,6 +30,8 @@ namespace reign
             {
                 u_ObjectRenderer = gameObject.GetComponent<Renderer>();
             }
+
+            u_OriginParent = gameObject.transform.parent;
         }
 
         public void SetObjectVisibility(bool visible)
@@ -60,13 +64,8 @@ namespace reign
             }
             else
             {
-                this.gameObject.transform.SetParent(null); // Return to scene hierarchy
+                this.gameObject.transform.SetParent(u_OriginParent); // Return to original parent
             }
-        }
-
-        public void TeleportObject(Vector3 position)
-        {
-
         }
 
         public virtual void ObjectUpdateTime(float delta)

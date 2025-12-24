@@ -12,3 +12,4 @@ identifiers:
 	f_ = file
 	u_ = anything unity related
 	v_ = any vector
+	r_ = anything reign related

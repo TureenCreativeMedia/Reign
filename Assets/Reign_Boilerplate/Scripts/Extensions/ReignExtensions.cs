@@ -16,4 +16,15 @@ namespace reign.Extensions
             return running;
         }
     }
+
+    public class Misc : MonoBehaviour
+    {
+        public static void ToggleScriptArray(MonoBehaviour[] scripts, bool enabled)
+        {
+            foreach (MonoBehaviour script in scripts)
+            {
+                script.enabled = enabled;
+            }
+        }
+    }
 }
