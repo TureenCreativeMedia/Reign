@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +5,11 @@ namespace reign
 {
     public class UnityTestPlayer : MonoBehaviour
     {
+        /* 
+            Example freecam character controller by Tureen
+            Free to use 
+        */
+
         [SerializeField] InputAction u_ControlScheme;
         [SerializeField] CharacterController u_characterController;
 

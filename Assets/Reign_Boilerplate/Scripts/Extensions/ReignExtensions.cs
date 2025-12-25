@@ -11,7 +11,7 @@ namespace reign.Extensions
 
             for (int i = 0; i < length; ++i)
             {
-                string.Join(running, characters[Random.Range(0, characters.Length)]);
+                running += characters[Random.Range(0, characters.Length)];
             }
             return running;
         }

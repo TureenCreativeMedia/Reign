@@ -44,6 +44,10 @@ namespace reign
         {
             App.InitializeAppData(u_AppSettingsTextAsset);
 
+            // Create runtime key
+            s_RuntimeKey = Extensions.KeyGenerator.GenerateKey(16);
+            Debug.Log($"Runtime key generated: {s_RuntimeKey}");
+
             // Instancing
             if (Instance != null && Instance != this)
             {

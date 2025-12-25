@@ -5,8 +5,25 @@ namespace reign
 {
 	public class ReignWidgetGroup : MonoBehaviour
 	{
-        [SerializeField] List<ReignWidget> r_Connectors;
+        // Widget groups should only be applied to Canvas objects
 
+        [HideInInspector] Transform Canvas;
+        [SerializeField] List<ReignWidget> r_Connectors;
+        
+        void Awake()
+        {
+            Canvas = transform;
+        }
+
+        public virtual void VerifyConnectors()
+        {
+            r_Connectors.Clear();
+
+            for (int i = 0; i < Canvas.childCount; ++i)
+            {
+                r_Connectors.Add(Canvas.GetChild(i).GetComponent<ReignWidget>());
+            }
+        }
         public virtual void CreateWidget(ReignWidget widget, Transform parent)
         {
             Instantiate(widget, parent);
