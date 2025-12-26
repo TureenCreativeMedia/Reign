@@ -9,7 +9,7 @@ namespace reign
         /// <summary>
         /// A list containing all of the pressable input keys
         /// </summary>
-        public static Dictionary<string, KeyCode[]> InputKeys = new()
+        public static Dictionary<string, KeyCode[]> dn_InputKeys = new()
         {
             // {"Template", new[]{KeyCode.None} },
 
@@ -53,7 +53,7 @@ namespace reign
         /// <summary>
         /// If inputs can be used
         /// </summary>
-        public static bool inputsEnabled = true;
+        public static bool B_InputsEnabled = true;
 
         /// <summary>
         /// The type of pressed key
@@ -65,7 +65,20 @@ namespace reign
         /// </summary>
         public static bool GetInput(string inputName, KeyType type)
         {
-            if (!InputKeys.TryGetValue(inputName, out KeyCode[] keys) || keys == null) return false;
+            if (!dn_InputKeys.TryGetValue(inputName, out KeyCode[] keys) || keys == null) return false;
+
+            // Was a singular named key pressed?
+            foreach (KeyCode key in dn_InputKeys[inputName])
+            {
+                bool pressed = type switch
+                {
+                    KeyType.Down => Input.GetKeyDown(key),
+                    KeyType.Up => Input.GetKeyUp(key),
+                    KeyType.Held => Input.GetKey(key),
+                    _ => false
+                };
+                if (pressed) return true;
+            }
 
             // Was any key pressed?
             if (inputName == "Any")
@@ -79,44 +92,20 @@ namespace reign
                 };
             }
 
-            // Was a singular named key pressed?
-            foreach (KeyCode key in InputKeys[inputName])
-            {
-                bool pressed = type switch
-                {
-                    KeyType.Down => Input.GetKeyDown(key),
-                    KeyType.Up => Input.GetKeyUp(key),
-                    KeyType.Held => Input.GetKey(key),
-                    _ => false
-                };
-                if (pressed) return true;
-            }
-
             return false;
         }
 
         /// <summary>
         /// Return the change of mouse direction as a Vector2
         /// </summary>
-        public static Vector2 MouseLook()
+        public static Vector2 MouseLook(float sensitivity)
         {
             if (!Input.mousePresent) return Vector2.zero;
 
-            float mouseX = Input.GetAxis("Mouse X");
-            float mouseY = Input.GetAxis("Mouse Y");
+            float f_MouseX = Input.GetAxis("Mouse X") * sensitivity;
+            float f_MouseY = Input.GetAxis("Mouse Y") * sensitivity;
 
-            if (mouseX != 0) mouseX *= 3;
-            if (mouseY != 0) mouseY *= 3;
-
-            return new(mouseX, mouseY);
-        }
-
-        /// <summary>
-        /// Return if any key is held down
-        /// </summary>
-        public static bool AnyKeyHeld()
-        {
-            return GetInput("Any", KeyType.Held);
+            return new(f_MouseX, f_MouseY);
         }
     }
 }

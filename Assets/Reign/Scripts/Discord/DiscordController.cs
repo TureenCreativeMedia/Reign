@@ -9,11 +9,11 @@ namespace reign
         public bool b_IgnoreInEditor = true;
         public long l_AppID;
         [Space]
-        public string s_Details = "Unassigned";
-        public string s_State = "Unassigned";
+        public string s_Details = "Description";
+        public string s_State = "In-Game State";
         [Space]
-        public string s_PreviewImage = "Unassigned";
-        public string s_PreviewImageText = "Unassigned";
+        public string s_PreviewImage = "Game_Logo";
+        public string s_PreviewImageText = "Hover_Logo_Text";
 
         public static bool b_Connected;
         public Discord.Discord e_Discord;
