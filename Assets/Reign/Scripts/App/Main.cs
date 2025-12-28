@@ -25,11 +25,13 @@ namespace reign
         public float f_AppRuntime;
         public long l_AppStartUnixTimestamp;
 
+        [SerializeField] ReignWidgetGroup AppWidget;
         [SerializeField] string s_StartScene;
         [SerializeField] TextAsset u_AppSettingsTextAsset;
 
-        float f_DeltaCount = 0.0f;
-        int i_RuntimeFrames = 0;
+        public float f_InternalClock = 0.0f;
+        public float f_DeltaCount = 0.0f;
+        public int i_RuntimeFrames = 0;
 
         private void OnEnable()
         {
@@ -52,9 +54,10 @@ namespace reign
             }
 
             f_AppRuntime = Time.realtimeSinceStartup;
+            f_InternalClock += Time.deltaTime;
 
-            f_DeltaCount += Time.deltaTime;
-            a_OnTimePassed?.Invoke(f_DeltaCount);
+            f_DeltaCount += Time.deltaTime; // Clock that resets every second
+            a_OnTimePassed?.Invoke(f_DeltaCount); // Run every second
 
             if (f_DeltaCount >= 1.0f)
             {
@@ -66,6 +69,9 @@ namespace reign
 
         private void Awake()
         {
+            // Reset internal clock
+            SetInternalClock(0.0f);
+
             // Set initial app unix timestamp
             l_AppStartUnixTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             
@@ -94,17 +100,20 @@ namespace reign
 
             UnityEditor.AssetDatabase.Refresh(); // Refresh asset database
 
-            SetDeltaCount(0); // Per-second timer reset
+            f_DeltaCount = 0; // Per-second timer reset
 
             a_OnWake?.Invoke(); // Waking: Happens at the end of the awake function of this script.
+
+            AppWidget.CreateWidgets();
         }
 
-        public void SetDeltaCount(float time) => f_DeltaCount = time;
+        public void SetInternalClock(float time) => f_InternalClock = time;
 
         public void Hang()
         {
             // Hanging: quitting the app
 
+            SaveSystem.Save();
             a_OnHang?.Invoke();
             Application.Quit();
         }

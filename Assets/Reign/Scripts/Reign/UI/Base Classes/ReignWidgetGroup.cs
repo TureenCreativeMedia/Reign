@@ -28,6 +28,8 @@ namespace reign
 
         public virtual void CreateWidgets()
         {
+            if (u_Widgets.Count < 0) return;
+
             for (int i = 0; i < u_Widgets.Count; ++i)
             {
                 CreateWidget(u_Widgets[i], Canvas);
@@ -37,12 +39,22 @@ namespace reign
         {
             Instantiate(widget, parent);
             r_Connectors.Add(widget.GetComponent<ReignWidget>());
-            Debug.Log($"Created widget at {parent}");
+            Debug.Log($"Created widget {widget.name} at {parent}");
         }
 
         public virtual void DestroyWidget(ReignWidget widget)
         {
             Destroy(widget.gameObject);
+        }   
+
+        public virtual void DestroyWidgets()
+        {
+            r_Connectors.Clear();
+            for (int i = 0; i < u_Widgets.Count; ++i)
+            {
+                Destroy(u_Widgets[i]);
+                u_Widgets.RemoveAt(i);
+            }
         }
     }
 }

@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 namespace reign.Extensions
 {
-    public class KeyGenerator : MonoBehaviour
+    public class KeyGenerator
     {
         public static string GenerateKey(int length = 16)
         {
@@ -11,9 +12,30 @@ namespace reign.Extensions
 
             for (int i = 0; i < length; ++i)
             {
-                running += characters[Random.Range(0, characters.Length)];
+                running += characters[UnityEngine.Random.Range(0, characters.Length)];
             }
             return running;
+        }
+    }
+
+    public class Time
+    {
+        public enum FormatType { MinutesSeconds, HoursMinutesSeconds };
+        public static string Format(FormatType formatType, float time)
+        {
+            TimeSpan span = TimeSpan.FromSeconds(time);
+            switch (formatType)
+            {
+                case FormatType.MinutesSeconds:
+                    {
+                        return string.Format("{0:D2}:{1:D2}", span.TotalMinutes, span.TotalSeconds);
+                    }
+                case FormatType.HoursMinutesSeconds:
+                    {
+                        return string.Format("{0:D2}:{1:D2}:{2:D2}", span.TotalHours, span.TotalMinutes, span.TotalSeconds);
+                    }
+            }
+            return "Time String Null Formatting Error";
         }
     }
 

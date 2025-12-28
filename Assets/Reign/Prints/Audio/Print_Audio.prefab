@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2707883672971581176}
   - component: {fileID: 142532210810991130}
   m_Layer: 0
-  m_Name: Channel 3
+  m_Name: '3 : UI Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 142532210810991130}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 0858b14f298f0534c9cfb32f40a657c1, type: 2}
 --- !u!82 &142532210810991130
 AudioSource:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ GameObject:
   - component: {fileID: 5056920196892911401}
   - component: {fileID: 4564403323856240755}
   m_Layer: 0
-  m_Name: Channel 4
+  m_Name: '4 : Music Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,8 +190,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 4564403323856240755}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 006fc639a59806f419768555045cb28e, type: 2}
 --- !u!82 &4564403323856240755
 AudioSource:
   m_ObjectHideFlags: 0
@@ -300,7 +302,7 @@ GameObject:
   - component: {fileID: 5425116706722348307}
   - component: {fileID: 2508382053447159357}
   m_Layer: 0
-  m_Name: Channel 8
+  m_Name: '8 : Reign Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -333,8 +335,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 2508382053447159357}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: d066580455f6bb84bbcd242c23f74013, type: 2}
 --- !u!82 &2508382053447159357
 AudioSource:
   m_ObjectHideFlags: 0
@@ -444,7 +447,7 @@ GameObject:
   - component: {fileID: 5388246475626513563}
   - component: {fileID: 9144449252495608081}
   m_Layer: 0
-  m_Name: Channel 5
+  m_Name: '5 : Vocal Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -477,8 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 9144449252495608081}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 09b4aac02c4f16f468dd2b2008b46051, type: 2}
 --- !u!82 &9144449252495608081
 AudioSource:
   m_ObjectHideFlags: 0
@@ -588,7 +592,7 @@ GameObject:
   - component: {fileID: 5005396101050293722}
   - component: {fileID: 7039926989334550307}
   m_Layer: 0
-  m_Name: Channel 1
+  m_Name: '1 : SFX Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -621,6 +625,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 7039926989334550307}
   r_Pool: {fileID: 11400000, guid: 6266efec4f9e5a141b847d66480367a3, type: 2}
 --- !u!82 &7039926989334550307
@@ -732,7 +737,7 @@ GameObject:
   - component: {fileID: 7776688984279549530}
   - component: {fileID: 168695451583070716}
   m_Layer: 0
-  m_Name: Channel 6
+  m_Name: '6 : Misc Channel One'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -765,8 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 168695451583070716}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 6eaa95398c4354e4296de0848e6d9639, type: 2}
 --- !u!82 &168695451583070716
 AudioSource:
   m_ObjectHideFlags: 0
@@ -876,7 +882,7 @@ GameObject:
   - component: {fileID: 1207364942729921956}
   - component: {fileID: 4712217422838963292}
   m_Layer: 0
-  m_Name: Channel 2
+  m_Name: '2 : Ambient Channel'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -909,8 +915,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 4712217422838963292}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 847512a791e9f2c4292263cc1dd2e713, type: 2}
 --- !u!82 &4712217422838963292
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1020,7 +1027,7 @@ GameObject:
   - component: {fileID: 7536744310516078272}
   - component: {fileID: 3760627739742098366}
   m_Layer: 0
-  m_Name: Channel 7
+  m_Name: '7 : Misc Channel Two'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1053,8 +1060,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38c0add5a99a39b4da02187b88887d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.MasterChannel
+  b_ChannelActive: 1
   u_Channel: {fileID: 3760627739742098366}
-  r_Pool: {fileID: 0}
+  r_Pool: {fileID: 11400000, guid: 404c675894eca66448e3792cdbb92a0e, type: 2}
 --- !u!82 &3760627739742098366
 AudioSource:
   m_ObjectHideFlags: 0

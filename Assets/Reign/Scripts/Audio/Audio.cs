@@ -17,7 +17,7 @@ namespace reign
             else
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
+                // Should be a child of App, so doesn't need to persist as App print already does.
             }
         }
     }

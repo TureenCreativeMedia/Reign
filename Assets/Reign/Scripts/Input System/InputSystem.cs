@@ -98,14 +98,10 @@ namespace reign
         /// <summary>
         /// Return the change of mouse direction as a Vector2
         /// </summary>
-        public static Vector2 MouseLook(float sensitivity)
+        public static Vector2 MouseLook()
         {
             if (!Input.mousePresent) return Vector2.zero;
-
-            float f_MouseX = Input.GetAxis("Mouse X") * sensitivity;
-            float f_MouseY = Input.GetAxis("Mouse Y") * sensitivity;
-
-            return new(f_MouseX, f_MouseY);
+            return new(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
     }
 }
