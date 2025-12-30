@@ -114,6 +114,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6516300825819396336}
   - component: {fileID: 5493605472278772855}
+  - component: {fileID: 298251624130853350}
   m_Layer: 0
   m_Name: AppWidgetGroup
   m_TagString: Untagged
@@ -156,6 +157,29 @@ MonoBehaviour:
   u_Widgets:
   - {fileID: 4562047154469688073, guid: 7f01cd6a45530b449a585720398559db, type: 3}
   - {fileID: 4562047154469688073, guid: 1841b8a7a4f148f42a60e18bcef612c2, type: 3}
+--- !u!223 &298251624130853350
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494198727633799216}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 97
+  m_TargetDisplay: 0
 --- !u!1 &3968850072718868216
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 618445530212257624}
   - component: {fileID: 7687467989344141700}
+  - component: {fileID: 6314531279923098186}
   m_Layer: 0
   m_Name: ConsoleWidgetGroup
   m_TagString: Untagged
@@ -207,6 +232,29 @@ MonoBehaviour:
   r_Connectors: []
   u_Widgets:
   - {fileID: 8534432571404159632, guid: abc94d3d975fa604086d9b5fbd84c87e, type: 3}
+--- !u!223 &6314531279923098186
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968850072718868216}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 99
+  m_TargetDisplay: 0
 --- !u!1 &7537730676477080370
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,7 +281,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7537730676477080370}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -285,6 +333,7 @@ GameObject:
   m_Component:
   - component: {fileID: 336436544894583085}
   - component: {fileID: 4582378903514315894}
+  - component: {fileID: 4555896749624644432}
   m_Layer: 0
   m_Name: PlaytimeLimiterGroup
   m_TagString: Untagged
@@ -326,6 +375,29 @@ MonoBehaviour:
   r_Connectors: []
   u_Widgets:
   - {fileID: 5765175237423216756, guid: e245283e2e4a3514d87691d4f1d55ff3, type: 3}
+--- !u!223 &4555896749624644432
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8213867663579720420}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 98
+  m_TargetDisplay: 0
 --- !u!1 &8900413344763599229
 GameObject:
   m_ObjectHideFlags: 0
@@ -382,7 +454,7 @@ MonoBehaviour:
   f_AppRuntime: 0
   l_AppStartUnixTimestamp: 0
   AppWidget: {fileID: 5493605472278772855}
-  s_StartScene: Test Scene
+  s_StartScene: 
   u_AppSettingsTextAsset: {fileID: 4900000, guid: 704253a4486c53946b9481eea27fc0a0, type: 3}
   f_InternalClock: 0
   f_DeltaCount: 0
@@ -424,6 +496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.PlaytimeLimiter
   r_LimiterWidget: {fileID: 4582378903514315894}
+  f_Timer: 0
 --- !u!114 &7426187152773525054
 MonoBehaviour:
   m_ObjectHideFlags: 0

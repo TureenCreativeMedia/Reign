@@ -17,11 +17,13 @@ namespace reign
 
         void ScreenSetup()
         {
+            Main.Instance.f_TimeScale = 0.0f;
             PlaytimeLimiter.b_CanCreate = false;
             tmp_WarningText.text = $"Warning, your playtime has exceeded <color=red>{Extensions.Time.Format(Extensions.Time.FormatType.HoursMinutesSeconds, PlaytimeLimiter.f_WarningTime)}";
         }
         public void ContinuePlaying()
         {
+            Main.Instance.f_TimeScale = 1.0f;
             PlaytimeLimiter.b_CanCreate = true;
             Destroy(gameObject);
         }

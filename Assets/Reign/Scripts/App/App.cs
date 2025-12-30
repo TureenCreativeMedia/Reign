@@ -1,5 +1,4 @@
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 namespace reign
 {
@@ -9,6 +8,7 @@ namespace reign
         public string versionname;
         public bool developmentbuild;
         public bool console;
+        public bool enableappwidgets;
     }
 
     public static class App

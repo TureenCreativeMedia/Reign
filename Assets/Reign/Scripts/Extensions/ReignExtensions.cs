@@ -28,11 +28,11 @@ namespace reign.Extensions
             {
                 case FormatType.MinutesSeconds:
                     {
-                        return string.Format("{0:D2}:{1:D2}", span.TotalMinutes, span.TotalSeconds);
+                        return string.Format("{0:00}:{1:00}", span.Minutes, span.Seconds);
                     }
                 case FormatType.HoursMinutesSeconds:
                     {
-                        return string.Format("{0:D2}:{1:D2}:{2:D2}", span.TotalHours, span.TotalMinutes, span.TotalSeconds);
+                        return string.Format("{0:00}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
                     }
             }
             return "Time String Null Formatting Error";

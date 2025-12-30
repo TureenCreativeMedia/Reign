@@ -1,6 +1,7 @@
 {
-  "targetrefreshrate": 240,
-  "versionname": "0.0.1.2",
+  "targetrefreshrate": 540,
+  "versionname": "0.0.2.0",
   "developmentbuild": true,
-  "console": true
+  "console": true,
+  "enableappwidgets": true
 }

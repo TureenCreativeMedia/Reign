@@ -1,4 +1,5 @@
 using Discord;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ namespace reign
 {
     public class DiscordController : MonoBehaviour
     {
-        public bool b_IgnoreInEditor = true;
+        public static Action a_Disconnect;
+
+        public bool b_Ignore = false;
         public long l_AppID;
         [Space]
         public string s_Details = "Description";
@@ -37,25 +40,31 @@ namespace reign
         }
         private void OnEnable()
         {
+            a_Disconnect += Disconnect;
             Main.a_OnFrame += AttemptSearch;
         }
 
         private void OnDisable()
         {
+            a_Disconnect -= Disconnect;
             Main.a_OnFrame -= AttemptSearch;
         }
 
+        void Disconnect()
+        {
+            b_Ignore = true;
+            Destroy(this);
+            StartCoroutine(DisposeDiscordAfterCallbacks());
+        }
         void Start()
         {
-            if (b_IgnoreInEditor)
+            if (b_Ignore)
             {
 #if UNITY_EDITOR
-                Destroy(this);
-                StartCoroutine(DisposeDiscordAfterCallbacks());
+                Disconnect();
                 return;
 #endif
             }
-
 
             e_Discord = new Discord.Discord(l_AppID, (System.UInt64)CreateFlags.NoRequireDiscord);
 
@@ -108,12 +117,11 @@ namespace reign
 
                 activityManager.UpdateActivity(activity, (result) =>
                 {
-                    if (result != Result.Ok)
+                    b_Connected = (result == 0 && !b_Ignore);
+                    if (result != 0)
                     {
                         Debug.LogError($"Failed to update Discord status: {result}");
                     }
-
-                    b_Connected = result == Result.Ok;
                 });
             }
             catch (System.Exception ex)

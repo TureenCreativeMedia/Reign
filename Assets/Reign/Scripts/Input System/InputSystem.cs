@@ -22,6 +22,7 @@ namespace reign
 
             // Special Keys
             {"BackQuote", new[]{KeyCode.BackQuote} },
+            {"F1", new[]{KeyCode.F1} },
             {"F2", new[]{KeyCode.F2} },
             {"F3", new[]{KeyCode.F3} },
             {"F5", new[]{KeyCode.F5} },
@@ -36,6 +37,12 @@ namespace reign
             {"Home", new[]{KeyCode.Home} },
             {"Shift", new[]{KeyCode.LeftShift, KeyCode.RightShift} },
             {"Space", new[]{KeyCode.Space} },
+            
+            {"UpArrow", new[]{KeyCode.UpArrow} },
+            {"DownArrow", new[]{KeyCode.DownArrow} },
+            {"LeftArrow", new[]{KeyCode.LeftArrow} },
+            {"RightArrow", new[]{KeyCode.RightArrow} },
+
             {"A", new[]{KeyCode.A} },
             {"S", new[]{KeyCode.S} },
             {"W", new[]{KeyCode.W} },

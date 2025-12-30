@@ -29,7 +29,7 @@ namespace reign
 
         private static string s_Path;
 
-        private void Awake()
+        private void Start()
         {
             s_Path = Path.Combine(Application.persistentDataPath, "savefile.save");
             Load();

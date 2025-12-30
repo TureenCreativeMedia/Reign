@@ -30,6 +30,7 @@ namespace reign
         [SerializeField] string s_StartScene;
         [SerializeField] TextAsset u_AppSettingsTextAsset;
 
+        public float f_TimeScale = 1.0f;
         public float f_InternalClock = 0.0f;
         public float f_DeltaCount = 0.0f;
         public int i_RuntimeFrames = 0;
@@ -55,9 +56,9 @@ namespace reign
             }
 
             f_AppRuntime = Time.realtimeSinceStartup;
-            f_InternalClock += Time.deltaTime;
+            f_InternalClock += Time.deltaTime; // Internal app clock
 
-            f_DeltaCount += Time.deltaTime; // Clock that resets every second
+            f_DeltaCount += Time.deltaTime * f_TimeScale; // Clock that resets every second
             a_OnTimePassed?.Invoke(f_DeltaCount); // Run every second
 
             if (f_DeltaCount >= 1.0f)
@@ -68,8 +69,11 @@ namespace reign
             a_OnFrame?.Invoke();
         }
 
-        private void Awake()
+        private void Start()
         {
+            // Set time scale
+            SetTimeScale(1.0f);
+
             // Reset internal clock
             SetInternalClock(0.0f);
 
@@ -81,7 +85,6 @@ namespace reign
 
             // Create runtime key
             s_RuntimeKey = Extensions.KeyGenerator.GenerateKey(16);
-            Debug.Log($"Runtime key generated: {s_RuntimeKey}");
 
             // Create instance
             if (Instance != null && Instance != this)
@@ -99,17 +102,21 @@ namespace reign
                 SceneManager.LoadScene(s_StartScene); // If start scene isn't null, leap to it ASAP.
             }
 
+#if UNITY_EDITOR
             UnityEditor.AssetDatabase.Refresh(); // Refresh asset database
-
+#endif
             f_DeltaCount = 0; // Per-second timer reset
 
             a_OnWake?.Invoke(); // Waking: Happens at the end of the awake function of this script.
 
-            AppWidget.CreateWidgets();
+            if (App.u_localdata.enableappwidgets)
+            {
+                AppWidget.CreateWidgets();
+            }
         }
 
         public void SetInternalClock(float time) => f_InternalClock = time;
-
+        public void SetTimeScale(float scale) => f_TimeScale = scale;
         public void Hang()
         {
             // Hanging: quitting the app
