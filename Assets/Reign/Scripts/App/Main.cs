@@ -1,5 +1,6 @@
 using System;
 using Unity.Profiling;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -116,6 +117,10 @@ namespace reign
             SaveSystem.Save();
             a_OnHang?.Invoke();
             Application.Quit();
+
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#endif
         }
 
         public string Dump()

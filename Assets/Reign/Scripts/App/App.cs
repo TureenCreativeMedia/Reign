@@ -8,6 +8,7 @@ namespace reign
         public int targetrefreshrate;
         public string versionname;
         public bool developmentbuild;
+        public bool console;
     }
 
     public static class App

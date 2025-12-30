@@ -5,7 +5,7 @@ namespace reign
 {
     public class PlaytimeLimiterWidget : ReignWidget
     {
-        [SerializeField] TMP_Text WarningText;
+        [SerializeField] TMP_Text tmp_WarningText;
         private void OnEnable()
         {
             a_OnCreate += ScreenSetup;    
@@ -18,7 +18,7 @@ namespace reign
         void ScreenSetup()
         {
             PlaytimeLimiter.b_CanCreate = false;
-            WarningText.text = $"Warning, your playtime has exceeded <color=red>{Extensions.Time.Format(Extensions.Time.FormatType.HoursMinutesSeconds, PlaytimeLimiter.f_WarningTime)}";
+            tmp_WarningText.text = $"Warning, your playtime has exceeded <color=red>{Extensions.Time.Format(Extensions.Time.FormatType.HoursMinutesSeconds, PlaytimeLimiter.f_WarningTime)}";
         }
         public void ContinuePlaying()
         {

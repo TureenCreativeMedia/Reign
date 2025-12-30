@@ -463,7 +463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.PlaytimeLimiterWidget
   u_RectTransform: {fileID: 0}
-  WarningText: {fileID: 8033444627649487355}
+  tmp_WarningText: {fileID: 8033444627649487355}
 --- !u!223 &6824735161571285806
 Canvas:
   m_ObjectHideFlags: 0

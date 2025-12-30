@@ -18,3 +18,4 @@ identifiers:
 	e_ = external
 	d_ = double
 	dn_ = dictionary
+	tmp_ = text mesh pro

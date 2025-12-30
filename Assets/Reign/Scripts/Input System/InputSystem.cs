@@ -20,7 +20,8 @@ namespace reign
             {"Alphanumeric", new[]{KeyCode.Alpha0, KeyCode.Alpha1, KeyCode.Alpha2, KeyCode.Alpha3, KeyCode.Alpha4,
             KeyCode.Alpha5, KeyCode.Alpha6, KeyCode.Alpha7, KeyCode.Alpha8, KeyCode.Alpha9} },
 
-            // F Keys
+            // Special Keys
+            {"BackQuote", new[]{KeyCode.BackQuote} },
             {"F2", new[]{KeyCode.F2} },
             {"F3", new[]{KeyCode.F3} },
             {"F5", new[]{KeyCode.F5} },

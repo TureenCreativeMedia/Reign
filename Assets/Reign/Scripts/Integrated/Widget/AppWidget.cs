@@ -5,7 +5,7 @@ namespace reign
 {
     public class AppWidget : ReignWidget
     {
-        [SerializeField] TMP_Text u_Text;
+        [SerializeField] TMP_Text tmp_Text;
         string s_Text;
         private void Start()
         {
@@ -21,7 +21,7 @@ namespace reign
         }
         void WidgetUpdate()
         {
-            u_Text.text = $"{s_Text}";
+            tmp_Text.text = $"{s_Text}";
         }
     }
 }

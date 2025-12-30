@@ -1,5 +1,6 @@
 {
-    "targetrefreshrate": 240,
-    "versionname": "0.0.1.1",
-    "developmentbuild": true
+  "targetrefreshrate": 240,
+  "versionname": "0.0.1.2",
+  "developmentbuild": true,
+  "console": true
 }
