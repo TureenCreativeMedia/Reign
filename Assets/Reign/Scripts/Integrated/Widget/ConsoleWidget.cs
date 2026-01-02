@@ -28,9 +28,10 @@ namespace reign
             Main.a_OnFrame += ConsoleUpdate;
             tmp_InputField.onEndEdit.AddListener(DoConsoleCommand);
         }
-        private void OnDisable()
+        private void OnDestroy()
         {
             Main.a_OnFrame -= ConsoleUpdate;
+            tmp_InputField.onEndEdit.RemoveListener(DoConsoleCommand);
         }
 
         private void Awake()
@@ -45,6 +46,7 @@ namespace reign
                 tmp_CommandList.text += $"{l_CommandList[i]}\n";
             }
         }
+
         void ConsoleUpdate()
         {
             if (InputSystem.GetInput(s_ConsoleBinding, InputSystem.KeyType.Down))
@@ -64,6 +66,8 @@ namespace reign
         {
             b_InConsole = active;
             tmp_InputField.gameObject.SetActive(active);
+
+            Cursor.Instance.SetCursor(b_InConsole ? "Ibeam" : "Arrow", new() { B_Visible = true, u_LockMode = CursorLockMode.None });
             if (active) tmp_InputField.ActivateInputField();
         }
 

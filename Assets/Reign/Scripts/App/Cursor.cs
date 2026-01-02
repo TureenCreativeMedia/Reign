@@ -20,10 +20,20 @@ namespace reign
 
     public class Cursor : MonoBehaviour
     {
+        public static Cursor Instance;
         public List<CursorType> l_CursorTypes;
 
         private void Start()
         {
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Instance = this;
+            }
+
             SetCursor("Arrow", new()
             {
                 u_LockMode = CursorLockMode.None,

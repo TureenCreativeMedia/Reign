@@ -1,7 +1,13 @@
 {
-  "targetrefreshrate": 540,
-  "versionname": "0.0.2.1",
+  "appname": "Game",
+  "versionname": "0.0.0",
   "developmentbuild": true,
+
+  "targetrefreshrate": 300,
+  "vsync": false,
+
   "console": true,
-  "enableappwidgets": true
+  "appwidgets": true,
+
+  "discord": true
 }

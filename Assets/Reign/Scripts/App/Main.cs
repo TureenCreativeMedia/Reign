@@ -109,7 +109,7 @@ namespace reign
 
             a_OnWake?.Invoke(); // Waking: Happens at the end of the awake function of this script.
 
-            if (App.u_localdata.enableappwidgets)
+            if (App.u_localdata.appwidgets)
             {
                 AppWidget.CreateWidgets();
             }

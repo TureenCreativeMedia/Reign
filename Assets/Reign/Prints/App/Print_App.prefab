@@ -452,6 +452,9 @@ MonoBehaviour:
   - u_Texture: {fileID: 2800000, guid: 740241958cd513641ab2e30d458bf7f4, type: 3}
     s_Name: No
     v_Hotspot: {x: 0, y: 0}
+  - u_Texture: {fileID: 2800000, guid: 2fbe57da16cca2149885b1d664757357, type: 3}
+    s_Name: Ibeam
+    v_Hotspot: {x: 0, y: 0}
 --- !u!1 &8900413344763599229
 GameObject:
   m_ObjectHideFlags: 0

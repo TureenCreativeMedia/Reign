@@ -58,12 +58,10 @@ namespace reign
         }
         void Start()
         {
-            if (b_Ignore)
+            if (b_Ignore || !App.u_localdata.discord)
             {
-#if UNITY_EDITOR
                 Disconnect();
                 return;
-#endif
             }
 
             e_Discord = new Discord.Discord(l_AppID, (System.UInt64)CreateFlags.NoRequireDiscord);

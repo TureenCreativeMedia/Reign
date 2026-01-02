@@ -1,18 +1,49 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace reign
 {
-    public class ReignWidget : MonoBehaviour
+    public class ReignWidgetCursorInteraction
+    {
+        // Array for IN and OUT
+        public string[] s_CursorName;
+        public CursorSetting[] r_CursorSetting = null;
+    }
+
+    public class ReignWidget : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         public static Action a_OnCreate;
+        public static Action a_OnPointerEnter;
+        public static Action a_OnPointerExit;
+
+        [HideInInspector] public ReignWidgetCursorInteraction r_ReignWidgetCursorInteraction = null;
         [HideInInspector] public RectTransform u_RectTransform;
         private void Start()
         {
             a_OnCreate?.Invoke();
             u_RectTransform = gameObject.GetComponent<RectTransform>();
             StartCoroutine(Rescale(new(1, 1), new(1, 1), 0));
+        }
+
+        public virtual void OnPointerEnter(PointerEventData eventData)
+        {
+            if (string.IsNullOrEmpty(r_ReignWidgetCursorInteraction?.s_CursorName[0]) || r_ReignWidgetCursorInteraction?.r_CursorSetting[0] == null)
+            {
+                return;
+            }
+
+            Cursor.Instance.SetCursor(r_ReignWidgetCursorInteraction?.s_CursorName[0], r_ReignWidgetCursorInteraction?.r_CursorSetting[0]);
+        }
+
+        public virtual void OnPointerExit(PointerEventData eventData)
+        {
+            if (string.IsNullOrEmpty(r_ReignWidgetCursorInteraction?.s_CursorName[1]) || r_ReignWidgetCursorInteraction?.r_CursorSetting[1] == null)
+            {
+                return;
+            }
+            Cursor.Instance.SetCursor(r_ReignWidgetCursorInteraction?.s_CursorName[1], r_ReignWidgetCursorInteraction?.r_CursorSetting[1]);
         }
 
         public virtual void SetWidgetVisibility(bool visible)

@@ -8,7 +8,7 @@ namespace reign
         [SerializeField] TMP_Text tmp_Text;
         void Start()
         {
-            tmp_Text.text = $"Reign {App.u_localdata.versionname} {(App.u_localdata.developmentbuild ? " - Development Build" : " ")}";
+            tmp_Text.text = $"{App.u_localdata.appname} {App.u_localdata.versionname} {(App.u_localdata.developmentbuild ? "(Development Build)" : " ")} <size=70%>made with Reign";
         }
     }
 }
