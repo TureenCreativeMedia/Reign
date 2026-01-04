@@ -50,21 +50,22 @@ namespace reign
         public enum SocketType { Set, Remove }
         public void SetSocket(GameObject gameObject, SocketType socketType = SocketType.Set, bool stopPhysics = true)
         {
-            if(stopPhysics)
+            if (stopPhysics)
             {
-                var rb = gameObject.GetComponent<Rigidbody>();
-
-                if (rb != null) rb.isKinematic = (socketType == SocketType.Set);
+                if (gameObject.TryGetComponent<Rigidbody>(out var rb))
+                {
+                    rb.isKinematic = (socketType == SocketType.Set);
+                }
             }
 
             if (socketType == SocketType.Set)
             {
-                this.gameObject.transform.SetParent(gameObject.transform);
-                this.gameObject.transform.position = gameObject.transform.position;
+                gameObject.transform.SetParent(gameObject.transform);
+                gameObject.transform.position = gameObject.transform.position;
             }
             else
             {
-                this.gameObject.transform.SetParent(u_OriginParent); // Return to original parent
+                gameObject.transform.SetParent(u_OriginParent); // Return to original parent
             }
         }
 

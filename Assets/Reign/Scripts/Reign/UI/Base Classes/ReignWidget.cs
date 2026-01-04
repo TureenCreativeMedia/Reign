@@ -120,5 +120,23 @@ namespace reign
 
             u_RectTransform.sizeDelta = newSize;
         }
+
+        public virtual IEnumerator Rotate(Quaternion startRotation, Quaternion endRotation, float duration)
+        {
+            u_RectTransform.rotation = startRotation;
+
+            float time = 0.0f;
+
+            while (time < duration)
+            {
+                time += Time.deltaTime;
+                float t = Mathf.Clamp01(time / duration);
+                Quaternion lerpedRotation = Quaternion.Lerp(startRotation, endRotation, t);
+                u_RectTransform.rotation = lerpedRotation;
+                yield return null;
+            }
+
+            u_RectTransform.rotation = endRotation;
+        }
     }
 }
