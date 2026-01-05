@@ -15,7 +15,8 @@ namespace reign
 
         public static Main Instance;
 
-        public string s_RuntimeKey;
+        public string s_RuntimeKey { get; private set; }
+        public string s_RenderingAPI;
 
         public static Action a_OnFrame;
         public static Action<float> a_OnTimePassed;
@@ -27,7 +28,6 @@ namespace reign
         public long l_AppStartUnixTimestamp;
 
         [SerializeField] ReignWidgetGroup AppWidget;
-        [SerializeField] string s_StartScene;
         [SerializeField] TextAsset u_AppSettingsTextAsset;
 
         public float f_TimeScale = 1.0f;
@@ -77,6 +77,9 @@ namespace reign
             // Reset internal clock
             SetInternalClock(0.0f);
 
+            // Find rendering API
+            s_RenderingAPI = SystemInfo.graphicsDeviceVersion;
+
             // Set initial app unix timestamp
             l_AppStartUnixTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             
@@ -97,13 +100,8 @@ namespace reign
                 DontDestroyOnLoad(gameObject); // For persistence between scenes
             }
 
-            if (!string.IsNullOrEmpty(s_StartScene) && SceneManager.GetActiveScene().name != s_StartScene)
-            {
-                SceneManager.LoadScene(s_StartScene); // If start scene isn't null, leap to it ASAP.
-            }
-
 #if UNITY_EDITOR
-            UnityEditor.AssetDatabase.Refresh(); // Refresh asset database
+            AssetDatabase.Refresh(); // Refresh asset database
 #endif
             f_DeltaCount = 0; // Per-second timer reset
 
@@ -132,7 +130,7 @@ namespace reign
 
         public string Dump()
         {
-            return $"Main Dump\nSystem Used Memory: {u_SystemUsedMemoryRecorder.LastValue / 1048576}MB\nLifetime Frames: {i_RuntimeFrames}\nPer-Second Count: {f_DeltaCount}\nApp Runtime: {f_AppRuntime}\nUnix Start Timestamp: {l_AppStartUnixTimestamp}\nCurrent Scene: {SceneManager.GetActiveScene().name}\nUnique Runtime Key: {s_RuntimeKey}\nDiscord Rich Presence: {(DiscordController.b_Connected ? "Connected" : "Not Connected")}";
+            return $"Rendering API: {s_RenderingAPI}\nSystem Used Memory: {u_SystemUsedMemoryRecorder.LastValue / 1048576}MB\nLifetime Frames: {i_RuntimeFrames}\nPer-Second Count: {f_DeltaCount}\nApp Runtime: {f_AppRuntime}\nUnix Start Timestamp: {l_AppStartUnixTimestamp}\nCurrent Scene: {SceneManager.GetActiveScene().name}\nUnique Runtime Key: {s_RuntimeKey}\nDiscord Rich Presence: {(DiscordController.b_Connected ? "Connected" : "Not Connected")}";
         }
     }
 }

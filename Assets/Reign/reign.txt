@@ -1,9 +1,0 @@
-Reign is a lightweight and performant backend for Unity projects, created by Tureen Creative Media.
-
-Usage:
-- Import this folder into your Unity project as a template/starting point.
-- 
-
-Rules:
-- Reign scripts will be prefixed with Reign.
-- All Reign scripts should inherit from MonoBehaviour as base classes.
