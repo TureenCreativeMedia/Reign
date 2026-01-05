@@ -26,13 +26,13 @@ namespace reign
         {
             var u_ScriptCall = other.GetComponents<MonoBehaviour>(); // Get relevant scripts
 
-            Extensions.Misc.ToggleScriptArray(u_ScriptCall, false); // Stop updating
+            Extensions.UnityAdditions.ToggleScriptArray(u_ScriptCall, false); // Stop updating
 
             other.transform.position = v_TeleportPosition; // Teleport
 
             yield return new WaitForSeconds(0.02f); // Wait shortly
 
-            Extensions.Misc.ToggleScriptArray(u_ScriptCall, true); // Re-enable
+            Extensions.UnityAdditions.ToggleScriptArray(u_ScriptCall, true); // Re-enable
         } 
     }
 }

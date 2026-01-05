@@ -35,11 +35,45 @@ namespace reign.Extensions
                         return string.Format("{0:00}:{1:00}:{2:00}", span.Hours, span.Minutes, span.Seconds);
                     }
             }
-            return "Time String Null Formatting Error";
+            return "Time Formatting Error";
         }
     }
 
-    public class Misc : MonoBehaviour
+    public class Timer : MonoBehaviour
+    {
+        public bool b_DestroyAfterStopped;
+
+        public Action<bool> SetTimer;
+        public float f_Duration;
+
+        private void OnEnable()
+        {
+            SetTimer += TimerUpdate;
+        }
+        private void OnDisable()
+        {
+            SetTimer -= TimerUpdate;
+        }
+        public void TimerUpdate(bool canUpdate)
+        {
+            if (!canUpdate)
+            {
+                if (b_DestroyAfterStopped)
+                {
+                    Destroy(this);
+                }
+                return;
+            }
+
+            f_Duration += UnityEngine.Time.deltaTime;
+        }
+        public float GetCurrentDuration()
+        {
+            return f_Duration;
+        }
+    }
+
+    public class UnityAdditions
     {
         public static void ToggleScriptArray(MonoBehaviour[] scripts, bool enabled)
         {

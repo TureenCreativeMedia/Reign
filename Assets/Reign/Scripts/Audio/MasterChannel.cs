@@ -1,4 +1,3 @@
-using System.Linq;
 using UnityEngine;
 
 namespace reign
@@ -6,9 +5,10 @@ namespace reign
     [RequireComponent(typeof(AudioSource))]
     public class MasterChannel : MonoBehaviour
     {
-        [SerializeField] bool b_ChannelActive = true;
-        [SerializeField] AudioSource u_Channel;
-        [SerializeField] AudioPool r_Pool;
+        public string s_ChannelName; // Name of channel for playing sounds
+        public bool b_ChannelActive = true; // Channel enabled
+        public AudioSource u_Channel; // Is the channel source
+        public AudioPool r_Pool; // Contains sounds
 
         private void Awake()
         {
@@ -19,18 +19,6 @@ namespace reign
             else
             {
                 b_ChannelActive = true;
-            }
-        }
-        public void PlaySound(string soundName, float volume = 0.7f)
-        {
-            if (!b_ChannelActive) return;
-
-            for (int j = 0; j < r_Pool.u_AudioClips.Count; ++j)
-            {
-                if (r_Pool.u_AudioClips[j].name == soundName)
-                {
-                    u_Channel.PlayOneShot(r_Pool.u_AudioClips[j], volume);
-                }
             }
         }
 

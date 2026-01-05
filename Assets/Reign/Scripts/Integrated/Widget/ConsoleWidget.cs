@@ -20,7 +20,8 @@ namespace reign
             "Hang - Close app",
             "PlaytimeLimiter [Warn, {Timer value}] - Interact with the Playtime Limiter",
             "Profiler - Toggle profiler",
-            "Discord [Disconnect] - Interact with the Discord Controller"
+            "Discord [Disconnect] - Interact with the Discord Controller",
+            "SoundSystem [Stop, Flip]"
         };
 
         private void OnEnable()
@@ -34,13 +35,9 @@ namespace reign
             tmp_InputField.onEndEdit.RemoveListener(DoConsoleCommand);
         }
 
-        private void Awake()
-        {
-            ToggleConsole(false);
-        }
-
         private void Start()
         {
+            ToggleConsole(false);
             for (int i = 0; i < l_CommandList.Count; ++i)
             {
                 tmp_CommandList.text += $"{l_CommandList[i]}\n";
@@ -145,6 +142,25 @@ namespace reign
                         if (value.ToString().ToLowerInvariant() == "disconnect")
                         {
                             DiscordController.a_Disconnect?.Invoke();
+                        }
+                        break;
+                    }
+                case "soundsystem":
+                    {
+                        if (value == null)
+                        {
+                            Debug.LogError("Sound System command requires a subcommand.");
+                            return;
+                        }
+
+                        string s_valueAsString = value.ToString().ToLowerInvariant();
+                        if (s_valueAsString == "stop")
+                        {
+                            Audio.Instance.StopAllSounds();
+                        }
+                        else if (s_valueAsString == "flip")
+                        {
+                            Audio.Instance.ToggleAudioChannels();
                         }
                         break;
                     }
