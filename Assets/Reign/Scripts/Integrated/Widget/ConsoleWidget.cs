@@ -21,7 +21,8 @@ namespace reign
             "PlaytimeLimiter [Warn, {Timer value}] - Interact with the Playtime Limiter",
             "Profiler - Toggle profiler",
             "Discord [Disconnect] - Interact with the Discord Controller",
-            "SoundSystem [Stop, Flip]"
+            "SoundSystem [Stop, Toggle, Play {Clip name}] - Interact with the sound system",
+            "Screen [Fullscreen, SetWidth {screen width}, SetHeight {screen height}] - Interact with the game screen"
         };
 
         private void OnEnable()
@@ -46,7 +47,7 @@ namespace reign
 
         void ConsoleUpdate()
         {
-            if (InputSystem.GetInput(s_ConsoleBinding, InputSystem.KeyType.Down))
+            if (InputSystem.GetInput(s_ConsoleBinding, InputSystem.KeyType.Down) && !b_InConsole)
             {
                 ToggleConsole(!b_InConsole);
             }
@@ -153,14 +154,60 @@ namespace reign
                             return;
                         }
 
-                        string s_valueAsString = value.ToString().ToLowerInvariant();
-                        if (s_valueAsString == "stop")
+
+                        switch (value.ToString().ToLowerInvariant())
                         {
-                            Audio.Instance.StopAllSounds();
+                            case "play":
+                                {
+                                    if (parts.Length == 3)
+                                    {
+                                        Audio.Instance.PlaySound(parts[2]?.ToString());
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError("Sound System 'Play' command requires another subcommand.");
+                                        return;
+                                    }
+                                    break;
+                                }
+                            case "stop":
+                                {
+                                    Audio.Instance.StopAllSounds();
+                                    break;
+                                }
+                            case "toggle":
+                                {
+                                    Audio.Instance.ToggleAudioChannels();
+                                    break;
+                                }
+                        };
+                        break;
+                    }
+                case "screen":
+                    {
+                        if (value == null)
+                        {
+                            Debug.LogError("Screen command requires a subcommand.");
+                            return;
                         }
-                        else if (s_valueAsString == "flip")
+
+                        switch (value.ToString().ToLowerInvariant())
                         {
-                            Audio.Instance.ToggleAudioChannels();
+                            case "fullscreen":
+                                {
+                                    Screen.fullScreen = !Screen.fullScreen;
+                                    break;
+                                }
+                            case "setwidth":
+                                {
+                                    Screen.SetResolution(Convert.ToInt32(parts[2]), Screen.height, Screen.fullScreen);
+                                    break;
+                                }
+                            case "setheight":
+                                {
+                                    Screen.SetResolution(Screen.width, Convert.ToInt32(parts[2]), Screen.fullScreen);
+                                    break;
+                                }
                         }
                         break;
                     }

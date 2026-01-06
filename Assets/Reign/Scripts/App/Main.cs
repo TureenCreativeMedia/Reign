@@ -49,12 +49,6 @@ namespace reign
 
         private void Update()
         {
-            if (InputSystem.GetInput("F11", InputSystem.KeyType.Down))
-            {
-                // Alternate fullscreen
-                Screen.SetResolution(Screen.width, Screen.height, !Screen.fullScreen);
-            }
-
             f_AppRuntime = Time.realtimeSinceStartup;
             f_InternalClock += Time.deltaTime; // Internal app clock
 

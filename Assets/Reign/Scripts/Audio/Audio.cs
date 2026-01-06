@@ -20,6 +20,8 @@ namespace reign
                 Instance = this;
                 // Should be a child of App, so doesn't need to persist as App print already does.
             }
+
+            SetAudioChannelsActive(true);
         }
 
         public MasterChannel[] GetAudioChannels()
@@ -56,7 +58,6 @@ namespace reign
                 channel.b_ChannelActive = enabled;
             }
         }
-
         public void PlaySound(string soundName, float volume = 0.7f)
         {
             string[] s_grouping = soundName.Split(".");
@@ -67,15 +68,13 @@ namespace reign
             {
                 if (r_Channels[i].s_ChannelName == s_grouping[0])
                 {
-                    if (!r_Channels[i].b_ChannelActive)
-                    {
-                        return;
-                    }
+                    // Debug.Log($"Channel {s_grouping[0]}");
 
                     for (int j = 0; j < r_Channels[i].r_Pool.u_AudioClips.Count; ++j)
                     {
-                        if (r_Channels[i].r_Pool.u_AudioClips[j].name == soundName)
+                        if (r_Channels[i].r_Pool.u_AudioClips[j].name == s_grouping[1])
                         {
+                            // Debug.Log($"Clip {s_grouping[j]}");
                             r_Channels[i].u_Channel.PlayOneShot(r_Channels[i].r_Pool.u_AudioClips[j], volume);
                         }
                     }

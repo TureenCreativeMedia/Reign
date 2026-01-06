@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd474550e2bd3dd4194d630ee719a354, type: 3}
   m_Name: Reign
   m_EditorClassIdentifier: Assembly-CSharp::reign.AudioPool
-  s_PoolName: Reign
-  u_AudioClips: []
+  u_AudioClips:
+  - {fileID: 8300000, guid: 246f098e811734a41ae81438417e25eb, type: 3}
+  - {fileID: 8300000, guid: 693d2f798f7556b4ba96b2b8c3e4b7df, type: 3}
