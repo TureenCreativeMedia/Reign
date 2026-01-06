@@ -41,15 +41,17 @@ namespace reign
         private void OnEnable()
         {
             a_Disconnect += Disconnect;
+            Main.a_OnHang += Disconnect;
             Main.a_OnFrame += AttemptSearch;
         }
 
         private void OnDisable()
         {
             a_Disconnect -= Disconnect;
+            Main.a_OnHang -= Disconnect;
             Main.a_OnFrame -= AttemptSearch;
         }
-
+        //
         void Disconnect()
         {
             b_Ignore = true;

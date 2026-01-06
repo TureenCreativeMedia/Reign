@@ -31,8 +31,8 @@ namespace reign
         [SerializeField] TextAsset u_AppSettingsTextAsset;
 
         public float f_TimeScale = 1.0f;
-        public float f_InternalClock = 0.0f;
         public float f_DeltaCount = 0.0f;
+        public float f_SecondCount = 0.0f;
         public int i_RuntimeFrames = 0;
 
         private void OnEnable()
@@ -50,14 +50,15 @@ namespace reign
         private void Update()
         {
             f_AppRuntime = Time.realtimeSinceStartup;
-            f_InternalClock += Time.deltaTime; // Internal app clock
 
-            f_DeltaCount += Time.deltaTime * f_TimeScale; // Clock that resets every second
-            a_OnTimePassed?.Invoke(f_DeltaCount); // Run every second
+            f_DeltaCount = Time.unscaledDeltaTime; // Clock that resets every second
 
-            if (f_DeltaCount >= 1.0f)
+            f_SecondCount += Time.deltaTime;
+            a_OnTimePassed?.Invoke(f_SecondCount); // Run every second
+
+            if (f_SecondCount >= 1.0f)
             {
-                f_DeltaCount = 0.0f;
+                f_SecondCount = 0.0f;
             }
 
             a_OnFrame?.Invoke();
@@ -67,9 +68,6 @@ namespace reign
         {
             // Set time scale
             SetTimeScale(1.0f);
-
-            // Reset internal clock
-            SetInternalClock(0.0f);
 
             // Find rendering API
             s_RenderingAPI = SystemInfo.graphicsDeviceVersion;
@@ -106,8 +104,6 @@ namespace reign
                 AppWidget.CreateWidgets();
             }
         }
-
-        public void SetInternalClock(float time) => f_InternalClock = time;
         public void SetTimeScale(float scale) => f_TimeScale = scale;
         public void Hang()
         {
@@ -124,7 +120,7 @@ namespace reign
 
         public string Dump()
         {
-            return $"Rendering API: {s_RenderingAPI}\nSystem Used Memory: {u_SystemUsedMemoryRecorder.LastValue / 1048576}MB\nLifetime Frames: {i_RuntimeFrames}\nPer-Second Count: {f_DeltaCount}\nApp Runtime: {f_AppRuntime}\nUnix Start Timestamp: {l_AppStartUnixTimestamp}\nCurrent Scene: {SceneManager.GetActiveScene().name}\nUnique Runtime Key: {s_RuntimeKey}\nDiscord Rich Presence: {(DiscordController.b_Connected ? "Connected" : "Not Connected")}";
+            return $"Rendering API: {s_RenderingAPI}\nSystem Used Memory: {u_SystemUsedMemoryRecorder.LastValue / 1048576}MB\nLifetime Frames: {i_RuntimeFrames}\nDelta: {f_DeltaCount}\nApp Runtime: {f_AppRuntime}\nUnix Start Timestamp: {l_AppStartUnixTimestamp}\nCurrent Scene: {SceneManager.GetActiveScene().name}\nUnique Runtime Key: {s_RuntimeKey}\nDiscord Rich Presence: {(DiscordController.b_Connected ? "Connected" : "Not Connected")}";
         }
     }
 }

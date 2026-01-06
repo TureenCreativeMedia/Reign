@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 1288900812}
   - component: {fileID: 1288900811}
   m_Layer: 5
-  m_Name: EntryPointDefault
+  m_Name: EntryPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 1665974735}
   - component: {fileID: 1665974734}
   m_Layer: 0
-  m_Name: Display Camera
+  m_Name: DisplayCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,7 +306,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.34417266, g: 0.07394089, b: 0.5849056, a: 1}
+  m_BackGroundColor: {r: 0.24917755, g: 0.26533806, b: 0.2981131, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -513,7 +513,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2125756735
 RectTransform:
   m_ObjectHideFlags: 0
@@ -528,11 +528,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1288900814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 20, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 960, y: 600}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2125756736
 MonoBehaviour:
   m_ObjectHideFlags: 0

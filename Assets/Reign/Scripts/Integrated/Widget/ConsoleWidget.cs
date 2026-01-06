@@ -8,6 +8,7 @@ namespace reign
 {
     public class ConsoleWidget : ReignWidget
     {
+        public static Action<string[]> a_OnCommand;
         [SerializeField] TMP_InputField tmp_InputField;
         [SerializeField] TMP_Text tmp_CommandList;
         [SerializeField] string s_ConsoleBinding = "BackQuote";
@@ -16,6 +17,7 @@ namespace reign
 
         readonly List<string> l_CommandList = new()
         {
+            "(Up arrow) - last command",
             "Open [{Scene name}, Self] - Load scene",
             "Hang - Close app",
             "PlaytimeLimiter [Warn, {Timer value}] - Interact with the Playtime Limiter",
@@ -82,6 +84,8 @@ namespace reign
 
             string command = parts[0];
             object value = parts.Length > 1 ? parts[1] : null;
+
+            a_OnCommand?.Invoke(parts);
 
             // Evaluate Command
             switch (command.ToLowerInvariant())
@@ -153,7 +157,6 @@ namespace reign
                             Debug.LogError("Sound System command requires a subcommand.");
                             return;
                         }
-
 
                         switch (value.ToString().ToLowerInvariant())
                         {
