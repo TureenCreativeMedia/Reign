@@ -24,7 +24,8 @@ namespace reign
             "Profiler - Toggle profiler",
             "Discord [Disconnect] - Interact with the Discord Controller",
             "SoundSystem [Stop, Toggle, Play {Clip name}] - Interact with the sound system",
-            "Screen [Fullscreen, SetWidth {screen width}, SetHeight {screen height}] - Interact with the game screen"
+            "Screen [Fullscreen, SetWidth {screen width}, SetHeight {screen height}] - Interact with the game screen",
+            "Time [Scale {time scale] - Manipulate Reign time"
         };
 
         private void OnEnable()
@@ -209,6 +210,32 @@ namespace reign
                             case "setheight":
                                 {
                                     Screen.SetResolution(Screen.width, Convert.ToInt32(parts[2]), Screen.fullScreen);
+                                    break;
+                                }
+                        }
+                        break;
+                    }
+                case "time":
+                    {
+                        if (value == null)
+                        {
+                            Debug.LogError("Time command requires a subcommand.");
+                            return;
+                        }
+
+                        switch (value.ToString().ToLowerInvariant())
+                        {
+                            case "scale":
+                                {
+                                    if (parts.Length == 3)
+                                    {
+                                        Main.Instance.f_TimeScale = (float)Convert.ToDecimal(parts[2]);
+                                    }
+                                    else
+                                    {
+                                        Debug.LogError("Time 'Scale' command requires another subcommand.");
+                                        return;
+                                    }
                                     break;
                                 }
                         }
