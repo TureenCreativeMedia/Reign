@@ -7,13 +7,13 @@ namespace reign
 	{
         // Widget groups should only be applied to Canvas objects
 
-        [HideInInspector] Transform Canvas;
+        [SerializeField] Transform Canvas;
         public List<ReignWidget> r_Connectors;
         public List<GameObject> u_Widgets;
 
         void Awake()
         {
-            Canvas = transform;
+            if (Canvas == null) Canvas = transform;
         }
 
         public virtual void VerifyConnectors()

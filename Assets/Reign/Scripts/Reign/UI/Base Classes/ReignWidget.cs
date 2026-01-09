@@ -22,11 +22,15 @@ namespace reign
         [HideInInspector] public RectTransform u_RectTransform;
         private void Start()
         {
-            a_OnCreate?.Invoke();
+            OnCreate();
             u_RectTransform = gameObject.GetComponent<RectTransform>();
             StartCoroutine(Rescale(new(1, 1), new(1, 1), 0));
         }
 
+        public virtual void OnCreate()
+        {
+            a_OnCreate?.Invoke();
+        }
         public virtual void OnPointerEnter(PointerEventData eventData)
         {
             if (string.IsNullOrEmpty(r_ReignWidgetCursorInteraction?.s_CursorName[0]) || r_ReignWidgetCursorInteraction?.r_CursorSetting[0] == null)

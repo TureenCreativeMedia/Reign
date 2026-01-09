@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace reign
 {
     public class CursorSetting
     {
-        public CursorLockMode u_LockMode = CursorLockMode.None;
-        public bool B_Visible = true;
+        public CursorLockMode u_LockMode;
+        public bool b_Visible;
     }
 
     [Serializable]
@@ -23,8 +24,10 @@ namespace reign
         public static Cursor Instance;
         public List<CursorType> l_CursorTypes;
 
-        private void Start()
+        private void Awake()
         {
+            SetCursor("Arrow", new() { b_Visible = true, u_LockMode = CursorLockMode.None });
+
             if (Instance != null && Instance != this)
             {
                 Destroy(gameObject);
@@ -33,13 +36,6 @@ namespace reign
             {
                 Instance = this;
             }
-
-            SetCursor("Arrow", new()
-            {
-                u_LockMode = CursorLockMode.None,
-                B_Visible = true,
-            }
-            );
         }
         public Texture2D GetCursorTexture(string cursorName)
         {
@@ -67,11 +63,19 @@ namespace reign
             return Vector2.zero;
         }
 
+        public void Unlock(string cursorName)
+        {
+            SetCursor(cursorName, new(){ b_Visible = true, u_LockMode = CursorLockMode.None });
+        }
         public void SetCursor(string cursorName, CursorSetting cursorSetting)
         {
-            UnityEngine.Cursor.SetCursor(GetCursorTexture(cursorName), GetCursorHotspot(cursorName), CursorMode.ForceSoftware);
+            if (!string.IsNullOrEmpty(cursorName))
+            {
+                UnityEngine.Cursor.SetCursor(GetCursorTexture(cursorName), GetCursorHotspot(cursorName), 0);
+            }
+
             UnityEngine.Cursor.lockState = cursorSetting.u_LockMode;
-            UnityEngine.Cursor.visible = cursorSetting.B_Visible;
+            UnityEngine.Cursor.visible = cursorSetting.b_Visible;
         }
     }
 }

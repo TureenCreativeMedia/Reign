@@ -10,10 +10,13 @@ namespace reign
         CharacterController u_CharacterController;
         Camera u_Camera;
 
+        [SerializeField] ReignWidgetGroup r_PlayerWidget;
+        [SerializeField] bool b_ControlVertical;
         protected float f_VerticalRotation;
         protected Vector3 v_Move;
         protected Vector3 v_Forward;
         protected Vector3 v_Right;
+        protected Vector3 v_Up;
         protected Vector2 v_MouseLook;
 
         private void OnEnable()
@@ -29,6 +32,8 @@ namespace reign
         {
             u_Camera = GetComponentInChildren<Camera>();
             u_CharacterController = GetComponent<CharacterController>();
+
+            r_PlayerWidget.CreateWidgets();
         }
         void UpdatePlayer()
         {
@@ -39,13 +44,15 @@ namespace reign
 
         void Input()
         {
-            v_Forward = new(transform.forward.x, 0, transform.forward.z);
-            v_Right = new(transform.right.x, 0, transform.right.z);
+            v_Forward = transform.forward;
+            v_Right = transform.right;
+            v_Up = b_ControlVertical ? transform.up : Vector3.zero;
         }
 
         void Move()
         {
-            v_Move = v_Right * Strafe() + v_Forward * Axis();
+            v_Move = v_Right * Strafe() + v_Forward * Axis() + v_Up * Vertical();
+
             if (v_Move.sqrMagnitude > 1f) v_Move.Normalize();
 
             u_CharacterController.Move(4 * Time.deltaTime * v_Move);
@@ -67,7 +74,12 @@ namespace reign
             if (InputSystem.GetInput("D", InputSystem.KeyType.Held)) return 1;
             return 0;
         }
-
+        protected short Vertical()
+        {
+            if (InputSystem.GetInput("E", InputSystem.KeyType.Held)) return 1;
+            if (InputSystem.GetInput("Q", InputSystem.KeyType.Held)) return -1;
+            return 0;
+        }
         protected short Axis()
         {
             if (InputSystem.GetInput("W", InputSystem.KeyType.Held)) return 1;

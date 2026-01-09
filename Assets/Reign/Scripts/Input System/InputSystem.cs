@@ -61,7 +61,7 @@ namespace reign
         /// <summary>
         /// If inputs can be used
         /// </summary>
-        public static bool B_InputsEnabled = true;
+        public static bool b_InputsEnabled = true;
 
         /// <summary>
         /// The type of pressed key
@@ -71,8 +71,9 @@ namespace reign
         /// <summary>
         /// Return a pressed key via name and KeyType
         /// </summary>
-        public static bool GetInput(string inputName, KeyType type)
+        public static bool GetInput(string inputName, KeyType type, bool ignoreDisabledInputs = false)
         {
+            if (!b_InputsEnabled && !ignoreDisabledInputs) return false;
             if (!dn_InputKeys.TryGetValue(inputName, out KeyCode[] keys) || keys == null) return false;
 
             // Was a singular named key pressed?
@@ -108,7 +109,7 @@ namespace reign
         /// </summary>
         public static Vector2 MouseLook()
         {
-            if (!Input.mousePresent) return Vector2.zero;
+            if (!Input.mousePresent || !b_InputsEnabled) return Vector2.zero;
             return new(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
     }

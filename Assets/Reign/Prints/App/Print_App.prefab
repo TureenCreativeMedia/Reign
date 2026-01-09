@@ -31,10 +31,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1171717804559999173}
   - {fileID: 618445530212257624}
   - {fileID: 336436544894583085}
   - {fileID: 6516300825819396336}
-  - {fileID: 1171717804559999173}
   m_Father: {fileID: 6701328430381659201}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -63,7 +63,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &4431220699964345740
 MonoBehaviour:
@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7050f80a1ec02a4418723b4420d88f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.ReignWidgetGroup
+  Canvas: {fileID: 0}
   r_Connectors: []
   u_Widgets:
   - {fileID: 4562047154469688073, guid: 7f01cd6a45530b449a585720398559db, type: 3}
@@ -370,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7050f80a1ec02a4418723b4420d88f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.ReignWidgetGroup
+  Canvas: {fileID: 0}
   r_Connectors: []
   u_Widgets:
   - {fileID: 8534432571404159632, guid: abc94d3d975fa604086d9b5fbd84c87e, type: 3}
@@ -453,6 +455,7 @@ GameObject:
   - component: {fileID: 5537304054736936240}
   - component: {fileID: 3247505141362008919}
   - component: {fileID: 2743546660092820367}
+  - component: {fileID: 8125883277811378586}
   m_Layer: 0
   m_Name: FPSWidget
   m_TagString: Untagged
@@ -467,7 +470,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5373756209118358507}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -476,7 +479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20, y: 20}
+  m_AnchoredPosition: {x: -15, y: 15}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 1, y: 0}
 --- !u!222 &5537304054736936240
@@ -509,8 +512,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'FPS: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a8773f3cf1ce89040af1c3f3aad919e8, type: 2}
+  m_sharedMaterial: {fileID: 2903212171975807892, guid: a8773f3cf1ce89040af1c3f3aad919e8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -534,8 +537,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 36
+  m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -588,6 +591,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58273ccdb04ac346a59f5efff403e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!223 &8125883277811378586
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5373756209118358507}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 100
+  m_TargetDisplay: 0
 --- !u!1 &6025764594701905348
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,6 +775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7050f80a1ec02a4418723b4420d88f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::reign.ReignWidgetGroup
+  Canvas: {fileID: 0}
   r_Connectors: []
   u_Widgets:
   - {fileID: 5765175237423216756, guid: e245283e2e4a3514d87691d4f1d55ff3, type: 3}
@@ -891,8 +918,8 @@ MonoBehaviour:
   AppWidget: {fileID: 5493605472278772855}
   u_AppSettingsTextAsset: {fileID: 4900000, guid: 704253a4486c53946b9481eea27fc0a0, type: 3}
   f_TimeScale: 1
-  f_InternalClock: 0
   f_DeltaCount: 0
+  f_SecondCount: 0
   i_RuntimeFrames: 0
 --- !u!1001 &7247616344325621487
 PrefabInstance:
