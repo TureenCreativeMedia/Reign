@@ -28,12 +28,14 @@ namespace reign
 
         public static void SetRefreshRate()
         {
-            Resolution u_SavedResolution = new();
-            u_SavedResolution.width = SaveSystem.u_PlayerData.u_ScreenResolution.width;
-            u_SavedResolution.height = SaveSystem.u_PlayerData.u_ScreenResolution.height;
-            u_SavedResolution.refreshRateRatio = SaveSystem.u_PlayerData.u_ScreenResolution.refreshRateRatio;
-            
-            Screen.SetResolution(u_SavedResolution.width, u_SavedResolution.height, FullScreenMode.MaximizedWindow, u_SavedResolution.refreshRateRatio);
+            Resolution u_SavedResolution = new()
+            {
+                width = SaveSystem.u_PlayerData.u_ScreenResolution.width,
+                height = SaveSystem.u_PlayerData.u_ScreenResolution.height,
+                refreshRateRatio = SaveSystem.u_PlayerData.u_ScreenResolution.refreshRateRatio
+            };
+
+            Screen.SetResolution(u_SavedResolution.width, u_SavedResolution.height, FullScreenMode.Windowed, u_SavedResolution.refreshRateRatio);
 
             Application.targetFrameRate = (u_localdata.vsync == true) ? -1 : u_localdata.targetrefreshrate;
         }

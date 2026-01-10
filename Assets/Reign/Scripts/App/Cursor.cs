@@ -21,6 +21,7 @@ namespace reign
 
     public class Cursor : MonoBehaviour
     {
+        public string s_CurrentName;
         public static Cursor Instance;
         public List<CursorType> l_CursorTypes;
 
@@ -72,6 +73,7 @@ namespace reign
             if (!string.IsNullOrEmpty(cursorName))
             {
                 UnityEngine.Cursor.SetCursor(GetCursorTexture(cursorName), GetCursorHotspot(cursorName), 0);
+                s_CurrentName = cursorName;
             }
 
             UnityEngine.Cursor.lockState = cursorSetting.u_LockMode;

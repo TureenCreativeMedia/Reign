@@ -1,0 +1,9 @@
+Version numbers are as follows:
+
+Release.Milestone.Major.Minor
+
+
+Releases are classed as finished Reign editions, e.g. Reign v1.0.0.0 would have every issue or request fixed.
+Milestones are classed as whenever the update finishes functionality for many planned things.
+Major updates are when massive features are added.
+Minor updates are when changes to code or miniscule features are added.

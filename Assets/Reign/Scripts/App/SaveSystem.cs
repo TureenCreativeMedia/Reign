@@ -11,7 +11,7 @@ namespace reign
     [Serializable]
     public class PlayerData
     {
-        public Resolution u_ScreenResolution; // Screen resolution, by default what monitor it runs on.
+        public Resolution u_ScreenResolution = new() { width = 1280, height = 720 };
     }
 
     public class SaveSystem : MonoBehaviour

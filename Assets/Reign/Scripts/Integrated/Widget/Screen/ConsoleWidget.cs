@@ -28,7 +28,8 @@ namespace reign
             "Screen [Fullscreen, SetWidth {screen width}, SetHeight {screen height}] - Interact with the game screen",
             "Time [Scale {time scale}, Pause] - Manipulate Reign time",
             "GameObject [Hide {Object name}]",
-            "LoadingScreen [Load {Scene name}]"
+            "LoadingScreen [Load {Scene name}]",
+            "Cursor [Texture {Texture name}, Visible {Bool}, LockMode {None, Confined, Locked}]"
         };
 
         private void OnEnable()
@@ -300,6 +301,71 @@ namespace reign
                             {
                                 Debug.LogError("LoadingScreen 'load' command requires a scene name.");
                                 return;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case "cursor":
+                {
+                    switch (value.ToString().ToLowerInvariant())
+                    {
+                        case "texture":
+                        {
+                            if (parts.Length == 3)
+                            {
+                                Cursor.Instance.SetCursor(parts[2].ToString(), new()
+                                {
+                                    b_Visible = UnityEngine.Cursor.visible,
+                                    u_LockMode = UnityEngine.Cursor.lockState
+                                }
+                                );
+                            }
+                            break;
+                        }
+                        case "visible":
+                        {
+                            if (parts.Length == 3)
+                            {
+                                Cursor.Instance.SetCursor(Cursor.Instance.s_CurrentName, new()
+                                {
+                                    b_Visible = Convert.ToBoolean(parts[2]),
+                                    u_LockMode = UnityEngine.Cursor.lockState
+                                }
+                                );
+                            }
+                            break;
+                        }
+                        case "lockmode":
+                        {
+                            if (parts.Length == 3)
+                            {
+                                CursorLockMode u_NextLockMode = CursorLockMode.None;
+                                switch (parts[2].ToLowerInvariant())
+                                {
+                                    case "locked":
+                                    {
+                                        u_NextLockMode = CursorLockMode.Locked;
+                                        break;
+                                    }
+                                    case "confined":
+                                    {
+                                        u_NextLockMode = CursorLockMode.Confined;
+                                        break;
+                                    }
+                                    case "none":
+                                    {
+                                        u_NextLockMode = CursorLockMode.None;
+                                        break;
+                                    }
+                                }
+
+                                Cursor.Instance.SetCursor(Cursor.Instance.s_CurrentName, new()
+                                {
+                                    b_Visible = UnityEngine.Cursor.visible,
+                                    u_LockMode = u_NextLockMode
+                                });
                             }
                             break;
                         }
