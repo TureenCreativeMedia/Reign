@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace reign.Extensions
 {
@@ -15,6 +16,23 @@ namespace reign.Extensions
                 running += characters[UnityEngine.Random.Range(0, characters.Length)];
             }
             return running;
+        }
+    }
+    public class SceneManagement
+    {
+        public static bool SceneExists(string sceneName)
+        {
+            for(int i = 0; i < SceneManager.sceneCountInBuildSettings; ++i)
+            {
+                string scenePath = SceneUtility.GetScenePathByBuildIndex(i);
+                string sceneNameFromPath = System.IO.Path.GetFileNameWithoutExtension(scenePath);
+
+                if (sceneNameFromPath == sceneName)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 

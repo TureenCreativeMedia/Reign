@@ -27,7 +27,8 @@ namespace reign
             "SoundSystem [Stop, Toggle, Play {Clip name}] - Interact with the sound system",
             "Screen [Fullscreen, SetWidth {screen width}, SetHeight {screen height}] - Interact with the game screen",
             "Time [Scale {time scale}, Pause] - Manipulate Reign time",
-            "GameObject [Hide {object name}]"
+            "GameObject [Hide {Object name}]",
+            "LoadingScreen [Load {Scene name}]"
         };
 
         private void OnEnable()
@@ -278,6 +279,26 @@ namespace reign
                             else
                             {
                                 Debug.LogError("GameObject 'hide' command requires a game object name.");
+                                return;
+                            }
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case "loadingscreen":
+                {
+                    switch (value.ToString().ToLowerInvariant())
+                    {
+                        case "load":
+                        {
+                            if (parts.Length == 3)
+                            {
+                                LoadingScreenWidget.a_AttemptLoad(new(){ f_LoadDelay = 1, s_SceneName = parts[2].ToString(), b_ReleaseMouse = true });
+                            }
+                            else
+                            {
+                                Debug.LogError("LoadingScreen 'load' command requires a scene name.");
                                 return;
                             }
                             break;
