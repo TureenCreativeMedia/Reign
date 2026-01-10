@@ -14,13 +14,13 @@ namespace reign
 
         private void OnEnable()
         {
-            Main.a_OnTimePassed += ObjectUpdateTime; // Attach object update to time passed
+            Main.a_OnDelta += ObjectUpdateTime; // Attach object update to time passed
             Main.a_OnFrame += ObjectUpdateFrame; // Attach frame update to on frame
         }
 
         private void OnDisable()
         {
-            Main.a_OnTimePassed -= ObjectUpdateTime;
+            Main.a_OnDelta -= ObjectUpdateTime;
             Main.a_OnFrame += ObjectUpdateFrame;
         }
 

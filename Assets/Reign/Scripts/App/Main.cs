@@ -19,7 +19,8 @@ namespace reign
         public string s_RenderingAPI;
 
         public static Action a_OnFrame;
-        public static Action<float> a_OnTimePassed;
+        public static Action a_OnSecondPassed;
+        public static Action<float> a_OnDelta;
 
         public static Action a_OnWake;
         public static Action a_OnHang;
@@ -52,17 +53,19 @@ namespace reign
         {
             f_AppRuntime = Time.realtimeSinceStartup;
 
-            f_DeltaCount = Time.unscaledDeltaTime; // Clock that resets every second
+            f_DeltaCount = Time.unscaledDeltaTime;
 
             f_SecondCount += Time.deltaTime;
-            a_OnTimePassed?.Invoke(f_SecondCount); // Run every second
 
             if (f_SecondCount >= 1.0f)
             {
+                a_OnSecondPassed?.Invoke(); // Run every second
                 f_SecondCount = 0.0f;
             }
 
             a_OnFrame?.Invoke();
+
+            a_OnDelta?.Invoke(f_DeltaCount);
         }
 
         private void Start()

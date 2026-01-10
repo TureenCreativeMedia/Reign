@@ -605,7 +605,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.VolumeProfile
   components:
   - {fileID: -2412954189530241084}
-  - {fileID: 7655895991140274879}
   - {fileID: 5940679186077694540}
   - {fileID: -7124301148215962728}
   - {fileID: -7612034540985522446}
@@ -620,9 +619,7 @@ MonoBehaviour:
   - {fileID: 5471306874112425162}
   - {fileID: 142574838590478423}
   - {fileID: 3508229308467899044}
-  - {fileID: -2102777535105539771}
   - {fileID: -1617371515180864881}
-  - {fileID: 6719400877080030628}
 --- !u!114 &142574838590478423
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -782,23 +779,3 @@ MonoBehaviour:
   worldOffset:
     m_OverrideState: 1
     m_Value: {x: 0, y: 0, z: 0}
---- !u!114 &7655895991140274879
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e021b4c809a781e468c2988c016ebbea, type: 3}
-  m_Name: ColorLookup
-  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.ColorLookup
-  active: 1
-  texture:
-    m_OverrideState: 1
-    m_Value: {fileID: 0}
-    dimension: 1
-  contribution:
-    m_OverrideState: 1
-    m_Value: 0
