@@ -55,8 +55,8 @@ namespace reign
         void Disconnect()
         {
             b_Ignore = true;
-            Destroy(this);
             StartCoroutine(DisposeDiscordAfterCallbacks());
+            Destroy(this);
         }
         void Start()
         {
@@ -70,7 +70,7 @@ namespace reign
 
             if (e_Discord == null)
             {
-                Destroy(this);
+                Disconnect();
             }
             else
             {
@@ -88,7 +88,7 @@ namespace reign
             }
             catch
             {
-                Destroy(this);
+                Disconnect();
             }
 
             UpdateStatus();
@@ -127,7 +127,7 @@ namespace reign
             catch (System.Exception ex)
             {
                 Debug.LogError($"Discord RPC status update failed: {ex.Message}");
-                Destroy(this);
+                Disconnect();
             }
         }
         private IEnumerator DisposeDiscordAfterCallbacks()

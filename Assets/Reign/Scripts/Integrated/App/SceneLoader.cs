@@ -16,5 +16,10 @@ namespace reign
             yield return new WaitForSecondsRealtime(f_DelayTime);
             SceneManager.LoadScene(s_SceneName);
         }
+
+        public void LoadSceneLoadingScreen(string s_SceneName)
+        {
+            LoadingScreenWidget.a_AttemptLoad?.Invoke(new(){ s_SceneName = s_SceneName, f_LoadDelay = 0.0f, b_ReleaseMouse = false});
+        }
     }
 }

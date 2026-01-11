@@ -51,6 +51,7 @@ namespace reign
             {"F", new[]{KeyCode.F} },
             {"Q", new[]{KeyCode.Q} },
             {"C", new[]{KeyCode.C} },
+            {"Z", new[]{KeyCode.Z} },
 
             // Mouse
             {"LeftMouse", new[]{KeyCode.Mouse0} },
@@ -73,8 +74,10 @@ namespace reign
         /// </summary>
         public static bool GetInput(string inputName, KeyType type, bool ignoreDisabledInputs = false)
         {
-            if (!b_InputsEnabled && !ignoreDisabledInputs) return false;
-            if (!dn_InputKeys.TryGetValue(inputName, out KeyCode[] keys) || keys == null) return false;
+            if ((!b_InputsEnabled && !ignoreDisabledInputs) || (!dn_InputKeys.TryGetValue(inputName, out KeyCode[] keys) || keys == null))
+            {
+                return false;
+            }
 
             // Was a singular named key pressed?
             foreach (KeyCode key in dn_InputKeys[inputName])
@@ -109,7 +112,6 @@ namespace reign
         /// </summary>
         public static Vector2 MouseLook()
         {
-            if (!Input.mousePresent || !b_InputsEnabled) return Vector2.zero;
             return new(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
         }
     }
