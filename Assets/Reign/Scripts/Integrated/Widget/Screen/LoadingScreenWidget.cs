@@ -32,6 +32,12 @@ namespace reign
 
             a_AttemptLoad += Load;
         }
+
+        private void OnDestroy()
+        {
+            a_AttemptLoad -= Load;
+        }
+
         private void Start()
         {
             u_Container.SetActive(false);
@@ -49,10 +55,10 @@ namespace reign
                 yield break;
             }
 
+            u_Container.SetActive(true);
+
             float f_SavedTimeScale = Main.Instance.f_TimeScale;
             Main.Instance.f_TimeScale = 0;
-
-            u_Container.SetActive(true);
 
             if (loadingData.b_ReleaseMouse)
             {
@@ -77,8 +83,8 @@ namespace reign
                 }
                 yield return null;
             }
-            a_OnEndLoad?.Invoke();
 
+            a_OnEndLoad?.Invoke();
             Main.Instance.f_TimeScale = f_SavedTimeScale;
             u_Container.SetActive(false);
         }

@@ -18,7 +18,7 @@ namespace reign
     {
         public static AppSettings u_localdata;
 
-        public static void InitializeAppData(TextAsset jsonFile)
+        public static void InitialiseAppData(TextAsset jsonFile)
         {
             AppSettings data = JsonUtility.FromJson<AppSettings>(jsonFile.text);
             u_localdata = data;

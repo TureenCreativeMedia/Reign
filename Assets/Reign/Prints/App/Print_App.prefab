@@ -990,7 +990,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2010476236358291927, guid: 256dfe15a967c78408cee30dc8cd98b5, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4347117443398144832, guid: 256dfe15a967c78408cee30dc8cd98b5, type: 3}
       propertyPath: m_Pivot.x
@@ -1072,13 +1072,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5815496437051460422, guid: 256dfe15a967c78408cee30dc8cd98b5, type: 3}
+      propertyPath: m_OverrideSorting
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7525494154902939032, guid: 256dfe15a967c78408cee30dc8cd98b5, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.352
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7525494154902939032, guid: 256dfe15a967c78408cee30dc8cd98b5, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

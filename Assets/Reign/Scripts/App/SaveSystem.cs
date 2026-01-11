@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
@@ -12,6 +10,7 @@ namespace reign
     public class PlayerData
     {
         public Resolution u_ScreenResolution = new() { width = 1280, height = 720 };
+        public bool b_FPSCounter = false;
     }
 
     public class SaveSystem : MonoBehaviour
@@ -103,6 +102,7 @@ namespace reign
             // eg. u_PlayerData.variable = data.variable
 
             u_PlayerData.u_ScreenResolution = data.u_ScreenResolution;
+            u_PlayerData.b_FPSCounter = data.b_FPSCounter;
         }
     }
 }

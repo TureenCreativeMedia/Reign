@@ -23,6 +23,7 @@ namespace reign
         public static Action<float> a_OnDelta;
 
         public static Action a_OnWake;
+        public static Action a_OnInitialised;
         public static Action a_OnHang;
 
         public float f_AppRuntime;
@@ -48,7 +49,10 @@ namespace reign
             a_OnFrame -= AddFrame;
         }
         void AddFrame() => i_RuntimeFrames++;
-
+        private void Awake()
+        {
+            a_OnWake?.Invoke();
+        }
         private void Update()
         {
             f_AppRuntime = Time.realtimeSinceStartup;
@@ -80,7 +84,7 @@ namespace reign
             l_AppStartUnixTimestamp = DateTimeOffset.Now.ToUnixTimeMilliseconds();
             
             // Get app preferences
-            App.InitializeAppData(u_AppSettingsTextAsset);
+            App.InitialiseAppData(u_AppSettingsTextAsset);
 
             // Create runtime key
             s_RuntimeKey = Extensions.KeyGenerator.GenerateKey(16);
@@ -99,14 +103,14 @@ namespace reign
 #if UNITY_EDITOR
             AssetDatabase.Refresh(); // Refresh asset database
 #endif
-            f_DeltaCount = 0; // Per-second timer reset
-
-            a_OnWake?.Invoke(); // Waking: Happens at the end of the awake function of this script.
+            f_DeltaCount = 0;
 
             if (App.u_localdata.appwidgets)
             {
                 AppWidget.CreateWidgets();
             }
+
+            a_OnInitialised?.Invoke();
         }
         public void SetTimeScale(float scale) => f_TimeScale = scale;
         public void Hang()

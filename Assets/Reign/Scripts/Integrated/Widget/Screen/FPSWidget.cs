@@ -13,8 +13,10 @@ namespace reign
         float f_Elapsed = 0.0f;
         private void OnEnable()
         {
-            Main.a_OnDelta += UpdateWidget;
             tmp_Text = GetComponent<TMP_Text>();
+
+            tmp_Text.gameObject.SetActive(SaveSystem.u_PlayerData.b_FPSCounter);
+            Main.a_OnDelta += UpdateWidget;
         }
         private void OnDisable()
         {

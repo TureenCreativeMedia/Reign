@@ -138,6 +138,38 @@ PrefabInstance:
       propertyPath: u_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 309907133}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadSceneLoadingScreen
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: reign.SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Game
+      objectReference: {fileID: 0}
+    - target: {fileID: 601621576307277416, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3335431120421607907, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
       propertyPath: m_Name
       value: Print_Button
@@ -225,13 +257,35 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3335431120421607907, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 309907133}
   m_SourcePrefab: {fileID: 100100000, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
 --- !u!224 &309907131 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7502407536099902196, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
   m_PrefabInstance: {fileID: 309907130}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &309907132 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3335431120421607907, guid: 3bf74f1398c228f46850fb049e710910, type: 3}
+  m_PrefabInstance: {fileID: 309907130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &309907133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 309907132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2e3bac9ffe7dc43af568fae866e865, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  s_AutoTransition: 
+  b_AutoIsLoadingScreen: 1
 --- !u!1 &392464389
 GameObject:
   m_ObjectHideFlags: 0
