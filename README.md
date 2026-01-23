@@ -2,11 +2,21 @@
 
 ---
 
+### Changelog (v0.1.2.0)
+
+    RELEASE TYPE: MINOR
+
+- Updated default loading screen
+- Added functionality to have softcoded additions to console commands
+- Updated README for changelog, embedded thumbnail image and versioning information
+
+---
+
 ### About
 
 **Reign** is a lightweight framework/boilerplate for Unity created by ©Tureen Creative Media. Created to be used by people who want to develop a game (in Unity) without wasting time by setting up an ultra-performant backend.
 
-[Thumbnail](/Assets/Reign/Graphics/GitHub/Thumbnail.png)
+![Thumbnail](Assets/Reign/Graphics/GitHub/Thumbnail.png)
 
 ---
 
@@ -26,8 +36,12 @@
 
 ### Updates and Contribution
 
-    [ Release.Major.Minor.Feature ]
+    Milestones
     ✅ 0.1.0.0
+
+**Versioning**
+Reign's versioning system:
+![Thumbnail](Assets/Reign/Graphics/GitHub/ReleaseMap.png)
 
 **Contribution**
 Create pull requests to Reign's main GitHub branch: Tureen will manually read over additions or subtractions to the codebase.

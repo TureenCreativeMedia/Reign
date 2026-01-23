@@ -1,14 +1,22 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace reign
 {
+    public class ContainedCommand
+    {
+        public string command;
+        public object value;
+    }
+
     public class ConsoleWidget : ReignWidget
     {
-        public static Action<string[]> a_OnCommand;
+        public static Action<ContainedCommand> a_OnCommand;
+        public static Action<string> a_AddToCommandList;
         [SerializeField] GameObject u_Container;
         [SerializeField] TMP_InputField tmp_InputField;
         [SerializeField] TMP_Text tmp_CommandList;
@@ -35,11 +43,13 @@ namespace reign
         private void OnEnable()
         {
             Main.a_OnFrame += ConsoleUpdate;
+            a_AddToCommandList += AddToCommandList;
             tmp_InputField.onEndEdit.AddListener(DoConsoleCommand);
         }
         private void OnDestroy()
         {
             Main.a_OnFrame -= ConsoleUpdate;
+            a_AddToCommandList -= AddToCommandList;
             tmp_InputField.onEndEdit.RemoveListener(DoConsoleCommand);
         }
 
@@ -50,6 +60,11 @@ namespace reign
             {
                 tmp_CommandList.text += $"{l_CommandList[i]}\n";
             }
+        }
+        
+        public void AddToCommandList(string description)
+        {
+            tmp_CommandList.text += description;
         }
 
         void ConsoleUpdate()
@@ -101,7 +116,7 @@ namespace reign
             string command = parts[0];
             object value = parts.Length > 1 ? parts[1] : null;
 
-            a_OnCommand?.Invoke(parts);
+            a_OnCommand?.Invoke(new ContainedCommand { command = command, value = value });
 
             // Evaluate Command
             switch (command.ToLowerInvariant())
