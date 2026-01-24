@@ -75,4 +75,4 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # TMP
-/[Aa]ssets/TextMesh?Pro/** linguist-generated
+/[Aa]ssets/[Rr]eign/[Pp]lugins/TextMesh?Pro/** linguist-generated
