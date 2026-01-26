@@ -4,6 +4,7 @@ namespace reign
 {
     public class AppSettings
     {
+        public string reignversion;
         public string appname;
         public string versionname;
         public bool developmentbuild;

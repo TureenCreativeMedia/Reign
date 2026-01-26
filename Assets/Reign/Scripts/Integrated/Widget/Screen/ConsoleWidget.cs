@@ -195,7 +195,7 @@ namespace reign
                         {
                             if (parts.Length == 3)
                             {
-                                Audio.Instance.PlaySound(parts[2]?.ToString());
+                                Audio.Instance.PlayOneShot(parts[2]?.ToString());
                             }
                             else
                             {
@@ -211,7 +211,7 @@ namespace reign
                         }
                         case "toggle":
                         {
-                            Audio.Instance.ToggleAudioChannels();
+                            Audio.Instance.ToggleAllChannels();
                             break;
                         }
                     }

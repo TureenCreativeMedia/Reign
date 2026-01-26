@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace reign
@@ -15,31 +16,25 @@ namespace reign
             if (u_Channel == null)
             {
                 u_Channel = GetComponent<AudioSource>();
+                b_ChannelActive = true;
             }
             else
             {
                 b_ChannelActive = true;
             }
         }
-
-        public void SetLooping(bool loop)
+        public void ToggleAudioChannel()
+        { 
+            b_ChannelActive = !b_ChannelActive;
+        }
+        public void StopChannel()
         {
-            u_Channel.loop = loop;
+            u_Channel.Stop();
         }
 
-        public void SetSpatialBlend(float blend)
+        public void PauseChannel()
         {
-            u_Channel.spatialBlend = Mathf.Clamp01(blend);
-        }
-
-        public void SetPitch(float pitch)
-        {
-            u_Channel.pitch = pitch;
-        }
-
-        public void ToggleChannel(bool enabled)
-        {
-            u_Channel.mute = !enabled; 
+            u_Channel.Pause();
         }
     }
 }

@@ -15,3 +15,4 @@ MonoBehaviour:
   u_AudioClips:
   - {fileID: 8300000, guid: 246f098e811734a41ae81438417e25eb, type: 3}
   - {fileID: 8300000, guid: 693d2f798f7556b4ba96b2b8c3e4b7df, type: 3}
+  - {fileID: 8300000, guid: ceec00a9eca6f30438bead95d2b0ec09, type: 3}

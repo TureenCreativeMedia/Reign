@@ -12,5 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd474550e2bd3dd4194d630ee719a354, type: 3}
   m_Name: Music
   m_EditorClassIdentifier: Assembly-CSharp::reign.AudioPool
-  s_PoolName: Music
   u_AudioClips: []

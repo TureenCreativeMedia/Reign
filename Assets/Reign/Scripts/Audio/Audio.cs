@@ -7,7 +7,7 @@ namespace reign
     {
         // Used for the Reign audio system.
 
-        public static Audio Instance;
+        public static Audio Instance { get; private set; }
         public MasterChannel[] r_Channels;
         private void Awake()
         {
@@ -36,31 +36,53 @@ namespace reign
 
         public void StopAllSounds()
         {
-            foreach (MasterChannel channel in GetAudioChannels())
+            foreach (var channel in r_Channels)
             {
                 // Stops every channel
-                channel.u_Channel.Stop();
+                channel.StopChannel();
             }
         }
 
-        public void ToggleAudioChannels()
+        public void ToggleAllChannels()
         {
-            foreach (MasterChannel channel in GetAudioChannels())
+            foreach (var channel in r_Channels)
             {
-                channel.b_ChannelActive = !channel.b_ChannelActive;
+                channel.ToggleAudioChannel();
             }
         }
-
         public void SetAudioChannelsActive(bool enabled)
         {
-            foreach (MasterChannel channel in GetAudioChannels())
+            foreach (var channel in r_Channels)
             {
                 channel.b_ChannelActive = enabled;
             }
         }
-        public void PlaySound(string soundName, float volume = 0.7f)
+
+        public void Play(int channelID, string soundName, float volume = 0.7f, bool loop = false)
+        {
+            if (channelID <= 0 || channelID > r_Channels.Length) return;
+            if (!r_Channels[channelID - 1].b_ChannelActive) return;
+
+            for (int i = 0; i < r_Channels[channelID - 1].r_Pool.u_AudioClips.Count; ++i)
+            {
+                if (r_Channels[channelID - 1].r_Pool.u_AudioClips[i].name == soundName)
+                {
+                    var channel = r_Channels[channelID - 1];
+
+                    channel.u_Channel.loop = true;
+                    channel.u_Channel.clip = channel.r_Pool.u_AudioClips[i];
+                    channel.u_Channel.volume = volume;
+                    channel.u_Channel.Play();
+
+                    return;
+                }
+            }
+        }
+        public void PlayOneShot(string soundName, float volume = 0.7f)
         {
             string[] s_grouping = soundName.Split(".");
+
+            if (!soundName.Contains('.')) return;
 
             // Refer to sounds by playing with ChannelName.SoundName
 
@@ -68,13 +90,13 @@ namespace reign
             {
                 if (r_Channels[i].s_ChannelName == s_grouping[0])
                 {
-                    // Debug.Log($"Channel {s_grouping[0]}");
+                    if (!r_Channels[i].b_ChannelActive)
+                        continue;
 
                     for (int j = 0; j < r_Channels[i].r_Pool.u_AudioClips.Count; ++j)
                     {
                         if (r_Channels[i].r_Pool.u_AudioClips[j].name == s_grouping[1])
                         {
-                            // Debug.Log($"Clip {s_grouping[j]}");
                             r_Channels[i].u_Channel.PlayOneShot(r_Channels[i].r_Pool.u_AudioClips[j], volume);
                         }
                     }
