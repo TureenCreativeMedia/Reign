@@ -11,6 +11,7 @@ namespace reign
     {
         public Resolution u_ScreenResolution = new() { width = 1280, height = 720 };
         public bool b_FPSCounter = false;
+        public bool b_VSync = false;
     }
 
     public class SaveSystem : MonoBehaviour

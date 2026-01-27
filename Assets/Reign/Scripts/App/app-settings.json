@@ -5,10 +5,9 @@
   "developmentbuild": true,
 
   "targetrefreshrate": 300,
-  "vsync": true,
 
-  "console": false,
-  "appwidgets": false,
+  "console": true,
+  "appwidgets": true,
 
   "discord": true
 }

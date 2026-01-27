@@ -38,7 +38,8 @@ namespace reign
 
             Screen.SetResolution(u_SavedResolution.width, u_SavedResolution.height, FullScreenMode.Windowed, u_SavedResolution.refreshRateRatio);
 
-            Application.targetFrameRate = (u_localdata.vsync == true) ? -1 : u_localdata.targetrefreshrate;
+            Application.targetFrameRate = u_localdata.targetrefreshrate;
+            QualitySettings.vSyncCount = SaveSystem.u_PlayerData.b_VSync ? 1 : 0;
         }
     }
 }
