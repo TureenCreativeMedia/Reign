@@ -12,10 +12,10 @@ namespace reign
 
         private void Start()
         {
-            LoadAuto();
+            TryLoadAuto();
         }
 
-        void LoadAuto()
+        void TryLoadAuto()
         {
             if (!string.IsNullOrEmpty(s_AutoTransition))
             {

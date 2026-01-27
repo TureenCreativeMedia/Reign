@@ -1,14 +1,14 @@
 {
-  "reignversion": "0.2.0.0",
+  "reignversion": "0.2.1.0",
   "appname": "Game",
   "versionname": "0.0.0",
   "developmentbuild": true,
 
   "targetrefreshrate": 300,
-  "vsync": false,
+  "vsync": true,
 
-  "console": true,
-  "appwidgets": true,
+  "console": false,
+  "appwidgets": false,
 
   "discord": true
 }

@@ -14,7 +14,6 @@ namespace reign
         }
         public void Play()
         {
-            Debug.Log("Played");
             Audio.Instance.Play(i_Channel, s_MusicName, 0.7f, true);    
         }
 
