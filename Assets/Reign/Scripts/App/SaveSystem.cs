@@ -104,6 +104,7 @@ namespace reign
 
             u_PlayerData.u_ScreenResolution = data.u_ScreenResolution;
             u_PlayerData.b_FPSCounter = data.b_FPSCounter;
+            u_PlayerData.b_VSync = data.b_VSync;
         }
     }
 }
