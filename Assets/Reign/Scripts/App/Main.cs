@@ -34,7 +34,7 @@ namespace reign
 
         public float f_TimeScale = 1.0f;
         public float f_DeltaCount = 0.0f;
-        public float f_DeltaTime => f_TimeScale * f_DeltaCount;
+        public float f_DeltaTime => f_DeltaCount * f_TimeScale;
         public float f_SecondCount = 0.0f;
         public int i_RuntimeFrames = 0;
 

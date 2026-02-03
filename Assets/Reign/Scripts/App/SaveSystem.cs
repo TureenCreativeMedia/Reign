@@ -14,6 +14,7 @@ namespace reign
         public bool b_VSync = false;
     }
 
+    [DefaultExecutionOrder(-100)]
     public class SaveSystem : MonoBehaviour
 	{
         public static Action a_OnSave;

@@ -7,6 +7,7 @@ namespace reign
 {
     public class DiscordController : MonoBehaviour
     {
+        // External disconnection
         public static Action a_Disconnect;
 
         public bool b_Ignore = false;
@@ -17,11 +18,28 @@ namespace reign
         [Space]
         public string s_PreviewImage = "Game_Logo";
         public string s_PreviewImageText = "Hover_Logo_Text";
+        long l_UnixTimestamp = 0;
+        long l_EndUnixTimestamp = 0;
 
         public static bool b_Connected;
         public Discord.Discord e_Discord;
 
         // Edit RPC
+        public void SetEndTimestamp(long endTime)
+        {
+            l_EndUnixTimestamp = endTime;
+        }
+        public void SetTimestamp(long newTime)
+        {
+            // Version with just start time
+            l_UnixTimestamp = newTime;
+        }
+        public void SetTimestamp(long newTime, long newEndTime = 0)
+        {
+            // Version with start and end time
+            l_UnixTimestamp = newTime;
+            l_EndUnixTimestamp = newEndTime;
+        }
         public void SetDescription(string description)
         {
             s_Details = description;
@@ -60,21 +78,18 @@ namespace reign
         }
         void Start()
         {
+            l_UnixTimestamp = Main.Instance.l_AppStartUnixTimestamp;
+            e_Discord = new Discord.Discord(l_AppID, (System.UInt64)CreateFlags.NoRequireDiscord);
+
             if (b_Ignore || !App.u_localdata.discord)
             {
                 Disconnect();
                 return;
             }
 
-            e_Discord = new Discord.Discord(l_AppID, (System.UInt64)CreateFlags.NoRequireDiscord);
-
             if (e_Discord == null)
             {
                 Disconnect();
-            }
-            else
-            {
-                UpdateStatus();
             }
         }
 
@@ -96,6 +111,9 @@ namespace reign
 
         void UpdateStatus()
         {
+            if (e_Discord == null || b_Ignore)
+                return;
+
             try
             {
                 var activityManager = e_Discord.GetActivityManager();
@@ -111,23 +129,27 @@ namespace reign
 
                     Timestamps =
                     {
-                        Start = Main.Instance.l_AppStartUnixTimestamp,
+                        Start = l_UnixTimestamp,
+                        End = l_EndUnixTimestamp
                     }
                 };
 
-                activityManager.UpdateActivity(activity, (result) =>
+                activityManager.UpdateActivity(activity, result =>
                 {
-                    b_Connected = (result == 0 && !b_Ignore);
-                    if (result != 0)
+                    if (result != Result.Ok)
                     {
-                        Debug.LogError($"Failed to update Discord status: {result}");
+                        b_Connected = false;
+                    }
+                    else
+                    {
+                        b_Connected = true;
                     }
                 });
             }
-            catch (System.Exception ex)
+            catch (Exception e)
             {
-                Debug.LogError($"Discord RPC status update failed: {ex.Message}");
-                Disconnect();
+                // Skip update
+                Debug.LogWarning($"Discord RPC failed to update: {e.Message}");
             }
         }
         private IEnumerator DisposeDiscordAfterCallbacks()
