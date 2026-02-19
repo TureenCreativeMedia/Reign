@@ -1,45 +1,37 @@
+using System;
 using UnityEngine;
 
 namespace reign
 {
-    public class AppSettings
+    public class App : Singleton<App>, IDataHandler, IOriginStart
     {
-        public string reignversion;
-        public string appname;
-        public string versionname;
-        public bool developmentbuild;
-        public int targetrefreshrate;
-        public bool vsync;
-        public bool console;
-        public bool appwidgets;
-        public bool discord;
-    }
+        public static System.Action Action_HangApplication;
+        public AppData AppData_App;
+        public long long_AppUnixTimestamp { get; private set; }
 
-    public static class App
-    {
-        public static AppSettings u_localdata;
-
-        public static void InitialiseAppData(TextAsset jsonFile)
+        public void OriginStart()
         {
-            AppSettings data = JsonUtility.FromJson<AppSettings>(jsonFile.text);
-            u_localdata = data;
-
-            SetRefreshRate();
+            long_AppUnixTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+        }
+        public void SetScreenResolution(ScreenResolution resolution)
+        {
+            Screen.SetResolution(resolution.int_Width, resolution.int_Height, resolution.bool_Fullscreen);
+            Screen.brightness = resolution.float_Brightness;
+            Application.targetFrameRate = resolution.bool_VSync ? (int)Screen.currentResolution.refreshRateRatio.value : resolution.int_Hz;
+            QualitySettings.vSyncCount = resolution.bool_VSync ? 1 : 0;
+        }
+        public void HangApplication()
+        {
+            Action_HangApplication?.Invoke();
+            Application.Quit();
+        }
+        public void LoadData(GameData DATA)
+        {
+            SetScreenResolution(DATA.ScreenResolution_Resolution);    
         }
 
-        public static void SetRefreshRate()
+        public void SaveData(ref GameData DATA)
         {
-            Resolution u_SavedResolution = new()
-            {
-                width = SaveSystem.u_PlayerData.u_ScreenResolution.width,
-                height = SaveSystem.u_PlayerData.u_ScreenResolution.height,
-                refreshRateRatio = SaveSystem.u_PlayerData.u_ScreenResolution.refreshRateRatio
-            };
-
-            Screen.SetResolution(u_SavedResolution.width, u_SavedResolution.height, FullScreenMode.Windowed, u_SavedResolution.refreshRateRatio);
-
-            Application.targetFrameRate = u_localdata.targetrefreshrate;
-            QualitySettings.vSyncCount = SaveSystem.u_PlayerData.b_VSync ? 1 : 0;
         }
     }
 }

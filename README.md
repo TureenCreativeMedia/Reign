@@ -15,13 +15,10 @@
 ### Features
 - Expansive user interface widget system
 - Save system (with decoding and encoding)
-- Audio system
-- Built-in developer console
+- Sound system
 - Discord RPC support
-- Built-in loading screen
-- Built-in playtime limiter (usually 3 hours)
+- Built-in scene loading
 - Time management (Scale manipulation)
-- Application profiler
 - Built-in user interface assets
 
 ---
