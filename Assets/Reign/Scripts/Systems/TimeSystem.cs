@@ -7,6 +7,7 @@ namespace reign
     [Serializable]
     public class Timer
     {
+        public Action Action_OnTick;
         public Action Action_OnTimerEnd;
         public float float_Duration = 0.0f;
         public float float_CurrentTime { get; private set; } = 0.0f;
@@ -46,7 +47,13 @@ namespace reign
         {
             if (!bool_IsRunning) return;
             
+            Action_OnTick?.Invoke();
             float_CurrentTime += MasterSystem.Instance._TimeSystem.float_TimeScale * UnityEngine.Time.deltaTime;
+
+            if(float_Duration <= 0)
+            {
+                return;                
+            }
             if (float_CurrentTime >= float_Duration)
             {
                 EndTimer();

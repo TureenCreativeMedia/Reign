@@ -7,20 +7,20 @@ namespace reign
     {
         [SerializeField] bool bool_AccountForTimeScale = true;
         [SerializeField] string string_AutoplaySound;
-        public AudioSource AudioSource_Source { get; private set; }
+        public AudioSource AudioSource_Source;
         void OnEnable()
         {
-            OriginSystem.Action_OnAwake += Initiate;
+            OriginSystem.Action_OnStart += Initiate;
         }
         void OnDisable()
         {
-            OriginSystem.Action_OnAwake += Initiate;
+            OriginSystem.Action_OnStart += Initiate;
         }
         public virtual void Initiate()
         {
-            AudioSource_Source = GetComponent<AudioSource>();
+            //AudioSource_Source = GetComponent<AudioSource>();
 
-            if(string_AutoplaySound != null) PlayOneShot(string_AutoplaySound);
+            if(!string.IsNullOrEmpty(string_AutoplaySound)) PlayOneShot(string_AutoplaySound);
         }
         public virtual void PlayOneShot(string NAME, float VOLUME = 0.6f)
         {

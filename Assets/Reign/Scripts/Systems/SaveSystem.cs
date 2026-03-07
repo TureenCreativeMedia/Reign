@@ -52,11 +52,11 @@ namespace reign
         public bool bool_PostProcessingEnabled;
         public PostProcessData()
         {
-            float_BloomIntensity = 0f;
-            float_VignetteIntensity = 0f;
-            float_ChromaticAberrationIntensity = 0f;
-            float_LensDistortionIntensity = 0f;
-            float_FilmGrainIntensity = 0f;
+            float_BloomIntensity = 0.9f;
+            float_VignetteIntensity = 0.04f;
+            float_ChromaticAberrationIntensity = 0.03f;
+            float_LensDistortionIntensity = -0.025f;
+            float_FilmGrainIntensity = 0.08f;
             float_MotionBlurIntensity = 0f;
             bool_PostProcessingEnabled = true;
         }
@@ -100,6 +100,7 @@ namespace reign
             new("D", new[]{KeyCode.D}),
             new("E", new[]{KeyCode.E}),
             new("F", new[]{KeyCode.F}),
+            new("Enter", new[]{KeyCode.Return, KeyCode.KeypadEnter}),
 
             // Mouse
             new("LeftMouse", new[]{KeyCode.Mouse0}),
@@ -113,7 +114,7 @@ namespace reign
         };
         public GameData()
         {
-            ScreenResolution_Resolution = new() { float_Brightness = 1f, int_Width = 1280, int_Height = 720, bool_Fullscreen = false, bool_VSync = true, int_Hz = -1 };
+            ScreenResolution_Resolution = new() { float_Brightness = 1f, int_Width = 1280, int_Height = 720, bool_Fullscreen = false, bool_VSync = false, int_Hz = -1 };
             PostProcessData_PostProcessData = new();
             List_InputKeys = new List<KeyBinding>(List_InputKeys);
         }

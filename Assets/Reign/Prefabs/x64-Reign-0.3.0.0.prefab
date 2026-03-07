@@ -479,7 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df57f1b27a2809b40a0ff606acb2b453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundGroup_Sounds: {fileID: 11400000, guid: 6c009c952adad014f8a32a126b73aab7, type: 2}
+  SoundGroup_Sounds: {fileID: 11400000, guid: e9d41d7606f04f64baed8ad9dc33ae4e, type: 2}
 --- !u!1 &5117395405122535337
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,7 +593,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: 0
   m_CullingMask:
@@ -617,7 +617,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7051739270870447260}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!114 &8012044607966920890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -633,7 +633,7 @@ MonoBehaviour:
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
-  m_CameraType: 0
+  m_CameraType: 1
   m_Cameras: []
   m_RendererIndex: -1
   m_VolumeLayerMask:
@@ -885,7 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CursorType_Cursors:
   - string_ID: Arrow
-    Texture2D_CursorTexture: {fileID: 2800000, guid: 5d45a68bb640456458dc850856a35771, type: 3}
+    Texture2D_CursorTexture: {fileID: 2800000, guid: 43545bc43a0fb854094e3ea0bc60468f, type: 3}
     Vector2_Hotspot: {x: -2, y: 2}
   - string_ID: Hand
     Texture2D_CursorTexture: {fileID: 2800000, guid: 9f4246cde21cb804a9864cc97319cc9c, type: 3}

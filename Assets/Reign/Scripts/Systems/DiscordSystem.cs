@@ -71,25 +71,30 @@ namespace reign
         {
             bool_Ignore = true;
             StartCoroutine(DisposeDiscordAfterCallbacks());
-            Destroy(this);
         }
         void AttemptConnection()
         {
-            long_UnixTimestamp = App.Instance.long_AppUnixTimestamp;
-            Discord_Discord = new Discord.Discord(App.Instance.AppData_App.long_DiscordAppID, (System.UInt64)CreateFlags.NoRequireDiscord);
-
-            if (bool_Ignore || !App.Instance.AppData_App.bool_DiscordRPC)
+            if (bool_Ignore || App.Instance == null || App.Instance.AppData_App == null)
             {
                 Disconnect();
                 return;
             }
 
-            if (Discord_Discord == null)
+            if (Discord_Discord != null)
             {
-                Disconnect();
+                return;
             }
 
-            AttemptSearch();
+            try
+            {
+                Discord_Discord = new Discord.Discord(App.Instance.AppData_App.long_DiscordAppID, (ulong)(CreateFlags.NoRequireDiscord));
+                UpdateStatus();
+            }
+            catch
+            {
+                Disconnect();
+                return;
+            }
         }
 
         void AttemptSearch()
@@ -102,13 +107,12 @@ namespace reign
             try
             {
                 Discord_Discord.RunCallbacks();
+                UpdateStatus();
             }
             catch
             {
                 Disconnect();
             }
-
-            UpdateStatus();
         }
 
         void UpdateStatus()

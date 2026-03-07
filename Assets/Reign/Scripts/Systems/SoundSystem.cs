@@ -10,12 +10,6 @@ namespace reign
 		public string string_Name;
 		public AudioClip AudioClip_Clip;
 	}
-
-	[CreateAssetMenu(fileName = "Reign/Sound/Sound Group", menuName = "Reign/Sound/Sound Group")]
-	public class SoundGroup : ScriptableObject
-	{
-		public List<Sound> List_Sounds;
-	}
     public class SoundSystem : BaseSystem
 	{
 		public SoundGroup SoundGroup_Sounds;

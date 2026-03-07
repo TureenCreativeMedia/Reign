@@ -21,7 +21,7 @@ namespace reign
         /// </summary>
         public static string ConvertToMMSS(int SECONDS)
         {
-            return $"{SECONDS / 60}:{SECONDS % 60}";
+            return $"{SECONDS / 60}:{SECONDS % 60:00}";
         }
     }
 }
