@@ -24,12 +24,12 @@ namespace reign
 
             _Volume.enabled = bool_PostProcessingEnabled;
 
-            _Volume.profile.TryGet<Bloom>(out Bloom bloom);
-            _Volume.profile.TryGet<Vignette>(out Vignette vignette);
-            _Volume.profile.TryGet<ChromaticAberration>(out ChromaticAberration chromaticAberration);
-            _Volume.profile.TryGet<LensDistortion>(out LensDistortion lensDistortion);
-            _Volume.profile.TryGet<FilmGrain>(out FilmGrain filmGrain);
-            _Volume.profile.TryGet<MotionBlur>(out MotionBlur motionBlur);
+            _Volume.profile.TryGet(out Bloom bloom);
+            _Volume.profile.TryGet(out Vignette vignette);
+            _Volume.profile.TryGet(out ChromaticAberration chromaticAberration);
+            _Volume.profile.TryGet(out LensDistortion lensDistortion);
+            _Volume.profile.TryGet(out FilmGrain filmGrain);
+            _Volume.profile.TryGet(out MotionBlur motionBlur);
 
             bloom.intensity.value = PostProcessData_Cached.float_BloomIntensity;
             vignette.intensity.value = PostProcessData_Cached.float_VignetteIntensity;

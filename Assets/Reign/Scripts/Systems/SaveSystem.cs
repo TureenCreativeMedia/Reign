@@ -52,8 +52,8 @@ namespace reign
         public bool bool_PostProcessingEnabled;
         public PostProcessData()
         {
-            float_BloomIntensity = 0.9f;
-            float_VignetteIntensity = 0.04f;
+            float_BloomIntensity = 1.1f;
+            float_VignetteIntensity = 0.14f;
             float_ChromaticAberrationIntensity = 0.03f;
             float_LensDistortionIntensity = -0.025f;
             float_FilmGrainIntensity = 0.08f;
@@ -115,7 +115,7 @@ namespace reign
         public GameData()
         {
             ScreenResolution_Resolution = new() { float_Brightness = 1f, int_Width = 1280, int_Height = 720, bool_Fullscreen = false, bool_VSync = false, int_Hz = -1 };
-            PostProcessData_PostProcessData = new();
+            PostProcessData_PostProcessData = new() { float_BloomIntensity = 1.1f, float_ChromaticAberrationIntensity = 0.03f, float_VignetteIntensity = 0.14f, float_LensDistortionIntensity = -0.025f, float_FilmGrainIntensity = 0.08f, float_MotionBlurIntensity = 0f, bool_PostProcessingEnabled = true};
             List_InputKeys = new List<KeyBinding>(List_InputKeys);
         }
     }

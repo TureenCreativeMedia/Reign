@@ -52,6 +52,7 @@ namespace reign
 
             if(float_Duration <= 0)
             {
+                // Run until timer is ended manually.
                 return;                
             }
             if (float_CurrentTime >= float_Duration)

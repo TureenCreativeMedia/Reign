@@ -8,6 +8,10 @@ namespace reign
     /// </summary>
     public class OriginSystem : BaseSystem
     {
+        // Awake, Start and LateStart are all called once as the systems are always present,
+        // to call Awake or Start inside one script, please use Unity's Awake and Start.
+
+        // For Update and OnSecond, please use the OriginSystem (this)
         public static System.Action Action_OnAwake;
         public static System.Action Action_OnStart;
         public static System.Action Action_OnLateStart;

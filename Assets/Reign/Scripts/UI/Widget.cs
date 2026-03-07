@@ -18,9 +18,9 @@ namespace reign
         {
             Canvas_WidgetCanvas.gameObject.SetActive(STATE);
         }
-        public override void OriginAwake()
+        public override void Awake()
         {
-            base.OriginAwake();
+            base.Awake();
             Canvas_WidgetCanvas = GetComponent<Canvas>();
         }
     }

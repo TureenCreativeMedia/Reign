@@ -7,7 +7,7 @@ using UnityEngine.UI;
 namespace reign
 {
     [RequireComponent(typeof(Animator), typeof(Graphic))]
-    public abstract class Animated : MonoBehaviour, IOriginAwake
+    public abstract class Animated : MonoBehaviour
     {
         public Animator Animator_Animator {get; private set;}
         public Graphic Graphic_Graphic; 
@@ -64,7 +64,7 @@ namespace reign
                 string_CurrentAnimation = ANIMATIONNAME;
             }
         }
-        public virtual void OriginAwake()
+        public virtual void Awake()
         {
             Animator_Animator = GetComponent<Animator>();
             Graphic_Graphic = GetComponent<Graphic>();

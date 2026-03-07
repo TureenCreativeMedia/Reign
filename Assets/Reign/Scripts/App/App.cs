@@ -1,17 +1,16 @@
-using System;
 using UnityEngine;
 
 namespace reign
 {
-    public class App : Singleton<App>, IDataHandler, IOriginStart
+    public class App : Singleton<App>, IDataHandler
     {
         public static System.Action Action_HangApplication;
         public AppData AppData_App;
         public long long_AppUnixTimestamp { get; private set; }
 
-        public void OriginStart()
+        public void Start()
         {
-            long_AppUnixTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            long_AppUnixTimestamp = System.DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
         public void SetScreenResolution(ScreenResolution resolution)
         {

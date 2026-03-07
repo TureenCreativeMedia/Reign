@@ -17,10 +17,18 @@ namespace reign
             {enum_LogIntensity.Warning, "#F5A207" },
             {enum_LogIntensity.Error, "#F5073F" }
         };
-        public void Log(enum_LogIntensity INTENSITY, string MESSAGE)
+        public void Log(enum_LogIntensity INTENSITY, string MESSAGE, bool USECOLORS = true)
         {
             Dictionary_LogColors.TryGetValue(INTENSITY, out string string_TextColor);
-            Debug.Log($"<color={string_TextColor}>{MESSAGE}</color>");
+
+            if(USECOLORS)
+            {
+                Debug.Log($"<color={string_TextColor}>{MESSAGE}</color>");
+            }
+            else
+            {
+                Debug.Log($"{MESSAGE}");
+            }
         }
     }
 }

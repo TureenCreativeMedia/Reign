@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 2c2b17ff247385d4fbf7f2d46481e71e, type: 3}
   m_Name: SoundGroup
   m_EditorClassIdentifier: Assembly-CSharp:reign:SoundGroup
   List_Sounds:
