@@ -55,6 +55,7 @@ namespace reign
         }
         private void OnEnable()
         {
+            OriginSystem.Action_OnUpdate += AttemptSearch;
             Action_Disconnect += Disconnect;
             App.Action_HangApplication += Disconnect;
             OriginSystem.Action_OnStart += AttemptConnection;
@@ -62,6 +63,7 @@ namespace reign
 
         private void OnDisable()
         {
+            OriginSystem.Action_OnUpdate += AttemptSearch;
             Action_Disconnect -= Disconnect;
             App.Action_HangApplication -= Disconnect;
             OriginSystem.Action_OnStart -= AttemptConnection;

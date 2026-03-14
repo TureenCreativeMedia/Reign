@@ -14,7 +14,14 @@ namespace reign
         }
         public void SetScreenResolution(ScreenResolution resolution)
         {
-            Screen.SetResolution(resolution.int_Width, resolution.int_Height, resolution.bool_Fullscreen);
+            if(resolution.int_Width == -1 && resolution.int_Height == -1)
+            {
+                Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, resolution.bool_Fullscreen);
+            }
+            else
+            {
+                Screen.SetResolution(resolution.int_Width, resolution.int_Height, resolution.bool_Fullscreen);
+            }
             Screen.brightness = resolution.float_Brightness;
             Application.targetFrameRate = resolution.bool_VSync ? (int)Screen.currentResolution.refreshRateRatio.value : resolution.int_Hz;
             QualitySettings.vSyncCount = resolution.bool_VSync ? 1 : 0;
