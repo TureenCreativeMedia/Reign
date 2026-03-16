@@ -8,12 +8,7 @@ namespace reign
         public static Dictionary<string, KeyCode[]> Dictionary_InputKeys;
 
         public static bool bool_InputsEnabled = false;
-
         public enum enum_KeyType { Down, Up, Held };
-
-        /// <summary>
-        /// 
-        /// </summary>
         public static bool GetInput(string KEY, enum_KeyType TYPE, bool IGNOREDISABLED = false)
         {
             if (!bool_InputsEnabled && !IGNOREDISABLED) return false;
@@ -50,9 +45,13 @@ namespace reign
             return false;
         }
 
-        public static Vector2 GetMouseVector()
+        public static Vector2 GetMouseDeltaVector()
         {
             return new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
+        }
+        public static float GetScrollDeltaDirection()
+        {
+            return Input.GetAxis("Mouse ScrollWheel");
         }
 
         public static void Rebind(string KEY, KeyCode[] INPUTS, bool ONLYEXISTING = true)

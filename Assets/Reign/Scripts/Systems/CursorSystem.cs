@@ -15,14 +15,9 @@ namespace reign
     public class CursorSystem : BaseSystem
     {
         [SerializeField] List<CursorType> CursorType_Cursors = new();
-
-        void OnEnable()
+        private void Start()
         {
-            OriginSystem.Action_OnAwake += () => SetCursor("Arrow", CursorLockMode.None, true);
-        }
-        void OnDisable()
-        {
-            OriginSystem.Action_OnAwake -= () => SetCursor("Arrow", CursorLockMode.None, true);
+            SetCursor("Arrow", CursorLockMode.None, true);
         }
         public void SetCursor(string ID, CursorLockMode LOCKMODE, bool VISIBLE = true)
         {

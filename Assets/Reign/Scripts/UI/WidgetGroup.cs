@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace reign
 {
-    public class WidgetGroup : MonoBehaviour, IDestroyableTransform
+    public class WidgetGroup : MonoBehaviour
     {
         public List<Widget> List_GroupWidgets {get; private set;} = new();
         
@@ -16,7 +16,7 @@ namespace reign
             if (!Transform_Children.Contains(TRANSFORM)) return;
             
             Transform_Children.Remove(TRANSFORM);
-            DestroyTransform(TRANSFORM);
+            Destroy(TRANSFORM.gameObject);
         }
 
         public void CreateChild(GameObject PREFAB)

@@ -18,7 +18,7 @@ namespace reign
         {
             if(string.IsNullOrEmpty(string_SceneName)) return;
 
-            LoadingSystem.Action_TryLoad?.Invoke(string_SceneName, 1, 1);
+            LoadingSystem.Action_TryLoad?.Invoke(string_SceneName, 0.0f, 1.0f);
         }
     }
 }

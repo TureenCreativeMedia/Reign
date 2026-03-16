@@ -12,8 +12,9 @@ namespace reign
         public void Awake()
         {
             VideoPlayer_Player = GetComponent<VideoPlayer>();
+            
             VideoPlayer_Player.renderMode = VideoRenderMode.CameraNearPlane;
-            VideoPlayer_Player.targetCamera = MasterSystem.Instance.Camera_MasterCamera;
+            VideoPlayer_Player.targetCamera = Camera.main;
             VideoPlayer_Player.clip = VideoClip_Video;
         }
         public void QueueNewClip(VideoClip CLIP)

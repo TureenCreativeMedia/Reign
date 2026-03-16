@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Reign/Scenes/EntryPoint.unity
     guid: f1e08d3dd76e50f41b88f7c783d6cae5
+  - enabled: 1
+    path: Assets/Game/Scenes/Menu/Menu.unity
+    guid: a2e581e324273ea48ada39705457704e
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: eaf32da2f4c32c241964a789323377c2, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}

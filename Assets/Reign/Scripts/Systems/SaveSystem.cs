@@ -94,6 +94,7 @@ namespace reign
             new("F12", new[]{KeyCode.F12}),
             
             // Common
+            new("Q", new[]{KeyCode.Q}),
             new("W", new[]{KeyCode.W}),
             new("A", new[]{KeyCode.A}),
             new("S", new[]{KeyCode.S}),
@@ -130,7 +131,7 @@ namespace reign
     {
         [SerializeField] string string_FileName = "save.reign";
         [SerializeField] bool bool_Encrypt = true;
-
+        const bool bool_LOG = false;
         public static System.Action Action_AttemptLoad;
         public static System.Action Action_AttemptSave;
 
@@ -186,7 +187,12 @@ namespace reign
                 HANDLER.LoadData(GameData_Data);
             }
 
-            Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
+            if (bool_LOG)
+            {
+#pragma warning disable CS0162 // Unreachable code detected
+                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
+#pragma warning restore CS0162 // Unreachable code detected
+            }
         }
         public void SaveGameData()
         {
@@ -202,7 +208,12 @@ namespace reign
                 HANDLER.LoadData(GameData_Data);
             }
 
-            Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data saved.");
+            if (bool_LOG)
+            {
+#pragma warning disable CS0162 // Unreachable code detected
+                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data saved.");
+#pragma warning restore CS0162 // Unreachable code detected
+            }
         }
     }
     public class SaveFileHandler

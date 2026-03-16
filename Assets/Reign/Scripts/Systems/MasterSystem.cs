@@ -18,11 +18,8 @@ namespace reign
     /// </summary>
     public class MasterSystem : PersistentSingleton<MasterSystem>
     {
-        [Header("References")]
-        public Camera Camera_MasterCamera;
 
         [Header("Systems References")]
-
         public OriginSystem _OriginSystem;
         public TimeSystem _TimeSystem;
         public SoundSystem _SoundSystem;
@@ -37,7 +34,6 @@ namespace reign
         void Start() => Initialise();
         void Initialise()
         {
-            Camera_MasterCamera = GetComponentInChildren<Camera>();
             _OriginSystem = GetComponentInChildren<OriginSystem>();
             _TimeSystem = GetComponentInChildren<TimeSystem>();
             _SoundSystem = GetComponentInChildren<SoundSystem>();

@@ -8,18 +8,13 @@ namespace reign
         [SerializeField] bool bool_AccountForTimeScale = true;
         [SerializeField] string string_AutoplaySound;
         public AudioSource AudioSource_Source;
-        void OnEnable()
+        void Awake()
         {
-            OriginSystem.Action_OnStart += Initiate;
-        }
-        void OnDisable()
-        {
-            OriginSystem.Action_OnStart += Initiate;
+            if (AudioSource_Source == null) AudioSource_Source = GetComponent<AudioSource>();
+            Initiate();
         }
         public virtual void Initiate()
         {
-            //AudioSource_Source = GetComponent<AudioSource>();
-
             if(!string.IsNullOrEmpty(string_AutoplaySound)) PlayOneShot(string_AutoplaySound);
         }
         public virtual void PlayOneShot(string NAME, float VOLUME = 0.6f)
