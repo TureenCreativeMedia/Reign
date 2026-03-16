@@ -1,25 +1,29 @@
 # Reign
 
-[Check out the Reign Website](https://sites.google.com/view/reigntcm/home)
+[Reign Website](https://sites.google.com/view/reigntcm/home) <br>
+[Reign Documentation](https://github.com/TureenCreativeMedia/Reign/wiki)
 
 ---
 
 ### About
 
-**Reign** is a lightweight framework/boilerplate for Unity created by ©Tureen Creative Media. Created to be used by people who want to develop a game (in Unity) without wasting time by setting up an ultra-performant backend.
+**Reign** is a lightweight framework/boilerplate for Unity created by Tureen. Created to be used by people who want to develop a game (in Unity) without wasting time by setting up an ultra-performant back-end.
 
 ![Thumbnail](Assets/Reign/Graphics/GitHub/Thumbnail.png)
 
 ---
 
 ### Features
-- Expansive user interface widget system
-- Save system (with decoding and encoding)
-- Sound system
+- UI Widget system
+- Save System (with decoding and encoding)
+- Sound System
 - Discord RPC support
-- Built-in scene loading
-- Time management (Scale manipulation)
-- Built-in user interface assets
+- Built-in loading screen with scene transition
+- Timer System (support for timer queuing)
+- App System (support for screen resolution and framerate changes)
+- Input System (custom keybinds using Save System)
+- Built-in UI assets
+- Ready-to-use expansive architecture 
 
 ---
 
@@ -27,30 +31,24 @@
 
     Milestones
     ✅ 0.1.0.0
+    ✅ 0.3.0.0
 
-**Versioning**
+---
 
-Reign's versioning system:
+### Versioning
+
+Reign's version schematic:
 
 ![Thumbnail](Assets/Reign/Graphics/GitHub/ReleaseMap.png)
 
-**Contribution**
+---
 
-Create pull requests to Reign's main GitHub branch: Tureen will manually read over additions or subtractions to the codebase.
+### Contribution
+
+Create pull requests, Tureen will manually read over additions or subtractions to the Reign codebase.
 
 
 ---
     
 ### Installation
-
-1. To use Reign, install the newest **release** from either [GitHub](https://github.com/TureenCreativeMedia/Reign/releases) or [itch.io](https://tureen.itch.io/reign).
-
-2. The release will contain a file with details about the release (Reign version, Unity version etc.)
-
-3. Download the Unity version given and usually linked inside the file.
-
-4. Create a project with the specific Unity version.
-
-5. Drag the contents of the Reign release inside the Unity project.
-
----
+Follow the [instructions](https://github.com/TureenCreativeMedia/Reign/wiki#installation) on the wiki home page
