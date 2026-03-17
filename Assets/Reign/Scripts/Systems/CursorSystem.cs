@@ -1,41 +1,42 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace reign
 {
-    [Serializable]
-    public class CursorType
-    {
-        public string string_ID;
-        public Texture2D Texture2D_CursorTexture;
-        public Vector2 Vector2_Hotspot;
-    }
+    [RequireComponent(typeof(CursorAssetLibrary))]
     public class CursorSystem : BaseSystem
     {
-        [SerializeField] List<CursorType> CursorType_Cursors = new();
+        private CursorAssetLibrary CursorAssetLibrary_Cursors;
+
+        private void Awake()
+        {
+            CursorAssetLibrary_Cursors = GetComponent<CursorAssetLibrary>();
+        }
         private void Start()
         {
             SetCursor("Arrow", CursorLockMode.None, true);
         }
-        public void SetCursor(string ID, CursorLockMode LOCKMODE, bool VISIBLE = true)
+        public void SetCursor(string ID, CursorLockMode MODE, bool VISIBLE = true)
         {
-            CursorType CursorType_Get = GetCursor(ID);
+            CursorSetting CursorType_Get = GetCursor(ID);
+
             Cursor.SetCursor(CursorType_Get.Texture2D_CursorTexture, CursorType_Get.Vector2_Hotspot, CursorMode.Auto);
-            Cursor.lockState = LOCKMODE;
+            
+            Cursor.lockState = MODE;
             Cursor.visible = VISIBLE;
         }
-        public CursorType GetCursor(string ID)
+        public CursorSetting GetCursor(string ID)
         {
-            foreach (CursorType CURSOR in CursorType_Cursors)
+            CursorSetting CursorSetting_Attempt = CursorAssetLibrary_Cursors.GetAsset(ID);
+
+            if (CursorSetting_Attempt != null)
             {
-                if(CURSOR.string_ID == ID)
-                {
-                    return CURSOR;
-                }
+                return CursorSetting_Attempt;
             }
-            return null;
+            else
+            {
+                Logger.Instance.Log(Logger.enum_LogIntensity.Warning, $"Could not change Cursor texture");
+                return null;
+            }
         }
     }
 }

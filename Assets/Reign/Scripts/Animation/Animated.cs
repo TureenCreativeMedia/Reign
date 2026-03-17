@@ -64,7 +64,7 @@ namespace reign
                 string_CurrentAnimation = ANIMATIONNAME;
             }
         }
-        public virtual void Awake()
+        private void Awake()
         {
             Animator_Animator = GetComponent<Animator>();
             Graphic_Graphic = GetComponent<Graphic>();

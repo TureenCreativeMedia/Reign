@@ -203,7 +203,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8abf3e4cc91bd249bb244196a0d6e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bool_Ignore: 0
   string_Details: Description
   string_State: State
   string_PreviewImage: Game Preview
@@ -479,7 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df57f1b27a2809b40a0ff606acb2b453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SoundGroup_Sounds: {fileID: 11400000, guid: 6c009c952adad014f8a32a126b73aab7, type: 2}
+  SoundGroup_Group: {fileID: 11400000, guid: 6c009c952adad014f8a32a126b73aab7, type: 2}
 --- !u!1 &4824664563691459254
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,7 +637,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3033596788801416041}
+  m_Father: {fileID: 8379702903417935601}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &86135740698675945
 MonoBehaviour:
@@ -652,38 +651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 958e464ef91e09548b4f149df6e0c3d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &7753413981997936745
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3033596788801416041}
-  m_Layer: 0
-  m_Name: Backend
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3033596788801416041
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7753413981997936745}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 6109563155396650640}
-  m_Father: {fileID: 8379702903417935601}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8206785516241724225
 GameObject:
   m_ObjectHideFlags: 0
@@ -762,6 +729,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1392893736149529313}
+  - {fileID: 3879838380291313837}
   - {fileID: 3739011525000047841}
   - {fileID: 7923714041838228774}
   - {fileID: 4158604762743923217}
@@ -771,8 +739,7 @@ Transform:
   - {fileID: 1641459121545063760}
   - {fileID: 8250906903729288515}
   - {fileID: 7869282317235035853}
-  - {fileID: 3879838380291313837}
-  - {fileID: 3033596788801416041}
+  - {fileID: 6109563155396650640}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5382046673712138041
@@ -820,6 +787,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7869282317235035853}
   - component: {fileID: 5490540428020575582}
+  - component: {fileID: 648460491406490848}
   m_Layer: 0
   m_Name: CursorSystem
   m_TagString: Untagged
@@ -854,19 +822,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65438efae34752840a2cb16f2c766de4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CursorType_Cursors:
-  - string_ID: Arrow
-    Texture2D_CursorTexture: {fileID: 2800000, guid: 5d45a68bb640456458dc850856a35771, type: 3}
-    Vector2_Hotspot: {x: -2, y: 2}
-  - string_ID: Hand
-    Texture2D_CursorTexture: {fileID: 2800000, guid: 9f4246cde21cb804a9864cc97319cc9c, type: 3}
-    Vector2_Hotspot: {x: 0, y: 0}
-  - string_ID: Ibeam
-    Texture2D_CursorTexture: {fileID: 2800000, guid: 2fbe57da16cca2149885b1d664757357, type: 3}
-    Vector2_Hotspot: {x: 0, y: 0}
-  - string_ID: No
-    Texture2D_CursorTexture: {fileID: 2800000, guid: 740241958cd513641ab2e30d458bf7f4, type: 3}
-    Vector2_Hotspot: {x: 0, y: 0}
+--- !u!114 &648460491406490848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8593708945729854314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6b5fcf394b9d5498b2a9483b2c1b0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AssetEntry_Assets:
+  - string_KEY: Arrow
+    string_ASSET: {fileID: 11400000, guid: 9dd297ac3f074114398ef0ab1f24af56, type: 2}
+  - string_KEY: Hand
+    string_ASSET: {fileID: 11400000, guid: 34f03adf36974394bb98d606ea2d22b8, type: 2}
+  - string_KEY: Ibeam
+    string_ASSET: {fileID: 11400000, guid: b09bc38df8f1b904d8e72858ba0a0a44, type: 2}
+  - string_KEY: No
+    string_ASSET: {fileID: 11400000, guid: 6e7bc7da04ab5f3429c5b1e4c304ba19, type: 2}
 --- !u!1 &9222073873667477900
 GameObject:
   m_ObjectHideFlags: 0

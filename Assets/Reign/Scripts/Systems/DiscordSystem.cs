@@ -10,10 +10,8 @@ namespace reign
     {        
         public static Action Action_Disconnect;
 
-        [Header("Settings")]
-        public bool bool_Ignore = false;
-        [Space]
-
+        bool bool_CanConnect = false;
+        
         [Header("Assets")]
         public string string_Details = "Description";
         public string string_State = "State";
@@ -55,6 +53,8 @@ namespace reign
         }
         private void OnEnable()
         {
+            bool_CanConnect = true;
+
             OriginSystem.Action_OnUpdate += AttemptSearch;
             Action_Disconnect += Disconnect;
             App.Action_HangApplication += Disconnect;
@@ -71,12 +71,12 @@ namespace reign
         
         void Disconnect()
         {
-            bool_Ignore = true;
+            bool_CanConnect = false;
             StartCoroutine(DisposeDiscordAfterCallbacks());
         }
         void AttemptConnection()
         {
-            if (bool_Ignore || App.Instance == null || App.Instance.AppData_App == null)
+            if (!bool_CanConnect || App.Instance == null || App.Instance.AppData_App == null)
             {
                 Disconnect();
                 return;
@@ -119,12 +119,12 @@ namespace reign
 
         void UpdateStatus()
         {
-            if (Discord_Discord == null || bool_Ignore) return;
+            if (Discord_Discord == null || !bool_CanConnect) return;
 
             try
             {
-                var activityManager = Discord_Discord.GetActivityManager();
-                var activity = new Activity
+                ActivityManager ActivityManager_Discord = Discord_Discord.GetActivityManager();
+                Activity Activity_Discord = new Activity
                 {
                     Details = string_Details,
                     State = string_State,
@@ -141,9 +141,9 @@ namespace reign
                     }
                 };
 
-                activityManager.UpdateActivity(activity, result =>
+                ActivityManager_Discord.UpdateActivity(Activity_Discord, RESULT =>
                 {
-                    if (result != Result.Ok)
+                    if (RESULT != Result.Ok)
                     {
                         bool_Connected = false;
                     }
@@ -153,9 +153,9 @@ namespace reign
                     }
                 });
             }
-            catch (Exception e)
+            catch (Exception E)
             {
-                Debug.LogWarning($"Discord RPC failed to update: {e.Message}");
+                Debug.LogWarning($"Discord RPC failed to update: {E.Message}");
             }
         }
         private IEnumerator DisposeDiscordAfterCallbacks()

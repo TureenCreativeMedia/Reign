@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace reign
 {
-    [CreateAssetMenu(fileName = "Reign/Sound/Sound Group", menuName = "Reign/Sound/Sound Group")]
+    [CreateAssetMenu(menuName = "Reign/Sound/Sound Group")]
 	public class SoundGroup : ScriptableObject
 	{
 		public List<Sound> List_Sounds;

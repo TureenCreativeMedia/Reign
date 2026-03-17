@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93566700b5ce35948b0732cfc8431cfa, type: 3}
-  m_Name: AppData
+  m_Name: Game_AppData
   m_EditorClassIdentifier: Assembly-CSharp:reign:AppData
   string_AppName: Reign App
   string_AppVersion: v1.0.0
   long_DiscordAppID: 0
-  bool_DiscordRPC: 1
-  bool_DebugBuild: 0
-  bool_Screenshotting: 0
+  bool_DiscordRPC: 0
+  bool_DebugBuild: 1
+  bool_Screenshotting: 1

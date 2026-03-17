@@ -8,7 +8,6 @@ namespace reign
     [RequireComponent(typeof(Animator), typeof(Canvas), typeof(CanvasScaler))]
     public class Widget : Animated
     {
-        // Canvas_WidgetCanvas should be a child of a GameObject with this script attached.
         Canvas Canvas_WidgetCanvas;
         public Color GetGraphicColor()
         {
@@ -18,9 +17,8 @@ namespace reign
         {
             Canvas_WidgetCanvas.gameObject.SetActive(STATE);
         }
-        public override void Awake()
+        void Awake()
         {
-            base.Awake();
             Canvas_WidgetCanvas = GetComponent<Canvas>();
         }
     }
