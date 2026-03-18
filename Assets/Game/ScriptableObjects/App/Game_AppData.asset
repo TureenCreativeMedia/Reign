@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93566700b5ce35948b0732cfc8431cfa, type: 3}
+  m_Name: Game_AppData
+  m_EditorClassIdentifier: Assembly-CSharp:reign:AppData
+  string_AppName: Reign App
+  string_AppVersion: v1.0.0
+  long_DiscordAppID: 0
+  bool_DiscordRPC: 0
+  bool_DebugBuild: 1
+  bool_Screenshotting: 1
