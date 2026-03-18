@@ -23,11 +23,11 @@ namespace reign
 
             if(USECOLORS)
             {
-                Debug.Log($"<color={string_TextColor}>{MESSAGE}</color>");
+                Debug.Log($"<color={string_TextColor}>{INTENSITY}: {MESSAGE}</color>");
             }
             else
             {
-                Debug.Log($"{MESSAGE}");
+                Debug.Log($"{INTENSITY}: {MESSAGE}");
             }
         }
     }
