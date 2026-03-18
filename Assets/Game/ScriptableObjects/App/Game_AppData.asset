@@ -17,4 +17,7 @@ MonoBehaviour:
   long_DiscordAppID: 0
   bool_DiscordRPC: 0
   bool_DebugBuild: 1
+  bool_DoLogging: 1
   bool_Screenshotting: 1
+  string_Password: reign_PASSWORD
+  string_Salt: reign_SALT

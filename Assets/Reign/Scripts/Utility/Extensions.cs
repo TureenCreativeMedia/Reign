@@ -11,8 +11,9 @@ namespace reign
         /// <summary>
         /// Convert time from seconds to MM:SS format
         /// </summary>
-        public static string ConvertToMMSS(int SECONDS)
+        public static string ConvertToMMSS(float SECONDS)
         {
+            SECONDS = Mathf.FloorToInt(SECONDS);
             return $"{SECONDS / 60}:{SECONDS % 60:00}";
         }
     }

@@ -56,11 +56,16 @@ namespace reign
 
         public static void Rebind(string KEY, KeyCode[] INPUTS, bool ONLYEXISTING = true)
         {
-            if (!ONLYEXISTING || Dictionary_InputKeys.ContainsKey(KEY))
+            if (!ONLYEXISTING && !Dictionary_InputKeys.ContainsKey(KEY))
+            {
+                Dictionary_InputKeys.Add(KEY, INPUTS);
+            }
+            else if (Dictionary_InputKeys.ContainsKey(KEY))
             {
                 Dictionary_InputKeys[KEY] = INPUTS;
             }
-            SaveSystem.Action_AttemptSave?.Invoke();
+
+            EventBus.Publish(new OnAttemptSaveEvent { });
         }
         public void LoadData(GameData DATA)
         {

@@ -6,7 +6,8 @@ using UnityEngine.SocialPlatforms;
 
 namespace reign
 {
-    public class DiscordSystem : MonoBehaviour
+    public struct DisconnectDiscordEvent : IEvent { }
+    public class DiscordSystem : MonoBehaviour, IUpdatable
     {        
         public static Action Action_Disconnect;
 
@@ -55,20 +56,34 @@ namespace reign
         {
             bool_CanConnect = true;
 
-            OriginSystem.Action_OnUpdate += AttemptSearch;
-            Action_Disconnect += Disconnect;
-            App.Action_HangApplication += Disconnect;
-            OriginSystem.Action_OnStart += AttemptConnection;
+            EventBus.Unsubscribe<DisconnectDiscordEvent>(PurposefulDisconnect);
+            EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
+            UpdateSystem.Register(this);
         }
-
         private void OnDisable()
         {
-            OriginSystem.Action_OnUpdate += AttemptSearch;
-            Action_Disconnect -= Disconnect;
-            App.Action_HangApplication -= Disconnect;
-            OriginSystem.Action_OnStart -= AttemptConnection;
+            UpdateSystem.Unregister(this);
+
+            EventBus.Unsubscribe<DisconnectDiscordEvent>(PurposefulDisconnect);
+            EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
+            EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
         }
-        
+        void Start()
+        {
+            AttemptConnection();
+        }
+        public void Tick(float DELTATIME)
+        {
+            AttemptSearch();
+        }
+        void HangDisconnect(OnHangApplication EVENT)
+        {
+            Disconnect();
+        }
+        void PurposefulDisconnect(DisconnectDiscordEvent EVENT)
+        {
+            Disconnect();
+        }
         void Disconnect()
         {
             bool_CanConnect = false;

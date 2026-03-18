@@ -21,6 +21,7 @@ namespace reign
 
         [Header("Systems References")]
         public OriginSystem _OriginSystem;
+        public UpdateSystem _UpdateSystem;
         public TimeSystem _TimeSystem;
         public SoundSystem _SoundSystem;
         public PostProcessingSystem _PostProcessingSystem;
@@ -35,6 +36,7 @@ namespace reign
         void Initialise()
         {
             _OriginSystem = GetComponentInChildren<OriginSystem>();
+            _UpdateSystem = GetComponentInChildren<UpdateSystem>();
             _TimeSystem = GetComponentInChildren<TimeSystem>();
             _SoundSystem = GetComponentInChildren<SoundSystem>();
             _PostProcessingSystem = GetComponentInChildren<PostProcessingSystem>();
