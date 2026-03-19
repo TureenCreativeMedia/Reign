@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms;
 namespace reign
 {
     public struct DisconnectDiscordEvent : IEvent { }
-    public class DiscordSystem : MonoBehaviour, IUpdatable
+    public class DiscordSystem : BaseSystem, IUpdatable
     {        
         public static Action Action_Disconnect;
 
