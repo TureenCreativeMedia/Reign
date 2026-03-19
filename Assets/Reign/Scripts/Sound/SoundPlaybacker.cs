@@ -30,7 +30,7 @@ namespace reign
             AudioSource_Source.clip = MasterSystem.Instance._SoundSystem.GetSound(NAME);
             AudioSource_Source.volume = VOLUME;
             AudioSource_Source.loop = LOOP;
-            AudioSource_Source.pitch = bool_AccountForTimeScale ? PITCH * MasterSystem.Instance._TimeSystem.float_TimeScale : PITCH;
+            AudioSource_Source.pitch = bool_AccountForTimeScale ? PITCH * Time.float_ReignDeltaTime : PITCH;
 
             AudioSource_Source.Play();
         }

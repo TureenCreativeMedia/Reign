@@ -9,15 +9,15 @@ namespace reign
 
         void OnEnable()
         {
-            OriginSystem.Action_OnSecond += UpdateFPS;
+            EventBus.Subscribe<OnSecondEvent>(UpdateFPS);
         }
         void OnDisable()
         {
-            OriginSystem.Action_OnSecond -= UpdateFPS;
+            EventBus.Unsubscribe<OnSecondEvent>(UpdateFPS);
         }
-        void UpdateFPS()
+        void UpdateFPS(OnSecondEvent EVENT)
         {
-            TMP_Text_FPS.text = $"FPS: {(int)(1.0f / Time.float_UnscaledDeltaTime)}";
+            TMP_Text_FPS.text = $"FPS: {(int)(1.0f / UnityEngine.Time.unscaledDeltaTime)}";
         }
     }
 }

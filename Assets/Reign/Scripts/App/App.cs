@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace reign
 {
+    public struct OnHangApplication : IEvent { }
     public class App : Singleton<App>, IDataHandler
     {
-        public static System.Action Action_HangApplication;
         public AppData AppData_App;
         public long long_AppUnixTimestamp { get; private set; }
 
@@ -28,7 +28,7 @@ namespace reign
         }
         public void HangApplication()
         {
-            Action_HangApplication?.Invoke();
+            EventBus.Publish(new OnHangApplication { });
             Application.Quit();
         }
         public void LoadData(GameData DATA)

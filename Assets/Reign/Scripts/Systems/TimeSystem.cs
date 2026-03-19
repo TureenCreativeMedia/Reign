@@ -1,14 +1,16 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace reign
 {
+    public struct TimerEndEvent : IEvent { public Timer Timer_Reference; }
+    public struct TimerTickEvent : IEvent { public Timer Timer_Reference; }
+
     [Serializable]
     public class Timer
     {
-        public Action Action_OnTick;
-        public Action Action_OnTimerEnd;
         public float float_Duration = 0.0f;
         public float float_CurrentTime { get; private set; } = 0.0f;
         public bool bool_IsRunning = false;
@@ -40,15 +42,15 @@ namespace reign
         {
             bool_IsRunning = false;
             float_CurrentTime = 0.0f;
-            Action_OnTimerEnd?.Invoke();
+            EventBus.Publish(new TimerEndEvent { Timer_Reference = this });
         }
 
         public void Tick()
         {
             if (!bool_IsRunning) return;
-            
-            Action_OnTick?.Invoke();
-            float_CurrentTime += MasterSystem.Instance._TimeSystem.float_TimeScale * UnityEngine.Time.deltaTime;
+
+            EventBus.Publish(new TimerTickEvent { Timer_Reference = this });
+            float_CurrentTime += Time.float_ReignDeltaTime;
 
             if(float_Duration <= 0)
             {
@@ -61,19 +63,18 @@ namespace reign
             }
         }
     }
-    public class TimeSystem : BaseSystem
+    public class TimeSystem : BaseSystem, IUpdatable
     {
         public List<Timer> List_TimerQueue = new();
-        public float float_TimeScale { get; private set; } = 1.0f;
         void OnEnable() 
         {
-            OriginSystem.Action_OnUpdate += TickAll;
+            UpdateSystem.Register(this);
         }
         void OnDisable() 
         {
-            OriginSystem.Action_OnUpdate -= TickAll;
+            UpdateSystem.Unregister(this);
         }
-        void TickAll()
+        void IUpdatable.Tick(float DELTATIME)
         {
             for (int i = List_TimerQueue.Count - 1; i >= 0; i--)
             {
@@ -85,17 +86,17 @@ namespace reign
         {
             Timer _Timer = new(DURATION, AUTOSTART);
             List_TimerQueue.Add(_Timer);
-            _Timer.Action_OnTimerEnd += () => DestroyTimer(_Timer);
+            EventBus.Subscribe<TimerEndEvent>(TimerEndDestroy);
             return _Timer;
+        }
+        void TimerEndDestroy(TimerEndEvent EVENT)
+        {
+            DestroyTimer(EVENT.Timer_Reference);
+            EventBus.Unsubscribe<TimerEndEvent>(TimerEndDestroy);
         }
         public void DestroyTimer(Timer TIMER)
         {
             List_TimerQueue.Remove(TIMER);
-        }
-        public void SetTimeScale(float NEWSCALE)
-        {
-            float_TimeScale = NEWSCALE;
-            UnityEngine.Time.timeScale = float_TimeScale;
         }
     }
 }

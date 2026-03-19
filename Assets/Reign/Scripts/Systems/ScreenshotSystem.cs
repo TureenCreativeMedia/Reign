@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace reign
 {
-    public class ScreenshotSystem : BaseSystem
+    public class ScreenshotSystem : BaseSystem, IUpdatable
     {
         protected string string_Directory => $"{Application.persistentDataPath}/Screenshots/{App.Instance.AppData_App.string_AppName}_Screenshot_" + System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss") + ".png";
             
@@ -11,17 +11,17 @@ namespace reign
         {
             if(!App.Instance.AppData_App.bool_Screenshotting) return;
             Initiate();
-            OriginSystem.Action_OnUpdate += Screenshot;
+            UpdateSystem.Register(this);
         }
         void OnDisable()
         {
-            OriginSystem.Action_OnUpdate -= Screenshot;
+            UpdateSystem.Unregister(this);
         }
         void Initiate()
         {
             Directory.CreateDirectory($"{Application.persistentDataPath}/Screenshots/");
         }
-        void Screenshot()
+        void IUpdatable.Tick(float DELTATIME)
         {
             if(InputSystem.GetInput("Screenshot", InputSystem.enum_KeyType.Down)) 
             {

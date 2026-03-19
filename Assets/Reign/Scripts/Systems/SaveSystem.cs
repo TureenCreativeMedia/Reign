@@ -127,13 +127,13 @@ namespace reign
         void SaveData(ref GameData DATA);
     }
 
+    public struct OnAttemptLoadEvent : IEvent { }
+    public struct OnAttemptSaveEvent : IEvent { }
+
     public class SaveSystem : BaseSystem
     {
         [SerializeField] string string_FileName = "save.reign";
         [SerializeField] bool bool_Encrypt = true;
-        const bool bool_LOG = false;
-        public static System.Action Action_AttemptLoad;
-        public static System.Action Action_AttemptSave;
 
         protected SaveFileHandler SaveFileHandler_Handler;
 
@@ -142,34 +142,44 @@ namespace reign
 
         private void OnEnable()
         {
-            OriginSystem.Action_OnAwake += SaveSystemAwake;
-            OriginSystem.Action_OnGameQuit += SaveGameData;
-            Action_AttemptLoad += LoadGameData;
-            Action_AttemptSave += SaveGameData;
+            EventBus.Subscribe<OnGameQuitEvent>(SaveGameDataGameQuit);
+            EventBus.Subscribe<OnAttemptLoadEvent>(LoadGameData);
+            EventBus.Subscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
         }
         private void OnDisable()
         {
-            OriginSystem.Action_OnAwake -= SaveSystemAwake;
-            OriginSystem.Action_OnGameQuit -= SaveGameData;
-            Action_AttemptLoad -= LoadGameData;
-            Action_AttemptSave -= SaveGameData;
+            EventBus.Unsubscribe<OnGameQuitEvent>(SaveGameDataGameQuit);
+            EventBus.Unsubscribe<OnAttemptLoadEvent>(LoadGameData);
+            EventBus.Unsubscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
+        }
+        private void SaveGameDataAttemptSave(OnAttemptSaveEvent EVENT)
+        {
+            SaveGameData();
+        }
+        private void SaveGameDataGameQuit(OnGameQuitEvent EVENT)
+        {
+            SaveGameData();
+        }
+        private void LoadGameData(OnAttemptLoadEvent EVENT)
+        {
+            LoadGameData();
+        }
+        protected void Start()
+        {
+            SaveFileHandler_Handler = new(string_FileName, bool_Encrypt);
+            InitialiseDataHandlerObjects();
+            EventBus.Publish(new OnAttemptLoadEvent { });
         }
         protected List<IDataHandler> FindDataHandlerObjects()
         {
             IEnumerable<IDataHandler> IEnumerable_DataHandlerObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataHandler>();
             return new List<IDataHandler>(IEnumerable_DataHandlerObjects);
         }
-        protected void InitializeDataHandlerObjects()
+        protected void InitialiseDataHandlerObjects()
         {
-            List_DataHandlerObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataHandler>().ToList();
+            List_DataHandlerObjects = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataHandler>().ToList();
         }
 
-        protected void SaveSystemAwake()
-        {
-            SaveFileHandler_Handler = new(string_FileName, bool_Encrypt);
-            InitializeDataHandlerObjects();
-            LoadGameData();
-        }
         public void CreateNewGameData()
         {
             GameData_Data = new GameData();
@@ -184,46 +194,38 @@ namespace reign
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
-                HANDLER.LoadData(GameData_Data);
+                HANDLER?.LoadData(GameData_Data);
             }
 
-            if (bool_LOG)
-            {
-#pragma warning disable CS0162 // Unreachable code detected
-                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
-#pragma warning restore CS0162 // Unreachable code detected
-            }
+            Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
         }
         public void SaveGameData()
         {
+            if (GameData_Data == null)
+            {
+                Logger.Instance.Log(Logger.enum_LogIntensity.Error, "Game Data is null and could not be saved.");
+                return;
+            }
+
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
-                HANDLER.SaveData(ref GameData_Data);
+                HANDLER?.SaveData(ref GameData_Data);
             }
 
             SaveFileHandler_Handler.Save(GameData_Data);
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
-                HANDLER.LoadData(GameData_Data);
+                HANDLER?.LoadData(GameData_Data);
             }
 
-            if (bool_LOG)
-            {
-#pragma warning disable CS0162 // Unreachable code detected
-                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data saved.");
-#pragma warning restore CS0162 // Unreachable code detected
-            }
+            Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data saved.");
         }
     }
     public class SaveFileHandler
     {
         private bool bool_Encrypt;
         private string string_FileName;
-
-        // Make this unique per project
-        private const string string_PASSWORD = "reign_PASSWORD";
-        private const string string_SALT = "reign_SALT";
 
         public SaveFileHandler(string FILENAME, bool ENCRYPT)
         {
@@ -303,13 +305,16 @@ namespace reign
             AES.KeySize = 256;
             AES.BlockSize = 128;
 
-            using var key = new Rfc2898DeriveBytes(
-                string_PASSWORD,
-                Encoding.UTF8.GetBytes(string_SALT),
+            byte[] byte_Password = Encoding.ASCII.GetBytes(App.Instance.AppData_App.string_Password);
+            char[] char_Salt = App.Instance.AppData_App.string_Salt.ToCharArray();
+
+            using var KEY = new Rfc2898DeriveBytes(
+                byte_Password,
+                Encoding.UTF8.GetBytes(char_Salt),
                 100000,
                 HashAlgorithmName.SHA256);
 
-            AES.Key = key.GetBytes(32);
+            AES.Key = KEY.GetBytes(32);
             AES.GenerateIV();
 
             using MemoryStream MEMSTREAM = new();
@@ -330,13 +335,16 @@ namespace reign
             AES.KeySize = 256;
             AES.BlockSize = 128;
 
-            using var key = new Rfc2898DeriveBytes(
-                string_PASSWORD,
-                Encoding.UTF8.GetBytes(string_SALT),
+            byte[] byte_Password = Encoding.ASCII.GetBytes(App.Instance.AppData_App.string_Password);
+            char[] char_Salt = App.Instance.AppData_App.string_Salt.ToCharArray();
+
+            using var KEY = new Rfc2898DeriveBytes(
+                byte_Password,
+                Encoding.UTF8.GetBytes(char_Salt),
                 100000,
                 HashAlgorithmName.SHA256);
 
-            AES.Key = key.GetBytes(32);
+            AES.Key = KEY.GetBytes(32);
 
             using MemoryStream MEMSTREAM = new(CIPHER);
 
