@@ -43,11 +43,6 @@ namespace reign
                 ((Action<T>)SUBSCRIBER)?.Invoke(EVENT);
             }
         }
-
-        internal static void Publish(TimerEndEvent timerEndEvent)
-        {
-            throw new NotImplementedException();
-        }
     }
 
     public static class QueryBus

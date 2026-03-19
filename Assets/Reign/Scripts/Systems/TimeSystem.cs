@@ -50,7 +50,7 @@ namespace reign
             if (!bool_IsRunning) return;
 
             EventBus.Publish(new TimerTickEvent { Timer_Reference = this });
-            float_CurrentTime += MasterSystem.Instance._TimeSystem.float_TimeScale * UnityEngine.Time.deltaTime;
+            float_CurrentTime += Time.float_ReignDeltaTime;
 
             if(float_Duration <= 0)
             {
@@ -66,7 +66,6 @@ namespace reign
     public class TimeSystem : BaseSystem, IUpdatable
     {
         public List<Timer> List_TimerQueue = new();
-        public float float_TimeScale { get; private set; } = 1.0f;
         void OnEnable() 
         {
             UpdateSystem.Register(this);
@@ -98,11 +97,6 @@ namespace reign
         public void DestroyTimer(Timer TIMER)
         {
             List_TimerQueue.Remove(TIMER);
-        }
-        public void SetTimeScale(float NEWSCALE)
-        {
-            float_TimeScale = NEWSCALE;
-            UnityEngine.Time.timeScale = float_TimeScale;
         }
     }
 }

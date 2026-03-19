@@ -5,8 +5,8 @@ namespace reign
 {
     public static class Time
     {
-        public static float float_UnscaledDeltaTime => UnityEngine.Time.unscaledDeltaTime;
-        public static float float_DeltaTime => UnityEngine.Time.deltaTime;
+        public static float float_ReignTimeScale => 1.0f;
+        public static float float_ReignDeltaTime => UnityEngine.Time.deltaTime * float_ReignTimeScale;
 
         /// <summary>
         /// Convert time from seconds to MM:SS format

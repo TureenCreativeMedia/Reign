@@ -27,7 +27,7 @@ namespace reign
 
             while (float_Elapsed < DURATION)
             {
-                float_Elapsed += Time.float_DeltaTime;
+                float_Elapsed += Time.float_ReignDeltaTime;
                 float t = float_Elapsed / DURATION;
 
                 Graphic_Graphic.color = Color.Lerp(Color_StartColor, TARGET, t);
@@ -45,7 +45,7 @@ namespace reign
 
             while (float_Elapsed < DURATION)
             {
-                float_Elapsed += Time.float_DeltaTime;
+                float_Elapsed += Time.float_ReignDeltaTime;
                 float t = float_Elapsed / DURATION;
 
                 Graphic_Graphic.color = new (Graphic_Graphic.color.r, Graphic_Graphic.color.g, Graphic_Graphic.color.b, Mathf.Lerp(float_StartAlpha, ALPHA, t));

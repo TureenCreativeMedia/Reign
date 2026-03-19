@@ -17,7 +17,7 @@ namespace reign
         }
         void UpdateFPS(OnSecondEvent EVENT)
         {
-            TMP_Text_FPS.text = $"FPS: {(int)(1.0f / Time.float_UnscaledDeltaTime)}";
+            TMP_Text_FPS.text = $"FPS: {(int)(1.0f / UnityEngine.Time.unscaledDeltaTime)}";
         }
     }
 }

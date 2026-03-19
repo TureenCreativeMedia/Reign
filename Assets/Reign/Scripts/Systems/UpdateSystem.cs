@@ -20,7 +20,7 @@ namespace reign
         {
             for (int i = 0; i < List_Updatables.Count; ++i)
             {
-                List_Updatables[i].Tick(Time.float_DeltaTime);
+                List_Updatables[i].Tick(Time.float_ReignDeltaTime);
             }
         }
     }
