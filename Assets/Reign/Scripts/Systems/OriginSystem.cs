@@ -5,7 +5,7 @@ namespace reign
 {
     public struct OnSecondEvent : IEvent { public float TimePassed; }
     public struct OnAwakeEvent : IEvent { }
-    public struct OnGameQuitEvent : IEvent { }
+    public struct OnStartEvent : IEvent { }
 
     public class OriginSystem : BaseSystem
     {
@@ -14,6 +14,12 @@ namespace reign
             EventBus.Publish(new OnAwakeEvent { });
             StartCoroutine(SyncedTimer());
         }
+
+        void Start()
+        {
+            EventBus.Publish(new OnStartEvent { });
+        }
+
         private IEnumerator SyncedTimer()
         {
             while (true)
@@ -21,10 +27,6 @@ namespace reign
                 EventBus.Publish(new OnSecondEvent { TimePassed = 1f });
                 yield return new WaitForSeconds(1.0f);
             }
-        }
-        private void OnApplicationQuit()
-        {
-            EventBus.Publish(new OnGameQuitEvent { });
         }
     }
 }

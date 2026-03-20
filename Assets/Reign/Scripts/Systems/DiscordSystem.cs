@@ -7,72 +7,73 @@ using UnityEngine.SocialPlatforms;
 namespace reign
 {
     public struct DisconnectDiscordEvent : IEvent { }
+    
+    public struct DiscordData
+    {
+        public string string_ClonedDetails;
+        public string string_ClonedState;
+        public string string_ClonedPreviewImage;
+        public string string_ClonedPreviewImageText;
+        public long long_ClonedUnixTimestamp;
+        public long long_ClonedEndUnixTimestamp;
+    }
+
     public class DiscordSystem : BaseSystem, IUpdatable
     {        
-        public static Action Action_Disconnect;
-
         bool bool_CanConnect = false;
         
         [Header("Assets")]
-        public string string_Details = "Description";
-        public string string_State = "State";
-        public string string_PreviewImage = "Game Preview";
-        public string string_PreviewImageText = "Game Preview Text";
-        long long_UnixTimestamp = 0;
-        long long_EndUnixTimestamp = 0;
+        [SerializeField] protected string string_Details = "Description";
+        [SerializeField] protected string string_State = "State";
+        [SerializeField] protected string string_PreviewImage = "Game Preview";
+        [SerializeField] protected string string_PreviewImageText = "Game Preview Text";
+        [SerializeField] protected long long_UnixTimestamp = 0;
+        [SerializeField] protected long long_EndUnixTimestamp = 0;
 
         public static bool bool_Connected {get; private set;} = false;
-        public Discord.Discord Discord_Discord { get; private set; }
-        public void SetEndTimestamp(long endTime)
+        public Discord.Discord Discord_Discord { get; private set; } = null;
+        
+        public void SetDiscordData(DiscordData DATA)
         {
-            long_EndUnixTimestamp = endTime;
-        }
-        public void SetTimestamp(long newTime)
-        {
-            long_UnixTimestamp = newTime;
-        }
-        public void SetTimestamp(long newTime, long newEndTime = 0)
-        {
-            long_UnixTimestamp = newTime;
-            long_EndUnixTimestamp = newEndTime;
-        }
-        public void SetDescription(string description)
-        {
-            string_Details = description;
-        }
-        public void SetState(string state)
-        {
-            string_State = state;
-        }
-        public void SetPreview(string preview)
-        {
-            string_PreviewImage = preview;
-        }
-        public void SetPreviewImageText(string text)
-        {
-            string_PreviewImageText = text;
+            string_Details = DATA.string_ClonedDetails;
+            string_State = DATA.string_ClonedState;
+            string_PreviewImage = DATA.string_ClonedPreviewImage;
+            string_PreviewImageText = DATA.string_ClonedPreviewImageText;
+            long_UnixTimestamp = DATA.long_ClonedUnixTimestamp;
+            long_EndUnixTimestamp = DATA.long_ClonedEndUnixTimestamp;
         }
         private void OnEnable()
         {
             bool_CanConnect = true;
 
-            EventBus.Unsubscribe<DisconnectDiscordEvent>(PurposefulDisconnect);
-            EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
+            EventBus.Subscribe<DisconnectDiscordEvent>(PurposefulDisconnect);
+            EventBus.Subscribe<OnHangApplication>(HangDisconnect);
             UpdateSystem.Register(this);
         }
         private void OnDisable()
         {
-            UpdateSystem.Unregister(this);
+            bool_CanConnect = false;
 
             EventBus.Unsubscribe<DisconnectDiscordEvent>(PurposefulDisconnect);
             EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
-            EventBus.Unsubscribe<OnHangApplication>(HangDisconnect);
+            UpdateSystem.Unregister(this);
+        }
+        public DiscordData ReturnCurrentData()
+        {
+            return new DiscordData {
+                string_ClonedDetails = string_Details,
+                string_ClonedState = string_State,
+                string_ClonedPreviewImage = string_PreviewImage,
+                string_ClonedPreviewImageText = string_PreviewImageText,
+                long_ClonedUnixTimestamp = long_UnixTimestamp,
+                long_ClonedEndUnixTimestamp = long_EndUnixTimestamp,
+            };
         }
         void Start()
         {
             AttemptConnection();
         }
-        public void Tick(float DELTATIME)
+        void IUpdatable.Tick(float DELTATIME)
         {
             AttemptSearch();
         }
@@ -97,20 +98,18 @@ namespace reign
                 return;
             }
 
-            if (Discord_Discord != null)
+            if (Discord_Discord == null)
             {
-                return;
-            }
-
-            try
-            {
-                Discord_Discord = new Discord.Discord(App.Instance.AppData_App.long_DiscordAppID, (ulong)(CreateFlags.NoRequireDiscord));
-                UpdateStatus();
-            }
-            catch
-            {
-                Disconnect();
-                return;
+                try
+                {
+                    Discord_Discord = new Discord.Discord(App.Instance.AppData_App.long_DiscordAppID, (ulong)(CreateFlags.NoRequireDiscord));
+                    UpdateStatus();
+                }
+                catch
+                {
+                    Disconnect();
+                    return;
+                }
             }
         }
 
@@ -170,7 +169,7 @@ namespace reign
             }
             catch (Exception E)
             {
-                Debug.LogWarning($"Discord RPC failed to update: {E.Message}");
+                Logger.Instance.Log(Logger.enum_LogIntensity.Warning, $"Discord RPC failed to update: {E.Message}");
             }
         }
         private IEnumerator DisposeDiscordAfterCallbacks()

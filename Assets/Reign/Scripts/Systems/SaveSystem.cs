@@ -142,13 +142,13 @@ namespace reign
 
         private void OnEnable()
         {
-            EventBus.Subscribe<OnGameQuitEvent>(SaveGameDataGameQuit);
+            EventBus.Subscribe<OnHangApplication>(SaveGameDataGameQuit);
             EventBus.Subscribe<OnAttemptLoadEvent>(LoadGameData);
             EventBus.Subscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
         }
         private void OnDisable()
         {
-            EventBus.Unsubscribe<OnGameQuitEvent>(SaveGameDataGameQuit);
+            EventBus.Unsubscribe<OnHangApplication>(SaveGameDataGameQuit);
             EventBus.Unsubscribe<OnAttemptLoadEvent>(LoadGameData);
             EventBus.Unsubscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
         }
@@ -156,7 +156,7 @@ namespace reign
         {
             SaveGameData();
         }
-        private void SaveGameDataGameQuit(OnGameQuitEvent EVENT)
+        private void SaveGameDataGameQuit(OnHangApplication EVENT)
         {
             SaveGameData();
         }
