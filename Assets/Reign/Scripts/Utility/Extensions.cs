@@ -5,7 +5,7 @@ namespace reign
 {
     public static class Time
     {
-        public static float float_ReignTimeScale => 1.0f;
+        public static float float_ReignTimeScale = 1.0f;
         public static float float_ReignDeltaTime => UnityEngine.Time.deltaTime * float_ReignTimeScale;
 
         /// <summary>
@@ -13,8 +13,7 @@ namespace reign
         /// </summary>
         public static string ConvertToMMSS(float SECONDS)
         {
-            SECONDS = Mathf.FloorToInt(SECONDS);
-            return $"{SECONDS / 60}:{SECONDS % 60:00}";
+            return $"{(int)SECONDS / 60}:{SECONDS % 60:00}";
         }
     }
 }
