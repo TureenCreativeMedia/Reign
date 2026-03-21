@@ -145,6 +145,10 @@ namespace reign
             EventBus.Subscribe<OnHangApplication>(SaveGameDataGameQuit);
             EventBus.Subscribe<OnAttemptLoadEvent>(LoadGameData);
             EventBus.Subscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
+
+            SaveFileHandler_Handler = new(string_FileName, bool_Encrypt);
+            InitialiseDataHandlerObjects();
+            EventBus.Publish(new OnAttemptLoadEvent { });
         }
         private void OnDisable()
         {
@@ -163,12 +167,6 @@ namespace reign
         private void LoadGameData(OnAttemptLoadEvent EVENT)
         {
             LoadGameData();
-        }
-        protected void Start()
-        {
-            SaveFileHandler_Handler = new(string_FileName, bool_Encrypt);
-            InitialiseDataHandlerObjects();
-            EventBus.Publish(new OnAttemptLoadEvent { });
         }
         protected List<IDataHandler> FindDataHandlerObjects()
         {

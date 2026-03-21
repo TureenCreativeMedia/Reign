@@ -19,13 +19,13 @@ namespace reign
         }
         public virtual void PlayOneShot(string NAME, float VOLUME = 0.6f)
         {
-            if (AudioSource_Source != null) return;
+            if (AudioSource_Source == null) return;
 
             AudioSource_Source.PlayOneShot(MasterSystem.Instance._SoundSystem.GetSound(NAME), VOLUME);
         }
         public virtual void Play(string NAME, float VOLUME, bool LOOP, float PITCH = 1.0f)
         {
-            if (AudioSource_Source != null) return;
+            if (AudioSource_Source == null) return;
 
             AudioSource_Source.clip = MasterSystem.Instance._SoundSystem.GetSound(NAME);
             AudioSource_Source.volume = VOLUME;
