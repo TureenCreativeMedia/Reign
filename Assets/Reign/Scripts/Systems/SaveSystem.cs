@@ -1,17 +1,20 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace reign
 {
     public struct ScreenResolution
     {
         public float float_Brightness;
-        public int int_Width; 
+        public int int_Width;
         public int int_Height;
         public int int_Hz;
         public bool bool_Fullscreen;
@@ -101,7 +104,10 @@ namespace reign
             new("D", new[]{KeyCode.D}),
             new("E", new[]{KeyCode.E}),
             new("F", new[]{KeyCode.F}),
+            new("Shift", new[]{KeyCode.LeftShift, KeyCode.RightShift}),
             new("Enter", new[]{KeyCode.Return, KeyCode.KeypadEnter}),
+            new("Space", new[]{KeyCode.Space}),
+            new("Escape", new[]{KeyCode.Escape}),
 
             // Mouse
             new("LeftMouse", new[]{KeyCode.Mouse0}),
@@ -116,7 +122,7 @@ namespace reign
         public GameData()
         {
             ScreenResolution_Resolution = new() { float_Brightness = 1f, int_Width = 1280, int_Height = 720, bool_Fullscreen = false, bool_VSync = false, int_Hz = -1 };
-            PostProcessData_PostProcessData = new() { float_BloomIntensity = 1.1f, float_ChromaticAberrationIntensity = 0.03f, float_VignetteIntensity = 0.14f, float_LensDistortionIntensity = -0.025f, float_FilmGrainIntensity = 0.08f, float_MotionBlurIntensity = 0f, bool_PostProcessingEnabled = true};
+            PostProcessData_PostProcessData = new() { float_BloomIntensity = 1.1f, float_ChromaticAberrationIntensity = 0.03f, float_VignetteIntensity = 0.14f, float_LensDistortionIntensity = -0.025f, float_FilmGrainIntensity = 0.08f, float_MotionBlurIntensity = 0f, bool_PostProcessingEnabled = true };
             List_InputKeys = new List<KeyBinding>(List_InputKeys);
         }
     }
@@ -146,15 +152,34 @@ namespace reign
             EventBus.Subscribe<OnAttemptLoadEvent>(LoadGameData);
             EventBus.Subscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
 
+            SceneManager.activeSceneChanged += Initialise;
+        }
+
+        void Start()
+        {
+            Initialise(SceneManager.GetActiveScene(), SceneManager.GetActiveScene());
+        }
+
+        private void Initialise(Scene ARG, Scene ARG2)
+        {
+            StartCoroutine(DelayLoad());
+        }
+
+        IEnumerator DelayLoad()
+        {
+            yield return null;
             SaveFileHandler_Handler = new(string_FileName, bool_Encrypt);
             InitialiseDataHandlerObjects();
             EventBus.Publish(new OnAttemptLoadEvent { });
         }
+
         private void OnDisable()
         {
             EventBus.Unsubscribe<OnHangApplication>(SaveGameDataGameQuit);
             EventBus.Unsubscribe<OnAttemptLoadEvent>(LoadGameData);
             EventBus.Unsubscribe<OnAttemptSaveEvent>(SaveGameDataAttemptSave);
+
+            SceneManager.activeSceneChanged -= Initialise;
         }
         private void SaveGameDataAttemptSave(OnAttemptSaveEvent EVENT)
         {
@@ -168,6 +193,7 @@ namespace reign
         {
             LoadGameData();
         }
+
         protected List<IDataHandler> FindDataHandlerObjects()
         {
             IEnumerable<IDataHandler> IEnumerable_DataHandlerObjects = FindObjectsOfType<MonoBehaviour>().OfType<IDataHandler>();
@@ -185,28 +211,35 @@ namespace reign
         public void LoadGameData()
         {
             GameData_Data = SaveFileHandler_Handler.Load();
+
             if (GameData_Data == null)
             {
                 CreateNewGameData();
             }
+            else
+            {
+                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
+            }
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
+                if (HANDLER == null) continue;
+
                 HANDLER?.LoadData(GameData_Data);
             }
-
-            Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Game Data loaded successfully.");
         }
         public void SaveGameData()
         {
             if (GameData_Data == null)
             {
                 Logger.Instance.Log(Logger.enum_LogIntensity.Error, "Game Data is null and could not be saved.");
-                return;
+                CreateNewGameData();
             }
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
+                if (HANDLER == null) continue;
+
                 HANDLER?.SaveData(ref GameData_Data);
             }
 
@@ -214,6 +247,8 @@ namespace reign
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
             {
+                if (HANDLER == null) continue;
+
                 HANDLER?.LoadData(GameData_Data);
             }
 
@@ -260,6 +295,10 @@ namespace reign
                     Logger.Instance.Log(Logger.enum_LogIntensity.Error, $"Could not load data: {e}");
                 }
             }
+            else
+            {
+                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Save file does not exist. Creating new GameData.");
+            }
 
             return GameData_Loaded;
         }
@@ -273,7 +312,7 @@ namespace reign
                 {
                     Directory.CreateDirectory(string_Directory);
                 }
-                
+
                 string string_JSON = JsonUtility.ToJson(DATA, true);
 
                 byte[] byte_FileBytes;
