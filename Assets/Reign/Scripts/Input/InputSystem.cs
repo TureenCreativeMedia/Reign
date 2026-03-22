@@ -24,7 +24,7 @@ namespace reign
                 };
             }
 
-            Dictionary_InputKeys?.TryGetValue(KEY, out KeyCode[] keys);
+            Dictionary_InputKeys.TryGetValue(KEY, out KeyCode[] keys);
 
             if (keys == null) return false;
 
