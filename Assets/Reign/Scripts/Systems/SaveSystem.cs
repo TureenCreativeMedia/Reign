@@ -299,11 +299,7 @@ namespace reign
             }
             else
             {
-<<<<<<< Updated upstream
-                Logger.Instance.Log(Logger.enum_LogIntensity.Log, "Save file does not exist. Creating new GameData.");
-=======
                 Save(new GameData());
->>>>>>> Stashed changes
             }
 
             return GameData_Loaded;
