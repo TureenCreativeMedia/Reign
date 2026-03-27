@@ -6,6 +6,6 @@ namespace Reign.Systems
 {
     public class BaseSystem : MonoBehaviour
     {
-        
+        public string string_SysName = "Unnamed System";
     }
 }

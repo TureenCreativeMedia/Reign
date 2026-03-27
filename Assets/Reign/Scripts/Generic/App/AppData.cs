@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Reign.ScriptableObjects.App
 {
+    [CreateAssetMenu(fileName = "AppData", menuName = "Reign/App Data")]
     public class AppData : ScriptableObject
     {
         public string string_AppName = "App";

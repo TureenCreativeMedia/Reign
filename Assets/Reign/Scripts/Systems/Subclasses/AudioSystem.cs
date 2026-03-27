@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using Reign.Generic;
 using Reign.ScriptableObjects.Audio;
