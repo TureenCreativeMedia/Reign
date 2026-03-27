@@ -22,10 +22,10 @@
   <Project Path="Unity.Burst.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="com.unity.cinemachine.editor.csproj" />
   <Project Path="PPv2URPConverters.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.VisualScripting.State.Editor.csproj" />
   <Project Path="Unity.Burst.CodeGen.csproj" />
   <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
