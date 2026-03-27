@@ -14,3 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   string_AppName: App
   string_AppVersion: Version 1.0.0
+  string_Password: Reign_SAVEPASSWORD
+  string_Salt: Reign_SAVESALT
+  string_SaveFileName: save.REIGN
+  bool_EncryptSaves: 1
+  bool_SaveOnQuit: 1
