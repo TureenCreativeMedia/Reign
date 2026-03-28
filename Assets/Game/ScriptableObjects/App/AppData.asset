@@ -17,5 +17,6 @@ MonoBehaviour:
   string_Password: Reign_SAVEPASSWORD
   string_Salt: Reign_SAVESALT
   string_SaveFileName: save.REIGN
-  bool_EncryptSaves: 1
   bool_SaveOnQuit: 1
+  bool_EncryptSaves: 1
+  int_EncryptionIterations: 25000

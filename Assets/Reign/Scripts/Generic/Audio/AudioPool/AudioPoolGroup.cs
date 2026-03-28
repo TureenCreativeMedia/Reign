@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 
@@ -5,8 +6,8 @@ namespace Reign.ScriptableObjects.Audio
 {
     [Serializable]
     public class AudioPoolGroup
-    {
-        public string string_Name;
-        public List<AudioPoolEntry> List_AudioPoolEntries;
+    { 
+        [AllowNesting] [Label("Name")] public string string_Name;
+        [AllowNesting] [Label("Entries")] public List<AudioPoolEntry> List_AudioPoolEntries;
     }
 }

@@ -12,8 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9929cfd0ba93b24eb774e97ccaecec7, type: 3}
   m_Name: AudioPool
   m_EditorClassIdentifier: 
-  List_Groups:
-  - string_Name: Music
-    List_AudioPoolEntries: []
-  - string_Name: Player
-    List_AudioPoolEntries: []
+  List_Groups: []

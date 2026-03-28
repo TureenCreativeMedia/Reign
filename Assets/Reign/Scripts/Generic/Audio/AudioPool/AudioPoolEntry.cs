@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System;
 using UnityEngine;
 
@@ -7,25 +8,25 @@ namespace Reign.ScriptableObjects.Audio
     public class AudioPoolEntry
     {
         [Header("Audio Settings")]
-        public string string_Name;
+        [AllowNesting] [Label("Name")] public string string_Name;
 
         [Space]
 
-        public bool bool_2D = false;
-        public bool bool_Loop = false;
+        [AllowNesting] [Label("Is 2D")] public bool bool_2D = false;
+        [AllowNesting] [Label("Should Loop")] public bool bool_Loop = false;
 
         [Space]
 
-        public float float_Volume = 1.0f;
-        public float float_Pitch = 1.0f;
-        public AudioRolloffMode AudioRolloffMode_RolloffMode;
-        public AudioClip AudioClip_RelativeClip;
+        [AllowNesting] [Label("Volume")] public float float_Volume = 1.0f;
+        [AllowNesting] [Label("Pitch")] public float float_Pitch = 1.0f;
+        [AllowNesting] [Label("Audio Rolloff Mode")] public AudioRolloffMode AudioRolloffMode_RolloffMode;
+        [AllowNesting] [Label("Clip")] public AudioClip AudioClip_RelativeClip;
 
         [Space]
 
         [Header("3D Settings")]
-        public float float_MinimumDistance = 2.0f;
-        public float float_MaximumDistance = 300.0f;
-        public float float_Doppler = 0.0f;
+        [AllowNesting] [Label("Minimum Distance")] public float float_MinimumDistance = 2.0f;
+        [AllowNesting] [Label("Maximum Distance")] public float float_MaximumDistance = 300.0f;
+        [AllowNesting] [Label("Doppler Level")] public float float_Doppler = 0.0f;
     }
 }

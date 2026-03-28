@@ -3,6 +3,8 @@ using Reign.Systems;
 using System.Collections.Generic;
 using UnityEngine;
 using Reign.Events;
+using Reign.Backend;
+using NaughtyAttributes;
 
 namespace Reign.Main
 {
@@ -10,7 +12,7 @@ namespace Reign.Main
     public class Reign : PersistentSingleton<Reign>
     {
         public const string string_REIGN_VERSION = "v0.5.0.0";
-        public List<BaseSystem> List_Systems;
+        [Label("Systems")] public List<BaseSystem> List_Systems;
 
         private void Start()
         {

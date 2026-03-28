@@ -1,5 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Reign.ScriptableObjects.App
@@ -8,16 +7,24 @@ namespace Reign.ScriptableObjects.App
     public class AppData : ScriptableObject
     {
         [Header("Game")]
-        public string string_AppName = "App";
-        public string string_AppVersion = "Version 1.0.0";
+        [Label("Name")] public string string_AppName = "App";
+        [Label("Version")] public string string_AppVersion = "Version 1.0.0";
 
         [Space(5)]
 
         [Header("Save System")]
-        public string string_Password = "Reign_SAVEPASSWORD";
-        public string string_Salt = "Reign_SAVESALT";
-        public string string_SaveFileName = "save.REIGN";
-        public bool bool_EncryptSaves = true;
-        public bool bool_SaveOnQuit = true;
+        [Label("Save Password")] public string string_Password = "Reign_SAVEPASSWORD";
+        [Label("Save Salt")] public string string_Salt = "Reign_SAVESALT";
+
+        [Tooltip("File name saved to user/AppData/Company name/Product name/")]
+        [Label("File Name")] public string string_SaveFileName = "save.REIGN";
+        [Label("Save On Quit")] public bool bool_SaveOnQuit = true;
+
+        [Space(5)]
+
+        [Label("Encrypt Saves")] public bool bool_EncryptSaves = true;
+        
+        [Tooltip("Note that the amount of iterations can be expensive on lower-end CPUs")]
+        [ShowIf("bool_EncryptSaves")] [Label("Encryption Iterations")] [MinValue(1), MaxValue(100000)]public int int_EncryptionIterations = 25000;
     }
 }

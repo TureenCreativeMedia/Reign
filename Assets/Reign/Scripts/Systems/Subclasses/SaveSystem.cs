@@ -134,7 +134,7 @@ namespace Reign.Systems
             using var KEY = new Rfc2898DeriveBytes(
                 byte_Password,
                 Encoding.UTF8.GetBytes(char_Salt),
-                100000,
+                AppSystem.Instance.AppData_Data.int_EncryptionIterations,
                 HashAlgorithmName.SHA256);
 
             AES.Key = KEY.GetBytes(32);
@@ -164,7 +164,7 @@ namespace Reign.Systems
             using var KEY = new Rfc2898DeriveBytes(
                 byte_Password,
                 Encoding.UTF8.GetBytes(char_Salt),
-                100000,
+                AppSystem.Instance.AppData_Data.int_EncryptionIterations,
                 HashAlgorithmName.SHA256);
 
             AES.Key = KEY.GetBytes(32);

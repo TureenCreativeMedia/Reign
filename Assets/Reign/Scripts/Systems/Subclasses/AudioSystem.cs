@@ -1,13 +1,14 @@
-using System.Collections.Generic;
+using NaughtyAttributes;
 using Reign.Generic;
 using Reign.ScriptableObjects.Audio;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Reign.Systems.Audio
 {
     public class AudioSystem : Singleton<AudioSystem>
     {
-        [SerializeField] private AudioPool AudioPool_Pool;
+        [SerializeField] [Label("Audio Pool")] private AudioPool AudioPool_Pool;
         private Dictionary<string, AudioPoolEntry> Dictionary_AudioEntries = new();
 
         public override void Awake()
