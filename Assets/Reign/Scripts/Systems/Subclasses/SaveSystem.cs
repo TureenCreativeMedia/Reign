@@ -1,5 +1,6 @@
 using Reign.Generic;
-using Reign.ScriptableObjects.App;
+using Reign.Systems.App;
+using Reign.Systems.Screen;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,8 +9,9 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
-namespace Reign.Systems
+namespace Reign.Systems.Save
 {
     [Serializable]
     public class GameData
@@ -20,7 +22,9 @@ namespace Reign.Systems
             ScreenSettings_Data = new ScreenSettings()
             {
                 bool_Fullscreen = true,
-                Vector2_ScreenResolution = new(-1, -1)
+                bool_VSync = false,
+                Vector2_ScreenResolution = new(-1, -1),
+                AntialiasingMode_Antialiasing = AntialiasingMode.None
             };
         }
     }

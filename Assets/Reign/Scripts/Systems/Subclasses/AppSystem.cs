@@ -1,8 +1,9 @@
 using NaughtyAttributes;
 using Reign.Generic;
 using Reign.ScriptableObjects.App;
+using UnityEngine;
 
-namespace Reign.Systems
+namespace Reign.Systems.App
 {
     public class AppSystem : Singleton<AppSystem>
     {

@@ -26,8 +26,7 @@ namespace Reign.Systems.Audio
 
         public static void Play(AudioSource SOURCE, string SOUNDNAME, Vector3 POSITION)
         {
-            AudioSystem AudioSystem_LocalInstance = Instance;
-            if (!AudioSystem_LocalInstance.Dictionary_AudioEntries.TryGetValue(SOUNDNAME, out AudioPoolEntry ENTRY)) return;
+            if (!Instance.Dictionary_AudioEntries.TryGetValue(SOUNDNAME, out AudioPoolEntry ENTRY)) return;
 
             SOURCE.gameObject.transform.position = POSITION;
             SOURCE.clip = ENTRY.AudioClip_RelativeClip;
