@@ -58,6 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4524036f93adf324c8236fa1eaaffacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bool_DontDestroyOnLoad: 0
 --- !u!1 &2255390490620953959
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,6 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3138724c74ffd4291c7836cd86fea6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bool_DontDestroyOnLoad: 0
   AudioPool_Pool: {fileID: 11400000, guid: 8fd26e4a9a02bbc428721dc3f3edc8d1, type: 2}
 --- !u!1 &2315809998966092597
 GameObject:
@@ -175,6 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdda492551d61fe4381268ed61fb35a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bool_DontDestroyOnLoad: 0
 --- !u!1 &4809952885799796083
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,6 +352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b6775443cd9f234fac6fa3cfaeb8ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bool_DontDestroyOnLoad: 1
 --- !u!1 &7140898376574971430
 GameObject:
   m_ObjectHideFlags: 0
@@ -407,6 +411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdb512194eeb06a43b69387f1e4a402d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bool_DontDestroyOnLoad: 0
   AppData_Data: {fileID: 11400000, guid: d59dc536767bb6441ba0bb7917c3e777, type: 2}
 --- !u!1 &8342721671081042375
 GameObject:

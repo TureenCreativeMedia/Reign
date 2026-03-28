@@ -11,10 +11,8 @@ namespace Reign.Systems.Audio
         [SerializeField] [Label("Audio Pool")] private AudioPool AudioPool_Pool;
         private Dictionary<string, AudioPoolEntry> Dictionary_AudioEntries = new();
 
-        public override void Awake()
+        public void Awake()
         {
-            base.Awake();
-
             foreach (AudioPoolGroup GROUP in AudioPool_Pool.List_Groups)
             {
                 foreach (AudioPoolEntry ENTRY in GROUP.List_AudioPoolEntries)

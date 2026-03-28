@@ -10,7 +10,7 @@ using System.Linq;
 namespace Reign.Main
 {
     public struct OnProgramStarted : IEvent { }
-    public class Reign : PersistentSingleton<Reign>
+    public class Reign : Singleton<Reign>
     {
         public const string string_REIGN_VERSION = "v0.5.0.0";
 
