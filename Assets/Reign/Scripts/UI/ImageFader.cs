@@ -1,7 +1,7 @@
+using NaughtyAttributes;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
-using NaughtyAttributes;
 
 public class ImageFader
 {
@@ -22,6 +22,7 @@ public class ImageFader
             yield return null;
         }
 
+        Color_Image.a = ALPHA;
         TARGETGRAPHIC.color = Color_Image;
     }
 }

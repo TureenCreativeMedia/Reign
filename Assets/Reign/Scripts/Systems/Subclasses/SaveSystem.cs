@@ -44,7 +44,7 @@ namespace Reign.Systems.Save
         protected SaveFileHandler SaveFileHandler_Handler;
         protected GameData GameData_Data;
         protected List<IDataHandler> List_DataHandlerObjects;
-        
+
         IEnumerator Start()
         {
             yield return new WaitUntil(() => InitialiseDataHandlerObjects());
@@ -69,6 +69,11 @@ namespace Reign.Systems.Save
         }
         public void LoadGameData()
         {
+            if (!AppSystem.Instance.AppData_Data.bool_SaveSystem)
+            {
+                return;
+            }
+
             if (SaveFileHandler_Handler == null)
             {
                 SaveFileHandler_Handler = new SaveFileHandler();
@@ -78,12 +83,12 @@ namespace Reign.Systems.Save
 
             if (GameData_Data == null)
             {
-                Debug.LogWarning("Game Data could not be found, creating new game data.");
+                Debug.LogWarning("SaveSystem: Game Data could not be found, creating new game data.");
                 GameData_Data = new GameData();
             }
             else
             {
-                Debug.Log("Game Data loaded successfully.");
+                Debug.Log("SaveSystem: Game Data loaded successfully.");
             }
 
             foreach (IDataHandler HANDLER in List_DataHandlerObjects)
@@ -95,9 +100,14 @@ namespace Reign.Systems.Save
         }
         public void SaveGameData()
         {
+            if (!AppSystem.Instance.AppData_Data.bool_SaveSystem)
+            {
+                return;
+            }
+
             if (GameData_Data == null)
             {
-                Debug.LogWarning("Game Data is null and could not be saved.");
+                Debug.LogWarning("SaveSystem: Game Data is null and could not be saved.");
                 GameData_Data = new GameData();
             }
 
@@ -117,7 +127,7 @@ namespace Reign.Systems.Save
                 HANDLER?.LoadData(GameData_Data);
             }
 
-            Debug.Log("Game Data saved.");
+            Debug.Log("SaveSystem: Game Data saved.");
         }
     }
     public class SaveFileHandler
@@ -216,7 +226,7 @@ namespace Reign.Systems.Save
                 }
                 catch (Exception e)
                 {
-                    Debug.LogWarning($"Could not load data: {e}");
+                    Debug.LogWarning($"SaveSystem: Could not load data: {e}");
                 }
             }
             else
@@ -253,7 +263,7 @@ namespace Reign.Systems.Save
             }
             catch (Exception e)
             {
-                Debug.LogWarning($"Could not save data: {e}");
+                Debug.LogWarning($"SaveSystem: Could not save data: {e}");
             }
         }
     }

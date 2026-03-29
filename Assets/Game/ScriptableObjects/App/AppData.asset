@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   string_AppName: App
   string_AppVersion: Version 1.0.0
+  bool_SaveSystem: 1
   string_Password: Reign_SAVEPASSWORD
   string_Salt: Reign_SAVESALT
   string_SaveFileName: save.REIGN
   bool_SaveOnQuit: 1
   bool_EncryptSaves: 1
   int_EncryptionIterations: 25000
-  bool_DiscordRPC: 1
+  bool_DiscordRPC: 0
   long_DiscordAppID: 0

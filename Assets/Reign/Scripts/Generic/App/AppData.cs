@@ -13,16 +13,17 @@ namespace Reign.ScriptableObjects.App
         [Space(5)]
 
         [Header("Save System")]
-        [Label("Save Password")] public string string_Password = "Reign_SAVEPASSWORD";
-        [Label("Save Salt")] public string string_Salt = "Reign_SAVESALT";
+        [Label("Save System Enabled")] public bool bool_SaveSystem;
+        [ShowIf("bool_SaveSystem")] [Label("Save Password")] public string string_Password = "Reign_SAVEPASSWORD";
+        [ShowIf("bool_SaveSystem")] [Label("Save Salt")] public string string_Salt = "Reign_SAVESALT";
 
         [Tooltip("File name saved to user/AppData/Company name/Product name/")]
-        [Label("File Name")] public string string_SaveFileName = "save.REIGN";
-        [Label("Save On Quit")] public bool bool_SaveOnQuit = true;
-        [Label("Encrypt Saves")] public bool bool_EncryptSaves = true;
+        [ShowIf("bool_SaveSystem")] [Label("File Name")] public string string_SaveFileName = "save.REIGN";
+        [ShowIf("bool_SaveSystem")] [Label("Save On Quit")] public bool bool_SaveOnQuit = true;
+        [ShowIf("bool_SaveSystem")] [Label("Encrypt Saves")] public bool bool_EncryptSaves = true;
         
         [Tooltip("Note that the amount of iterations can be expensive on lower-end CPUs")]
-        [ShowIf("bool_EncryptSaves")] [Label("Encryption Iterations")] [MinValue(1), MaxValue(100000)]public int int_EncryptionIterations = 25000;
+        [ShowIf(EConditionOperator.And, "bool_EncryptSaves", "bool_SaveSystem")] [Label("Encryption Iterations")] [MinValue(1), MaxValue(100000)]public int int_EncryptionIterations = 25000;
 
         [Space(5)]
 
