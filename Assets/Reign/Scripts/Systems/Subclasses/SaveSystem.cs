@@ -1,5 +1,6 @@
 using Reign.Generic;
 using Reign.Systems.App;
+using Reign.Systems.Rendering;
 using Reign.Systems.Screen;
 using System;
 using System.Collections;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 namespace Reign.Systems.Save
@@ -16,6 +18,7 @@ namespace Reign.Systems.Save
     [Serializable]
     public class GameData
     {
+        public string PostProcessProfile_ID = "VolumeProfile";
         public ScreenSettings ScreenSettings_Data;
         public Dictionary<string, KeyCode[]> Dictionary_BindedInputs;
         public GameData()

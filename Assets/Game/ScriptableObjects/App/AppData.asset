@@ -19,7 +19,7 @@ MonoBehaviour:
   string_Salt: Reign_SAVESALT
   string_SaveFileName: save.REIGN
   bool_SaveOnQuit: 1
-  bool_EncryptSaves: 1
+  bool_EncryptSaves: 0
   int_EncryptionIterations: 25000
   bool_DiscordRPC: 0
   long_DiscordAppID: 0
