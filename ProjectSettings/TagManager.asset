@@ -8,10 +8,9 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Invisible
+  - 
   - Water
   - UI
-  - ScreenCamera
   - 
   - 
   - 
@@ -37,6 +36,7 @@ TagManager:
   - 
   - 
   - 
+  - Reign
   m_SortingLayers:
   - name: Default
     uniqueID: 0

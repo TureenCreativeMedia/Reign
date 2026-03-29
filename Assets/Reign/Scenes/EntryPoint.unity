@@ -20,13 +20,13 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 3
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -122,7 +122,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &952533800
+--- !u!1 &41046628
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,36 +130,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 952533802}
-  - component: {fileID: 952533801}
+  - component: {fileID: 41046629}
+  - component: {fileID: 41046630}
   m_Layer: 0
-  m_Name: Autoload
+  m_Name: About
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &952533801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952533800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f3281c691e53ab4dafde22d2a2bd67c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  string_SceneName: Menu
-  bool_Immediate: 1
---- !u!4 &952533802
+--- !u!4 &41046629
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 952533800}
+  m_GameObject: {fileID: 41046628}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -168,7 +154,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1481831093
+--- !u!114 &41046630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 41046628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bea5fab33c81bfa4c880b76261b3e542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Comment: The EntryPoint of Reign is where the game build should start (aka. the
+    first scene in the build menu) because it initialises Reign with the prefab and
+    allows you to load into another scene (which by default is Game).
+--- !u!1001 &420722633
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -176,58 +177,122 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 8350524876418048754, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
-      propertyPath: m_Name
-      value: Reign
+    - target: {fileID: 2268839223593333252, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+      propertyPath: m_BackGroundColor.a
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 2268839223593333252, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268839223593333252, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2268839223593333252, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8379702903417935601, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+    - target: {fileID: 5685778996052783863, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 6508243023344223199, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+      propertyPath: m_Name
+      value: Reign
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2998632026963450384, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 793ef137cd1d05643a036cebcee59049, type: 3}
+--- !u!1 &517736396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 517736397}
+  - component: {fileID: 517736398}
+  m_Layer: 0
+  m_Name: EntryPointLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &517736397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517736396}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &517736398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 517736396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233a556e8144e814db8c8598856b7574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bool_AutoloadScene: 1
+  string_SceneName: Game
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1481831093}
-  - {fileID: 952533802}
+  - {fileID: 420722633}
+  - {fileID: 41046629}
+  - {fileID: 517736397}
