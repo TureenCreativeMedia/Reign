@@ -17,6 +17,7 @@ namespace Reign.Systems.Save
     public class GameData
     {
         public ScreenSettings ScreenSettings_Data;
+        public Dictionary<string, KeyCode[]> Dictionary_BindedInputs;
         public GameData()
         {
             ScreenSettings_Data = new ScreenSettings()
@@ -25,6 +26,10 @@ namespace Reign.Systems.Save
                 bool_VSync = false,
                 Vector2_ScreenResolution = new(-1, -1),
                 AntialiasingMode_Antialiasing = AntialiasingMode.None
+            };
+            Dictionary_BindedInputs = new Dictionary<string, KeyCode[]>()
+            {
+                // Add inputs here!
             };
         }
     }

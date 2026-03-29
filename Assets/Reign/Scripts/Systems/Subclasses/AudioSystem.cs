@@ -33,7 +33,16 @@ namespace Reign.Systems.Audio
             SOURCE.minDistance = ENTRY.float_MinimumDistance;
             SOURCE.maxDistance = ENTRY.float_MaximumDistance;
             SOURCE.rolloffMode = ENTRY.AudioRolloffMode_RolloffMode;
-            SOURCE.spatialBlend = ENTRY.bool_2D ? 0.0f : 1.0f;
+
+            if (POSITION != Vector3.positiveInfinity)
+            {
+                SOURCE.spatialBlend = ENTRY.bool_2D ? 0.0f : 1.0f;
+            }
+            else
+            {
+                SOURCE.spatialBlend = 0.0f;
+            }
+
             SOURCE.Play();
         }
     }

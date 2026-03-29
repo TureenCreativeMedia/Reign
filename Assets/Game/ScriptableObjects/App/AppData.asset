@@ -20,3 +20,5 @@ MonoBehaviour:
   bool_SaveOnQuit: 1
   bool_EncryptSaves: 1
   int_EncryptionIterations: 25000
+  bool_DiscordRPC: 1
+  long_DiscordAppID: 0
