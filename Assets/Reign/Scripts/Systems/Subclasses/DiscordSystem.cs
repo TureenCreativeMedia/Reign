@@ -14,20 +14,20 @@ namespace Reign.Systems.App
     [Serializable]
     public struct DiscordData
     {
-        [AllowNesting] [Label("Details")] public string string_ClonedDetails;
-        [AllowNesting] [Label("State")] public string string_ClonedState;
-        [AllowNesting] [Label("Preview Image ID")] public string string_ClonedPreviewImage;
-        [AllowNesting] [Label("Preview Image Text")] public string string_ClonedPreviewImageText;
-        [AllowNesting] [Label("Start Unix Timestamp")] public long long_ClonedUnixTimestamp;
-        [AllowNesting] [Label("End Unix Timestamp")] public long long_ClonedEndUnixTimestamp;
+        [AllowNesting, Label("Details")] public string string_ClonedDetails;
+        [AllowNesting, Label("State")] public string string_ClonedState;
+        [AllowNesting, Label("Preview Image ID")] public string string_ClonedPreviewImage;
+        [AllowNesting, Label("Preview Image Text")] public string string_ClonedPreviewImageText;
+        [AllowNesting, Label("Start Unix Timestamp")] public long long_ClonedUnixTimestamp;
+        [AllowNesting, Label("End Unix Timestamp")] public long long_ClonedEndUnixTimestamp;
     }
 
     public class DiscordSystem : Singleton<DiscordSystem>
     {
-        [SerializeField] [Label("Default Discord RPC Data")] DiscordData DiscordData_Default;
+        [SerializeField, Label("Default Discord RPC Data")] DiscordData DiscordData_Default;
 
         bool bool_CanConnect = false;
-        
+
         protected string string_Details = "";
         protected string string_State = "";
         protected string string_PreviewImage = "";

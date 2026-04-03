@@ -8,7 +8,7 @@ namespace Reign.Main
     public struct OnProgramQuit : IEvent { }
     public class Reign : Singleton<Reign>
     {
-        public const string string_REIGN_VERSION = "v0.5.0.0";
+        public const string string_REIGN_VERSION = "v0.5.0.1";
 
         private void Start()
         {

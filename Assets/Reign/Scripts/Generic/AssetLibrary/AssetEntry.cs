@@ -8,7 +8,7 @@ namespace Reign
     [System.Serializable]
     public class AssetEntry<T>
     {
-        [AllowNesting] [Label("Key")] public string string_KEY;
-        [AllowNesting] [Label("Asset")] public T string_ASSET;
+        [AllowNesting, Label("Key")] public string string_KEY;
+        [AllowNesting, Label("Asset")] public T string_ASSET;
     }
 }

@@ -33,6 +33,7 @@ namespace Reign.Systems.Save
             Dictionary_BindedInputs = new Dictionary<string, KeyCode[]>()
             {
                 // Add inputs here!
+                {"Any", new KeyCode[]{KeyCode.None}}
             };
         }
     }

@@ -13,14 +13,19 @@
 ---
 
 ### Features
+
+> Features marked as new mean they have been recently added or updated.
+
 - Systems
-    - Input System -> Getting inputs via KeyCodes in a dictionary
-    - Audio System -> Play sounds via AudioPool
-    - Screen System -> Setting screen resolution and V-Sync depending on a struct in Save System 
-    - App System -> Control Reign using the AppData scriptable object
-    - Post Processing System -> Control post processing volume values with the Save System
-    - Save System -> Control game saving and loading with scripts using the IDataHandler interface, as well as encrypting the saves.
-    - Loading System -> Load scenes asynchronously with a transition.
+    - Input System: Getting inputs via KeyCodes in a dictionary
+    - [🆕] Audio System: Play sounds via AudioPool, supports 2D and 3D
+    - Screen System: Setting screen resolution and V-Sync depending on a struct in Save System 
+    - App System: Control Reign using the AppData scriptable object
+    - Post Processing System: Control post processing volume values with the Save System
+    - Save System: Control game saving and loading with scripts using the IDataHandler interface, as well as encrypting the saves.
+    - Loading System: Load scenes asynchronously with a transition.
+    -  [🆕] Cursor System: Set custom cursors with CursorSetting scriptable objects that contain
+    a texture and hotspot
 
 ---
 
@@ -35,16 +40,21 @@
 
 ### Versioning
 
-**Reign's Version Release Map**
+**Reign's Versioning System**
 
 ![Thumbnail](Assets/Reign/Graphics/GitHub/ReleaseMap.png)
+
+<br>
+
+**Version Roadmap**
+
+![VersionRoadmap](Assets/Reign/Graphics/GitHub/VersionRoadmap.png)
 
 ---
 
 ### Contribution
 
 Create pull requests, Tureen will manually read over additions or subtractions to the Reign codebase.
-
 
 ---
     

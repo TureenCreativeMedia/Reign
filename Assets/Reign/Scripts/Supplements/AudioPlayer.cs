@@ -10,11 +10,11 @@ namespace Reign
     public class AudioPlayer : MonoBehaviour
     {
         private AudioSource AudioSource_Reference;
-        [SerializeField] [Label("Autoplay Sound")] [ValidateInput("SoundExists", "Sound System does not contain a definition for this clip name")] string string_Autoplay;
+        [SerializeField, Label("Autoplay Sound"), ValidateInput("SoundExists", "Sound System does not contain a definition for this clip name")] string string_Autoplay;
 
         private bool SoundExists(string SOUND)
         {
-            return AudioSystem.HasSound(SOUND);
+            return string.IsNullOrEmpty(SOUND) || AudioSystem.HasSound(SOUND);
         }
 
         private void Awake()
@@ -24,17 +24,17 @@ namespace Reign
 
         private void Start()
         {
-            if (string.IsNullOrEmpty(string_Autoplay)) return; 
+            if (string.IsNullOrEmpty(string_Autoplay)) return;
             PlaySound(string_Autoplay);
         }
 
-        public void PlaySound(string CLIP)
-        {
-            AudioSystem.Play(AudioSource_Reference, CLIP, null);
-        }
-        public void PlaySound3D(string CLIP, Vector3 POSITION)
+        public void PlaySound(string CLIP, Vector3? POSITION = null)
         {
             AudioSystem.Play(AudioSource_Reference, CLIP, POSITION);
+        }
+        public void PlaySoundOneShot(string CLIP, Vector3? POSITION = null)
+        {
+            AudioSystem.PlayOneShot(AudioSource_Reference, CLIP, POSITION);
         }
     }
 }

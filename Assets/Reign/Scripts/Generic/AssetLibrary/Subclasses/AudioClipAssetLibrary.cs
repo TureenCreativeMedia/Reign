@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Reign
+namespace Reign.AssetLibrary
 {
     public class AudioClipAssetLibrary : AssetLibrary<AudioClip> { }
 }

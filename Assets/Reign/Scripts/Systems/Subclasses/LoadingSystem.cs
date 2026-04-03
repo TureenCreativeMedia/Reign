@@ -9,32 +9,50 @@ namespace Reign.Systems.Loading
 {
     public class LoadingSystem : Singleton<LoadingSystem>
     {
-        [SerializeField] [Label("Image")] Image Image_Screen;
+        public bool bool_isLoading;
+        [SerializeField, Label("Image")] Image Image_Screen;
+
+        private void OnEnable()
+        {
+            SceneManager.activeSceneChanged += OnNewScene;
+        }
+        private void OnDisable()
+        {
+            SceneManager.activeSceneChanged -= OnNewScene;
+        }
+
+        void OnNewScene(Scene ARG0, Scene ARG1)
+        {
+            StartCoroutine(FadeOut());
+        }
+
+        public IEnumerator FadeOut(float DURATION = 2.0f)
+        {
+            StartCoroutine(ColorLerper.FadeAlpha(Image_Screen, 0.0f, DURATION));
+            yield return new WaitUntil(() => Image_Screen.color.a <= 0.01f);
+            Image_Screen.enabled = false;
+            bool_isLoading = false;
+        }
         public IEnumerator LoadScene(string SCENE, float WAIT = 1.0f, float DURATION = 2.0f)
         {
             Color Color_StartColor = Image_Screen.color;
             Image_Screen.enabled = true;
-            
+
             if (Color_StartColor.a != 0.0f)
             {
                 Image_Screen.color = new Color(Color_StartColor.r, Color_StartColor.g, Color_StartColor.b, 0.0f);
             }
 
-            yield return StartCoroutine(ImageFader.FadeAlpha(Image_Screen, 1.0f, DURATION));
-
-            AsyncOperation AsyncOperation_SceneLoad = SceneManager.LoadSceneAsync(SCENE);
-            AsyncOperation_SceneLoad.allowSceneActivation = false;
-
-            while (AsyncOperation_SceneLoad.progress < 0.9f) yield return null;
-
-            Debug.Log($"LoadingSystem: Scene '{SCENE}' loaded.");
+            bool_isLoading = true;
             yield return new WaitForSecondsRealtime(WAIT);
 
-            StartCoroutine(ImageFader.FadeAlpha(Image_Screen, 0.0f, DURATION));
-            AsyncOperation_SceneLoad.allowSceneActivation = true;
+            StartCoroutine(ColorLerper.FadeAlpha(Image_Screen, 1.0f, DURATION));
+            yield return new WaitUntil(() => Image_Screen.color.a >= 0.99f);
 
-            yield return new WaitUntil(() => Image_Screen.color.a <= 0.01f);
-            Image_Screen.enabled = false;
+            yield return new WaitForSecondsRealtime(WAIT);
+
+            AsyncOperation AsyncOperation_SceneLoad = SceneManager.LoadSceneAsync(SCENE);
+            yield return new WaitUntil(() => AsyncOperation_SceneLoad.isDone);
         }
     }
 }

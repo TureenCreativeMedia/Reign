@@ -5,17 +5,17 @@ using UnityEngine;
 
 namespace Reign.Systems.Controls
 {
-    public enum InputType 
-    { 
-        Down, 
-        Held, 
-        Up 
+    public enum InputType
+    {
+        Down,
+        Held,
+        Up
     }
     public class InputSystem : Singleton<InputSystem>, IDataHandler
     {
         private Dictionary<string, KeyCode[]> Dictionary_BindedInputsClone;
         private bool bool_DisableInputs = false;
-        
+
         void Start()
         {
             DisableInputs(false);

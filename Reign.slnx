@@ -26,7 +26,6 @@
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="PPv2URPConverters.csproj" />
   <Project Path="Unity.Rider.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.ResourceManager.csproj" />
   <Project Path="Unity.Addressables.Editor.Tests.DocExampleCode.csproj" />
   <Project Path="Unity.Addressables.csproj" />
@@ -45,6 +44,7 @@
   <Project Path="Unity.Burst.Editor.csproj" />
   <Project Path="Unity.AI.Navigation.Updater.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Internal.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Discord.csproj" />
