@@ -10,7 +10,7 @@ namespace Reign.Systems.Loading
     public class LoadingSystem : Singleton<LoadingSystem>
     {
         public bool bool_isLoading;
-        [SerializeField][Label("Image")] Image Image_Screen;
+        [SerializeField, Label("Image")] Image Image_Screen;
 
         private void OnEnable()
         {
@@ -28,7 +28,7 @@ namespace Reign.Systems.Loading
 
         public IEnumerator FadeOut(float DURATION = 2.0f)
         {
-            StartCoroutine(ImageFader.FadeAlpha(Image_Screen, 0.0f, DURATION));
+            StartCoroutine(ColorLerper.FadeAlpha(Image_Screen, 0.0f, DURATION));
             yield return new WaitUntil(() => Image_Screen.color.a <= 0.01f);
             Image_Screen.enabled = false;
             bool_isLoading = false;
@@ -46,7 +46,7 @@ namespace Reign.Systems.Loading
             bool_isLoading = true;
             yield return new WaitForSecondsRealtime(WAIT);
 
-            StartCoroutine(ImageFader.FadeAlpha(Image_Screen, 1.0f, DURATION));
+            StartCoroutine(ColorLerper.FadeAlpha(Image_Screen, 1.0f, DURATION));
             yield return new WaitUntil(() => Image_Screen.color.a >= 0.99f);
 
             yield return new WaitForSecondsRealtime(WAIT);

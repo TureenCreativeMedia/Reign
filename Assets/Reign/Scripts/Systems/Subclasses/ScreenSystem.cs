@@ -28,11 +28,18 @@ namespace Reign.Systems.Screen
 
         public void SetScreenSettings(ScreenSettings SETTING)
         {
-            int int_ScreenWidth = SETTING.Vector2_ScreenResolution.x <= 0 ? UnityEngine.Screen.currentResolution.width : SETTING.Vector2_ScreenResolution.x;
-            int int_ScreenHeight = SETTING.Vector2_ScreenResolution.y <= 0 ? UnityEngine.Screen.currentResolution.height : SETTING.Vector2_ScreenResolution.y;
+            // Set screen width if greater than 0px
+            int int_ScreenWidth = SETTING.Vector2_ScreenResolution.x <= 0 ?
+            UnityEngine.Screen.currentResolution.width : SETTING.Vector2_ScreenResolution.x;
 
+            // Set screen height if greater than 0px
+            int int_ScreenHeight = SETTING.Vector2_ScreenResolution.y <= 0 ?
+            UnityEngine.Screen.currentResolution.height : SETTING.Vector2_ScreenResolution.y;
+
+            // Apply changes
             UnityEngine.Screen.SetResolution(int_ScreenWidth, int_ScreenHeight, SETTING.bool_Fullscreen);
 
+            // Set V-Sync
             QualitySettings.vSyncCount = SETTING.bool_VSync ? 1 : 0;
         }
     }

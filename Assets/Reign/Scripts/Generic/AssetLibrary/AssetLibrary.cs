@@ -2,20 +2,20 @@ using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Reign
+namespace Reign.AssetLibrary
 {
-    public class AssetLibrary<T> : MonoBehaviour where T : Object
+    public abstract class AssetLibrary<T> : MonoBehaviour where T : Object
     {
         private protected bool bool_Initialised;
-        [SerializeField] [Label("Assets")] private List<AssetEntry<T>> AssetEntry_Assets = new();
-        private Dictionary<string, T> Dictionary_AssetDictionary;
+        [SerializeField, Label("Assets")] private List<AssetEntry<T>> AssetEntry_Assets = new();
+        public Dictionary<string, T> Dictionary_AssetDictionary;
 
         private void Awake()
         {
             bool_Initialised = false;
             Initialise();
         }
-        void Initialise()
+        public void Initialise()
         {
             if (bool_Initialised) return;
 
@@ -44,7 +44,7 @@ namespace Reign
             return Dictionary_AssetDictionary.Values as List<T>;
         }
 
-        public T GetAsset(string KEY)
+        public virtual T GetAsset(string KEY)
         {
             Initialise();
 

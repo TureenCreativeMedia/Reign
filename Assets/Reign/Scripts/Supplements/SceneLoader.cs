@@ -6,9 +6,9 @@ namespace Reign.Supplements
 {
     public class SceneLoader : MonoBehaviour
     {
-        [SerializeField] [Label("Autoload")] bool bool_AutoloadScene;
-        [SerializeField] [ShowIf("bool_AutoloadScene")] [Label("Scene")] [Scene] string string_SceneName;
-    
+        [SerializeField, Label("Autoload")] bool bool_AutoloadScene;
+        [SerializeField, ShowIf("bool_AutoloadScene"), Label("Scene"), Scene] string string_SceneName;
+
         void Start()
         {
             if (!bool_AutoloadScene) return;
