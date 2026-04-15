@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Reign.Generics;
+using Reign.Interfaces;
 using Reign.Systems;
 using UnityEditor;
 using UnityEngine;
@@ -16,5 +17,7 @@ namespace Reign.Systems
 
     public sealed class SaveSystem : System<SaveSystem>
     {
+        private GameData gameData;
+        private List<IDataHandler> dataHandlerReferences;
     }
 }

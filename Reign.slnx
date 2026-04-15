@@ -1,9 +1,20 @@
 ﻿<Solution>
-  <Project Path="UnityEngine.TestRunner.csproj" />
+  <Project Path="Unity.InputSystem.csproj" />
+  <Project Path="Unity.TextMeshPro.csproj" />
   <Project Path="NaughtyAttributes.Core.csproj" />
-  <Project Path="UnityEditor.TestRunner.csproj" />
+  <Project Path="UnityEditor.UI.csproj" />
+  <Project Path="Unity.TextMeshPro.Editor.csproj" />
   <Project Path="NaughtyAttributes.Editor.csproj" />
+  <Project Path="UnityEngine.TestRunner.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
+  <Project Path="UnityEditor.TestRunner.csproj" />
+  <Project Path="UnityEngine.UI.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="NaughtyAttributes.Test.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Unity.SysrootPackage.Editor.csproj" />
+  <Project Path="Unity.InputSystem.TestFramework.csproj" />
+  <Project Path="Unity.InputSystem.ForUI.csproj" />
+  <Project Path="Unity.Sysroot.Linux_x86_64.csproj" />
+  <Project Path="Unity.InputSystem.DocCodeSamples.csproj" />
+  <Project Path="Unity.Toolchain.Win-x86_64-Linux-x86_64.csproj" />
 </Solution>

@@ -4,7 +4,7 @@ namespace Reign.Systems
 {
     public sealed class DisplaySystem : System<DisplaySystem>
     {
-        private void Start()
+        private void Awake()
         {
             // Eventually load from Save Data
             Screen.SetResolution(Screen.width, Screen.height, true);
