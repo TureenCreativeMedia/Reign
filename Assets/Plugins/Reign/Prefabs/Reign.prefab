@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+  requiredSystems: []
 --- !u!1 &8904663793570437277
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,6 +56,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 928455114448246162}
+  - component: {fileID: 3602144223584130361}
   - component: {fileID: 10333360435678731}
   - component: {fileID: 7182083637351474559}
   m_Layer: 0
@@ -79,6 +81,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7365501858645757946}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3602144223584130361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904663793570437277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b09e48f5d5b36478dea09ea238b634, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  audioPool: {fileID: 11400000, guid: 708061da19fa7b647adb2bf914a90235, type: 2}
+  defaultAudioMixerGroup: {fileID: 24300002, guid: 8c1d61f11b0f80a47baa1a0cc9243a06, type: 2}
 --- !u!114 &10333360435678731
 MonoBehaviour:
   m_ObjectHideFlags: 0

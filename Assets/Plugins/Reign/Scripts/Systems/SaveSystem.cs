@@ -26,9 +26,9 @@ namespace Reign.Systems
             return scriptList;
         }
 
-        public async void LoadGameData()
+        public IEnumerator LoadGameData()
         {
-            //
+            yield return null;
         }
     }
 }
