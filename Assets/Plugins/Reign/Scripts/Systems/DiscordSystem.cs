@@ -51,7 +51,6 @@ namespace Reign.Systems
 
         private void Start()
         {
-            isConnected = false;
             canConnect = GameCertificates.DISCORD_ENABLED;
 
             if (defaultDiscordSystemData.startUnixTimestamp == 0)
@@ -71,6 +70,7 @@ namespace Reign.Systems
 
         private void Update()
         {
+            canConnect = !isConnected;
             AttemptCallbacks();
         }
 

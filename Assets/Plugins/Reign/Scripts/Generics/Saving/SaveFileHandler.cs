@@ -52,8 +52,6 @@ namespace Reign.Generics.Saving
                 Debug.LogWarning("Save file missing, creating new data");
 
                 GameData newGameData = new();
-                newGameData.Validate();
-
                 bool created = await SaveAsync(newGameData);
 
                 if (!created)
@@ -72,7 +70,6 @@ namespace Reign.Generics.Saving
                 string json = DoEncrypt ? Decrypt(fileBytes) : Encoding.UTF8.GetString(fileBytes);
 
                 GameData data = JsonConvert.DeserializeObject<GameData>(json);
-                data?.Validate();
 
                 return data;
             }

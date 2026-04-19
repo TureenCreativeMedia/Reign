@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2786392980794651994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7722660910270300766}
+  - component: {fileID: 697516082602030500}
+  - component: {fileID: 8070653452871922402}
+  m_Layer: 0
+  m_Name: Load Overlay
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7722660910270300766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786392980794651994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5784594101043799976}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &697516082602030500
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786392980794651994}
+  m_CullTransparentMesh: 1
+--- !u!114 &8070653452871922402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2786392980794651994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &6419290268535131545
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,6 +85,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7365501858645757946}
   - component: {fileID: 7160570749908510879}
+  - component: {fileID: 1042509759720609901}
+  - component: {fileID: 6634572504446025252}
   m_Layer: 0
   m_Name: Reign
   m_TagString: Untagged
@@ -31,6 +108,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 928455114448246162}
+  - {fileID: 5784594101043799976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7160570749908510879
@@ -46,7 +124,168 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
-  requiredSystems: []
+  requiredSystems:
+  - {fileID: 3602144223584130361}
+  - {fileID: 4047937867864585987}
+  - {fileID: 10333360435678731}
+  - {fileID: 7330508765402566466}
+  - {fileID: 7182083637351474559}
+  - {fileID: 5032680422019243299}
+--- !u!114 &1042509759720609901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419290268535131545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49570b694e1bd204489e5e5f5696e3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: "-------------\n\n=-- Reign | \xA9Tureen Creative Media --=\n\nThe solution
+    to all problems when starting an ambitious Unity project. Countless systems working
+    asynchronously to perform as well as possible even on low-end devices to make
+    creating great games simple.\n\n-------------\n\n=-- Story --=\n\nWhen I wanted
+    to make FBH2, I realised how inefficient it is to remake a lightweight and performant
+    group of systems for every single project. There I learnt that I should make
+    something great that could be used by all people usually overwhelmed by important
+    aspects of making a Unity game: a save system, input system, Discord RPC support,
+    audio system, etc.\n\nReign was very useless in its infantile stages (prior to
+    0.3.0.0) until I finally learnt and overcame every problem, I learnt so much
+    from my mistakes that the only logical thing to do would be to start over, again
+    and again until after 0.5.0.0, the final legacy version. \n\nI remade Reign yet
+    again for Reign 1.0.0.0, making it the new standard. Thus, the end all be all
+    solution was finally made. Versitile systems for every possible problem all managed
+    and updated frequently.\n\nI take great passion in this project as this is my
+    most important project, I shall take care of this until Unity is not the indie
+    standard. \n\n- Tureen"
+--- !u!114 &6634572504446025252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6419290268535131545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49570b694e1bd204489e5e5f5696e3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  comment: "REIGN v1.0.0.0\n------------\n\n=-- CHANGELOG --=\n\n- Recreated Reign
+    from scratch for the final time\n\n- Changed scripting backend from Mono to IL2CPP\n\n-
+    Made Audio System capable of using multiple clips per entry and playing one index
+    when using any Play() function\n\n- Made SaveSystem asynchronous to avoid long
+    stutters between saving and loading\n\n- Added InputMap which contains input
+    dictionary and helper functions for overriding and saving keybinds\n\n- Made
+    InputSystem and SaveSystem contain InputMap class \n- Optimised DiscordSystem
+    to reduce update calls\n\n- Input map standard is now lowercase IDs opposed to
+    camelcase in previous Reign versions\n\n- Moved all app configuration to GameCertificates.cs
+    opposed to AppData scriptable object from previous Reign versions\n\n- Audio
+    system now uses a master mixer channel by default, and assigns to the exposed
+    volume parameter in LoadData()\n\n"
+--- !u!1 &8643818070393080627
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5784594101043799976}
+  - component: {fileID: 952018359731668321}
+  - component: {fileID: 2258265326531192956}
+  - component: {fileID: 4075463351897977326}
+  m_Layer: 0
+  m_Name: Canvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5784594101043799976
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643818070393080627}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7722660910270300766}
+  m_Father: {fileID: 7365501858645757946}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &952018359731668321
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643818070393080627}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 0
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1000
+  m_TargetDisplay: 0
+--- !u!114 &2258265326531192956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643818070393080627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 2
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
+--- !u!114 &4075463351897977326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643818070393080627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &8904663793570437277
 GameObject:
   m_ObjectHideFlags: 0
@@ -62,6 +301,7 @@ GameObject:
   - component: {fileID: 6555218448291149555}
   - component: {fileID: 7330508765402566466}
   - component: {fileID: 7182083637351474559}
+  - component: {fileID: 5032680422019243299}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -98,7 +338,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   audioPool: {fileID: 11400000, guid: 708061da19fa7b647adb2bf914a90235, type: 2}
-  defaultAudioMixerGroup: {fileID: 24300002, guid: 8c1d61f11b0f80a47baa1a0cc9243a06, type: 2}
+  masterAudioMixerGroup: {fileID: 24300002, guid: 8c1d61f11b0f80a47baa1a0cc9243a06, type: 2}
 --- !u!114 &4047937867864585987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,3 +415,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+--- !u!114 &5032680422019243299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904663793570437277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae4e41bd62edeb3458bd95ecd9deee6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
+  loadOverlay: {fileID: 8070653452871922402}

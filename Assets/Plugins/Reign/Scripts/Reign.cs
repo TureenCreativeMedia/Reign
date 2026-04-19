@@ -9,7 +9,7 @@ namespace Reign
 {
     public sealed class Reign : Singleton<Reign>
     {
-        [SerializeField] private List<System<ReignMonoBehaviour>> requiredSystems;
+        [SerializeField] private List<SystemBase> requiredSystems;
 
         private void Awake()
         {
@@ -32,22 +32,10 @@ namespace Reign
 
         public bool HasRequiredSystems()
         {
-            if (!requiredSystems.Any())
-            {
-                return true;
-            }
+            bool success = !requiredSystems.Any() || requiredSystems.All(system => system != null);
 
-            foreach (System<ReignMonoBehaviour> system in requiredSystems)
-            {
-                if (system == null)
-                {
-                    return false;
-                }
-
-                return true;
-            }
-
-            return false;
+            if (success) Debug.Log("<color=#008ec2ff><b>Reign</b></color> found all required systems!");
+            return success;
         }
     }
 }

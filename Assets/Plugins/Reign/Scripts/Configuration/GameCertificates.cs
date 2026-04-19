@@ -28,6 +28,6 @@ namespace Reign.Generics
 
     public class ReignServiceDetails
     {
-        public const string REIGN_VERSION = "1.0.0";
+        public const string REIGN_VERSION = "1.0.0.0";
     }
 }

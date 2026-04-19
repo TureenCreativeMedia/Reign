@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Linq;
 using UnityEngine;
 
@@ -13,44 +14,26 @@ namespace Reign.Generics
         {
             get
             {
-                if (instance == null)
-                {
-                    // Find T if null (Singleton should only have one instance)
+                if (instance != null) return instance;
 
-                    instance = FindObjectOfType<T>();
+                if (!Application.isPlaying) return null;
 
-                    if (instance == null)
-                    {
-                        // If this instance STILL doesn't exist, try our
-                        // best to recreate it
-
-                        GameObject recreate = new(typeof(T).Name);
-                        instance = recreate.AddComponent<T>();
-                    }
-                }
-
+                instance = FindObjectOfType<T>();
                 return instance;
             }
         }
 
-        void Awake()
+        IEnumerator Start()
         {
-            if (dontDestroyOnLoad)
+            if (instance != null && instance != this)
             {
-                DontDestroyOnLoad(gameObject);
-            }
-
-            if (instance == null)
-            {
-                instance = this as T;
-            }
-            else if (instance != this)
-            {
-                // If the instance already exists but isn't us:
-                // delete ourselves and prioritise the other
-
                 Destroy(gameObject);
+                yield break;
             }
+
+            instance = this as T;
+
+            if (dontDestroyOnLoad) DontDestroyOnLoad(gameObject);
         }
     }
 }

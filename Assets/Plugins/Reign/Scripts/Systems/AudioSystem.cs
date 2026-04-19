@@ -3,13 +3,15 @@ using Reign.Generics.Audio;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Audio;
+using Reign.Interfaces;
+using Reign.Utility;
 
 namespace Reign.Systems
 {
-    public class AudioSystem : System<AudioSystem>
+    public class AudioSystem : System<AudioSystem>, IDataHandler
     {
         [SerializeField] private AudioPool audioPool;
-        [SerializeField] AudioMixerGroup defaultAudioMixerGroup;
+        [SerializeField] AudioMixerGroup masterAudioMixerGroup;
         private readonly Dictionary<string, AudioPoolEntry> audioEntries = new();
 
         public void OnValidate()
@@ -77,7 +79,7 @@ namespace Reign.Systems
         {
             GameObject newSound = new(name);
             AudioSource source = newSound.AddComponent<AudioSource>();
-            source.outputAudioMixerGroup = defaultAudioMixerGroup;
+            source.outputAudioMixerGroup = masterAudioMixerGroup;
             Play(source, name, pos);
 
             if (destroyOnComplete)
@@ -92,6 +94,16 @@ namespace Reign.Systems
         {
             yield return new WaitUntil(() => !SOURCE.isPlaying);
             Destroy(SOURCE.gameObject);
+        }
+
+        public void LoadData(GameData DATA)
+        {
+            // masterAudioVolume should save and load in dB
+            masterAudioMixerGroup.audioMixer.SetFloat("Volume", DATA.masterAudioVolume);
+        }
+
+        public void SaveData(ref GameData DATA)
+        {
         }
     }
 }

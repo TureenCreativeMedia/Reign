@@ -16,27 +16,25 @@ namespace Reign.Systems
         public ScreenSettings screenResolution;
         public InputMap inputMap;
 
+        public float masterAudioVolume;
+
         public GameData()
         {
-            screenResolution = new ScreenSettings();
-            inputMap = new();
-        }
+            screenResolution = new ScreenSettings(1280, 720, false, true, true);
 
-        public void Validate()
-        {
-            screenResolution ??= new ScreenSettings(1280, 720, false, true, true);
+            masterAudioVolume = -2.0f; // in Decibels
 
-            inputMap ??= new InputMap();
-
-            inputMap.inputs ??= new Dictionary<string, KeyCode[]>();
-
-            if (!inputMap.inputs.ContainsKey("any"))
+            inputMap = new InputMap()
             {
-                inputMap.inputs["any"] = new KeyCode[] { KeyCode.None };
-            }
+                inputs = new Dictionary<string, KeyCode[]>()
+                {
+                    {"any", new KeyCode[] { KeyCode.None }}
+                }
+            };
         }
     }
 
+    [DefaultExecutionOrder(-1)]
     public sealed class SaveSystem : System<SaveSystem>
     {
         private GameData gameData;
@@ -65,8 +63,6 @@ namespace Reign.Systems
             // Fallback
             gameData = new GameData();
 
-            gameData.Validate();
-
             foreach (var handler in dataHandlers)
             {
                 handler.LoadData(gameData);
@@ -88,7 +84,6 @@ namespace Reign.Systems
 
             Debug.Log("Saved data successfully");
         }
-
 
         // Runtime
         private async Task SetupAsync()
