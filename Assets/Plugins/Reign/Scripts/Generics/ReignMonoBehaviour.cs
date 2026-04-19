@@ -1,27 +1,46 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Android;
 
 namespace Reign.Generics
 {
     public class ReignMonoBehaviour : MonoBehaviour
     {
-        // Read Only because external sources shouldn't be able to alter this
-        public IReadOnlyList<Transform> GetChildren
+        public bool TrackAliveTime { get; private set; } = false;
+
+        public float AliveTime
         {
             get
             {
-                List<Transform> children = new();
-
-                // First check if we have any to avoid a baseless for loop
-                if (transform.childCount > 0)
+                if (!TrackAliveTime)
                 {
-                    for (int i = 0; i < transform.childCount; ++i)
-                    {
-                        children.Add(transform.GetChild(i));
-                    }
+                    Debug.LogWarning("Alive time is not tracked: enable TrackAliveTime.");
+                    return 0f;
                 }
 
-                return children;
+                return _aliveTime;
+            }
+        }
+
+        private float _aliveTime = 0.0f;
+
+        // IEnumerable to avoid bad heap allocation
+        public IEnumerable<Transform> GetChildren
+        {
+            get
+            {
+                for (int i = 0; i < transform.childCount; ++i)
+                {
+                    yield return transform.GetChild(i);
+                }
+            }
+        }
+
+        void Update()
+        {
+            if (TrackAliveTime)
+            {
+                _aliveTime += Time.unscaledDeltaTime;
             }
         }
     }

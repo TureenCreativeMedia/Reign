@@ -8,9 +8,10 @@
   <Project Path="UnityEngine.TestRunner.csproj" />
   <Project Path="Unity.VisualStudio.Editor.csproj" />
   <Project Path="UnityEditor.TestRunner.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="Unity.2D.Sprite.Editor.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="NaughtyAttributes.Test.csproj" />
-  <Project Path="Assembly-CSharp-firstpass.csproj" />
   <Project Path="Unity.SysrootPackage.Editor.csproj" />
   <Project Path="Unity.InputSystem.TestFramework.csproj" />
   <Project Path="Unity.InputSystem.ForUI.csproj" />

@@ -1,26 +1,25 @@
+using Reign.Interfaces;
 using UnityEngine;
 
 namespace Reign.Systems
 {
-    public sealed class DisplaySystem : System<DisplaySystem>
+    public sealed class DisplaySystem : System<DisplaySystem>, IDataHandler
     {
-        private void Awake()
+        public void LoadData(GameData DATA)
         {
-            // Eventually load from Save Data
-            Screen.SetResolution(Screen.width, Screen.height, true);
+            QualitySettings.vSyncCount = DATA.screenResolution.vsync ? 1 : 0;
+            Screen.SetResolution(DATA.screenResolution.width, DATA.screenResolution.height, DATA.screenResolution.fullscreen);
         }
 
-        private void ToggleFullscreen()
+        public void SaveData(ref GameData DATA)
         {
-            Screen.fullScreen = !Screen.fullScreen;
-            Debug.Log($"Updated fullscreen: {Screen.fullScreen}");
         }
 
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.F11))
             {
-                ToggleFullscreen();
+                Screen.fullScreen = !Screen.fullScreen;
             }
         }
     }
