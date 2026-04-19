@@ -119,7 +119,7 @@ MonoBehaviour:
     largeImageText: 
     smallImage: 
     smallImageText: 
-    startUnixTimestamp: 1
+    startUnixTimestamp: 0
     endUnixTimestamp: 0
 --- !u!114 &10333360435678731
 MonoBehaviour:
