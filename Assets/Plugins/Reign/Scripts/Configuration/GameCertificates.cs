@@ -20,6 +20,10 @@ namespace Reign.Generics
         public const string SAVE_SALT = "my_reign_game_save_salt";
 
         public const int SAVE_ITERATIONS = 2048;
+
+        // Discord
+        public const bool DISCORD_ENABLED = true;
+        public const long DISCORD_APP_ID = 1453862071543271508;
     }
 
     public class ReignServiceDetails
