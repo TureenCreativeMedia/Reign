@@ -38,12 +38,12 @@ namespace Reign.Systems
             return entry;
         }
 
-        private AudioSource SourceSetup(AudioSource source, AudioPoolEntry entry, Vector3? pos, bool loop = false)
+        private static AudioSource SourceSetup(AudioSource source, AudioPoolEntry entry, Vector3? pos, bool loop = false)
         {
             source.loop = loop;
             source.volume = entry.localVolume;
 
-            if (pos != null)
+            if (pos.HasValue())
             {
                 source.transform.position = pos.Value;
                 source.spatialBlend = entry.spatialBlend;
