@@ -36,7 +36,7 @@ namespace Reign.Systems
             }
         }
 
-        private Task LoadSceneAsync(string name)
+        private Task<bool> LoadSceneAsync(string name)
         {
             var completionSource = new TaskCompletionSource<bool>();
 

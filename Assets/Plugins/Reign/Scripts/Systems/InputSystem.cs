@@ -20,7 +20,7 @@ namespace Reign.Systems
         {
             if (!inputsEnabled) return false;
 
-            if (name.ToLower() == "any")
+            if (name.Equals("any", StringComparison.CurrentCultureIgnoreCase))
             {
                 return inputType switch
                 {

@@ -4,7 +4,7 @@ namespace Reign.Interfaces
 {
     public interface IDataHandler
     {
-        void LoadData(GameData DATA);
-        void SaveData(ref GameData DATA);
+        void LoadData(GameData data);
+        void SaveData(ref GameData data);
     }
 }

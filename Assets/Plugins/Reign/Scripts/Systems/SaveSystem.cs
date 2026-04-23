@@ -41,7 +41,7 @@ namespace Reign.Systems
         private SaveFileHandler saveFileHandler = new();
         private List<IDataHandler> dataHandlers;
 
-        private List<IDataHandler> GetDataHandlers()
+        private static List<IDataHandler> GetDataHandlers()
         {
             // Start from MonoBehaviour and not ReignMonoBehaviour because it inherits MonoBehaviour
 
