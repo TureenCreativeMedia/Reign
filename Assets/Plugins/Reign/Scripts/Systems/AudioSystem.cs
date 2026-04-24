@@ -4,8 +4,6 @@ using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Audio;
 using Reign.Interfaces;
-using Reign.Utility;
-
 namespace Reign.Systems
 {
     public class AudioSystem : System<AudioSystem>, IDataHandler
@@ -25,12 +23,17 @@ namespace Reign.Systems
             }
         }
 
-        public bool HasSound(string SOUNDNAME)
+        /// <summary>
+        /// Check if audio entries dictionary contains the key of name
+        /// </summary>
+        /// <param name="name">Audio entry key</param>
+        /// <returns>bool</returns>
+        internal bool HasSound(string name)
         {
-            return audioEntries != null && audioEntries.ContainsKey(SOUNDNAME);
+            return audioEntries != null && audioEntries.ContainsKey(name);
         }
 
-        public AudioPoolEntry GetEntry(string NAME)
+        internal AudioPoolEntry GetEntry(string NAME)
         {
             AudioPoolEntry entry = null;
             audioEntries?.TryGetValue(NAME, out entry);
@@ -38,7 +41,15 @@ namespace Reign.Systems
             return entry;
         }
 
-        private static AudioSource SourceSetup(AudioSource source, AudioPoolEntry entry, Vector3? pos, bool loop = false)
+        /// <summary>
+        /// Set up the source depending on parameters
+        /// </summary>
+        /// <param name="source">Required audio source</param>
+        /// <param name="entry">Audio pool entry to parse data from</param>
+        /// <param name="pos">Nullable Vector3 to place the source transform position at</param>
+        /// <param name="loop">If the source should loop</param>
+        /// <returns></returns>
+        private static void SourceSetup(AudioSource source, AudioPoolEntry entry, Vector3? pos, bool loop = false)
         {
             source.loop = loop;
             source.volume = entry.localVolume;
@@ -53,10 +64,18 @@ namespace Reign.Systems
                 source.spatialBlend = 0.0f;
             }
 
-            return source;
+            return;
         }
 
-        public void Play(AudioSource source, string name, Vector3? pos, int index = 0, bool loop = false)
+        /// <summary>
+        /// Play an audio pool entry with the same name from a given source
+        /// </summary>
+        /// <param name="source">Source to play from</param>
+        /// <param name="name">Matching audio pool entry name</param>
+        /// <param name="pos">Nullable Vector3 to play at</param>
+        /// <param name="index">Index of entry's clip array to pull from</param>
+        /// <param name="loop">If the source should loop</param>
+        internal void Play(AudioSource source, string name, Vector3? pos, int index = 0, bool loop = false)
         {
             var entry = GetEntry(name);
             if (entry == null) return;
@@ -66,7 +85,14 @@ namespace Reign.Systems
             source.Play();
         }
 
-        public void PlayOneShot(AudioSource source, string name, Vector3? pos, int index = 0)
+        /// <summary>
+        /// Play one shot audio pool entry with the same name from a source. For looping, use Play()
+        /// </summary>
+        /// <param name="source">Source to play from</param>
+        /// <param name="name">Matching audio pool entry name</param>
+        /// <param name="pos">Nullable Vector3 to play at</param>
+        /// <param name="index">Index of entry's clip array to pull from</param>
+        internal void PlayOneShot(AudioSource source, string name, Vector3? pos, int index = 0)
         {
             var entry = GetEntry(name);
             if (entry == null) return;
@@ -75,12 +101,21 @@ namespace Reign.Systems
             source.PlayOneShot(entry.clips[index]);
         }
 
-        public AudioSource PlayCreateInstance(string name, Vector3? pos, bool destroyOnComplete = true)
+        /// <summary>
+        /// Create a new GameObject with an audio source and play the audio pool entry with the same name
+        /// </summary>
+        /// <param name="name">Matching audio pool entry name</param>
+        /// <param name="pos">Nullable Vector3 to play at</param>
+        /// <param name="index">Index of entry's clip array to pull from</param>
+        /// <param name="loop">If the source should loop</param>
+        /// <param name="destroyOnComplete">If the game object should be destroyed when the sound is finished</param>
+        /// <returns></returns>
+        internal AudioSource PlayCreateInstance(string name, Vector3? pos, int index = 0, bool loop = false, bool destroyOnComplete = true)
         {
-            GameObject newSound = new(name);
+            GameObject newSound = new($"Sound Instance ({name})");
             AudioSource source = newSound.AddComponent<AudioSource>();
             source.outputAudioMixerGroup = masterAudioMixerGroup;
-            Play(source, name, pos);
+            Play(source, name, pos, index, loop);
 
             if (destroyOnComplete)
             {

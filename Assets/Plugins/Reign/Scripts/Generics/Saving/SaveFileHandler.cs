@@ -18,7 +18,12 @@ namespace Reign.Generics.Saving
 
         #region API
 
-        public async Task<bool> SaveAsync(GameData data)
+        /// <summary>
+        /// Save asynchronously by writing all bytes to the save path
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        internal async Task<bool> SaveAsync(GameData data)
         {
             try
             {
@@ -43,7 +48,11 @@ namespace Reign.Generics.Saving
             }
         }
 
-        public async Task<GameData> LoadAsync()
+        /// <summary>
+        /// Load asynchronously from the save path
+        /// </summary>
+        /// <returns></returns>
+        internal async Task<GameData> LoadAsync()
         {
             // Async load, create new data if the file is missing
 
@@ -83,6 +92,12 @@ namespace Reign.Generics.Saving
         #endregion
 
         #region Encryption
+
+        /// <summary>
+        /// Encrypt plaintext using GameCertificates' password and salt
+        /// </summary>
+        /// <param name="plaintext"></param>
+        /// <returns>byte[]</returns>
         private byte[] Encrypt(string plaintext)
         {
             using Aes aes = Aes.Create();
@@ -113,6 +128,11 @@ namespace Reign.Generics.Saving
             return memStream.ToArray();
         }
 
+        /// <summary>
+        /// Decrypt byte array back into plaintext using GameCertificates' password and salt
+        /// </summary>
+        /// <param name="cipher"></param>
+        /// <returns>string</returns>
         private string Decrypt(byte[] cipher)
         {
             using Aes aes = Aes.Create();

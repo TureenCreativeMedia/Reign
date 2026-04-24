@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Reign.Generics.Audio
 {
     [Serializable]
-    public class AudioPoolEntry
+    internal class AudioPoolEntry
     {
         [Header("Basic Settings")]
         [AllowNesting] public string name;

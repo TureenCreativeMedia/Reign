@@ -12,12 +12,22 @@ namespace Reign.Systems
 
         public bool inputsEnabled { get; private set; } = false;
 
-        public void SetInputsEnabled(bool isInputsEnabled)
+        /// <summary>
+        /// Toggle the ability to use GetInput()
+        /// </summary>
+        /// <param name="isInputsEnabled"></param>
+        internal void SetInputsEnabled(bool isInputsEnabled)
         {
             inputsEnabled = isInputsEnabled;
         }
 
-        public bool GetInput(string name, InputType inputType = InputType.DOWN)
+        /// <summary>
+        /// Check if the input of this name was down, up or held this frame (depending on the InputType)
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="inputType"></param>
+        /// <returns>bool</returns>
+        internal bool GetInput(string name, InputType inputType = InputType.DOWN)
         {
             if (!inputsEnabled) return false;
 

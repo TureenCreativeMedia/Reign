@@ -41,7 +41,11 @@ namespace Reign.Systems
         private SaveFileHandler saveFileHandler = new();
         private List<IDataHandler> dataHandlers;
 
-        private static List<IDataHandler> GetDataHandlers()
+        /// <summary>
+        /// Return a list of the present data handlers in the scene
+        /// </summary>
+        /// <returns></returns>
+        internal static List<IDataHandler> GetDataHandlers()
         {
             // Start from MonoBehaviour and not ReignMonoBehaviour because it inherits MonoBehaviour
 
@@ -54,10 +58,12 @@ namespace Reign.Systems
             dataHandlers = GetDataHandlers();
         }
 
-        public async Task LoadGameData()
+        /// <summary>
+        /// Load game data in every present data handler
+        /// </summary>
+        /// <returns></returns>
+        internal async Task LoadGameData()
         {
-            // Load to all handlers
-
             gameData = await saveFileHandler.LoadAsync();
 
             // Fallback
@@ -71,7 +77,11 @@ namespace Reign.Systems
             Debug.Log("Loaded data successfully");
         }
 
-        public async Task SaveGameData()
+        /// <summary>
+        /// Save game data to every present data handler
+        /// </summary>
+        /// <returns></returns>
+        internal async Task SaveGameData()
         {
             // Save to all handlers
 

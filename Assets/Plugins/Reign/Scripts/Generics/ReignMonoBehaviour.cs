@@ -6,26 +6,31 @@ namespace Reign.Generics
 {
     public class ReignMonoBehaviour : MonoBehaviour
     {
-        public bool TrackAliveTime { get; private set; } = false;
+        internal bool TrackActiveTime { get; private set; } = false;
 
-        public float AliveTime
+        /// <summary>
+        /// Get the current active time only if the object is tracking it
+        /// </summary>
+        internal float ActiveTime
         {
             get
             {
-                if (!TrackAliveTime)
+                if (!TrackActiveTime)
                 {
-                    Debug.LogWarning("Alive time is not tracked: enable TrackAliveTime.");
+                    Debug.LogWarning("Unable to parse active time.");
                     return 0f;
                 }
 
-                return _aliveTime;
+                return _activeTime;
             }
         }
 
-        private float _aliveTime = 0.0f;
+        private float _activeTime = 0.0f;
 
-        // IEnumerable to avoid bad heap allocation
-        public IEnumerable<Transform> GetChildren
+        /// <summary>
+        /// Get children of this ReignMonoBehaviour
+        /// </summary>
+        internal IEnumerable<Transform> GetChildren
         {
             get
             {
@@ -38,9 +43,10 @@ namespace Reign.Generics
 
         void Update()
         {
-            if (TrackAliveTime)
+            // Only update if we're actually tracking
+            if (TrackActiveTime)
             {
-                _aliveTime += Time.unscaledDeltaTime;
+                _activeTime += Time.unscaledDeltaTime;
             }
         }
     }

@@ -30,7 +30,11 @@ namespace Reign.Systems
         public Discord.Discord discord { get; private set; } = null;
         private ActivityManager manager;
 
-        public void SetData(DiscordSystemData data)
+        /// <summary>
+        /// Set current Discord RPC data
+        /// </summary>
+        /// <param name="data">Data to set</param>
+        internal void SetData(DiscordSystemData data)
         {
             if (!data.Equals(currentDiscordSystemSettings))
             {
@@ -39,12 +43,19 @@ namespace Reign.Systems
             }
         }
 
-        public DiscordSystemData GetCurrent()
+        /// <summary>
+        /// Get current Discord RPC data
+        /// </summary>
+        /// <returns>DiscordSystemData</returns>
+        internal DiscordSystemData GetCurrent()
         {
             return currentDiscordSystemSettings;
         }
 
-        public void ResetTimestamp()
+        /// <summary>
+        /// Set current data's start timestamp to the current unix time 
+        /// </summary>
+        internal void ResetTimestamp()
         {
             currentDiscordSystemSettings.startUnixTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }
