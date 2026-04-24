@@ -43,7 +43,7 @@ namespace Reign.Systems
             source.loop = loop;
             source.volume = entry.localVolume;
 
-            if (pos.HasValue())
+            if (pos.HasValue)
             {
                 source.transform.position = pos.Value;
                 source.spatialBlend = entry.spatialBlend;

@@ -12,7 +12,7 @@ namespace Reign.Editor
 
         void Awake()
         {
-            // Remove all data on Awake
+            // Clear on Awake()
             comment = null;
         }
     }

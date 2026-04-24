@@ -143,23 +143,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49570b694e1bd204489e5e5f5696e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comment: "-------------\n\n=-- Reign | \xA9Tureen Creative Media --=\n\nThe solution
-    to all problems when starting an ambitious Unity project. Countless systems working
-    asynchronously to perform as well as possible even on low-end devices to make
-    creating great games simple.\n\n-------------\n\n=-- Story --=\n\nWhen I wanted
-    to make FBH2, I realised how inefficient it is to remake a lightweight and performant
-    group of systems for every single project. There I learnt that I should make
-    something great that could be used by all people usually overwhelmed by important
-    aspects of making a Unity game: a save system, input system, Discord RPC support,
-    audio system, etc.\n\nReign was very useless in its infantile stages (prior to
-    0.3.0.0) until I finally learnt and overcame every problem, I learnt so much
-    from my mistakes that the only logical thing to do would be to start over, again
-    and again until after 0.5.0.0, the final legacy version. \n\nI remade Reign yet
-    again for Reign 1.0.0.0, making it the new standard. Thus, the end all be all
-    solution was finally made. Versitile systems for every possible problem all managed
-    and updated frequently.\n\nI take great passion in this project as this is my
-    most important project, I shall take care of this until Unity is not the indie
-    standard. \n\n- Tureen"
+  comment: "---------------------------------------\n\n=-- Reign | \xA9 Purple Swing
+    --=\n\nThe solution to all problems when starting an ambitious Unity project.
+    Countless systems working asynchronously to perform as well as possible, even
+    on low-end devices, to make creating great games simple.\n\n---------------------------------------"
 --- !u!114 &6634572504446025252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,18 +159,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49570b694e1bd204489e5e5f5696e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comment: "REIGN v1.0.0.0\n------------\n\n=-- CHANGELOG --=\n\n- Recreated Reign
-    from scratch for the final time\n\n- Changed scripting backend from Mono to IL2CPP\n\n-
-    Made Audio System capable of using multiple clips per entry and playing one index
-    when using any Play() function\n\n- Made SaveSystem asynchronous to avoid long
-    stutters between saving and loading\n\n- Added InputMap which contains input
-    dictionary and helper functions for overriding and saving keybinds\n\n- Made
-    InputSystem and SaveSystem contain InputMap class \n- Optimised DiscordSystem
-    to reduce update calls\n\n- Input map standard is now lowercase IDs opposed to
-    camelcase in previous Reign versions\n\n- Moved all app configuration to GameCertificates.cs
-    opposed to AppData scriptable object from previous Reign versions\n\n- Audio
-    system now uses a master mixer channel by default, and assigns to the exposed
-    volume parameter in LoadData()\n\n"
+  comment: "             REIGN v1.0.0.0\n---------------------------------------\n\n=----------
+    CHANGELOG ----------=\n\n- Recreated Reign from scratch for the final time\n\n-
+    Changed scripting backend from Mono to IL2CPP\n\n- Made Audio System capable
+    of using multiple clips per entry and playing one index when using any Play()
+    function\n\n- Made SaveSystem asynchronous to avoid long stutters between saving
+    and loading\n\n- Added InputMap which contains input dictionary and helper functions
+    for overriding and saving keybinds\n\n- Made InputSystem and SaveSystem contain
+    InputMap class \n- Optimised DiscordSystem to reduce update calls\n\n- Input
+    map standard is now lowercase IDs opposed to camelcase in previous Reign versions\n\n-
+    Moved all app configuration to GameCertificates.cs opposed to AppData scriptable
+    object from previous Reign versions\n\n- Audio system now uses a master mixer
+    channel by default, and assigns to the exposed volume parameter in LoadData()\n\n-
+    Added lots of useful utility functions to ReignUtils.cs\n"
 --- !u!1 &8643818070393080627
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,6 +30,10 @@ namespace Reign
             return HasRequiredSystems();
         }
 
+        /// <summary>
+        /// Does the script have any required systems, if so, are they present?
+        /// </summary>
+        /// <returns>bool</returns>
         public bool HasRequiredSystems()
         {
             bool success = !requiredSystems.Any() || requiredSystems.All(system => system != null);
