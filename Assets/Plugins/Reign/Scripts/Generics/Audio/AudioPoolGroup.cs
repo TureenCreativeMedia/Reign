@@ -8,6 +8,6 @@ namespace Reign.Generics.Audio
     internal class AudioPoolGroup
     {
         public string name;
-        [AllowNesting] public List<AudioPoolEntry> audioPoolEntries;
+        [AllowNesting] public List<AudioPoolEntry> audioPoolEntries = new();
     }
 }

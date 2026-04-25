@@ -8,7 +8,7 @@ namespace Reign.Editor
 {
     public sealed class EditorComment : MonoBehaviour
     {
-        [TextArea(10, 10), SerializeField, Label("")] string comment;
+        [TextArea(10, 20), SerializeField, Label("")] string comment;
 
         void Awake()
         {
