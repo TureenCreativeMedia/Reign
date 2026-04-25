@@ -91,7 +91,22 @@ namespace Reign.Utility
                 return new Vector3(array[0], array[1], 0);
             }
 
-            throw new ArgumentException("Float array needs a minimum of 2 values");
+            throw new ArgumentException("Float array needs a minimum of 2 values to convert to Vector3");
+        }
+
+        /// <summary>
+        /// Converts a float array (minimum length 2) to a Vector2
+        /// </summary>
+        /// <param name="array"></param>
+        /// <returns>Vector3</returns>
+        public static Vector3 FloatArrayToVector2(float[] array)
+        {
+            if (array.Length >= 2)
+            {
+                return new Vector3(array[0], array[1], 0);
+            }
+
+            throw new ArgumentException("Float array needs a minimum of 2 values to convert to Vector2  ");
         }
 
         /// <summary>
@@ -99,9 +114,38 @@ namespace Reign.Utility
         /// </summary>
         /// <param name="vec"></param>
         /// <returns>Vector3</returns>
-        public static Vector3 Vector2ToVector3(Vector2 vec)
+        public static Vector3 ToVector3(Vector2 vec)
         {
             return new(vec.x, vec.y, 0);
+        }
+
+        /// <summary>
+        /// Return new Vector2 replacing each co-ordinate with absolute
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Vector2</returns>
+        public static Vector2 ToAbsolute(Vector2 vec)
+        {
+            return new Vector2
+            (
+                Mathf.Abs(vec.x),
+                Mathf.Abs(vec.y)
+            );
+        }
+
+        /// <summary>
+        /// Return new Vector3 replacing each co-ordinate with absolute
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns>Vector3</returns>
+        public static Vector3 ToAbsolute(Vector3 vec)
+        {
+            return new Vector3
+            (
+                Mathf.Abs(vec.x),
+                Mathf.Abs(vec.y),
+                Mathf.Abs(vec.z)
+            );
         }
     }
 }

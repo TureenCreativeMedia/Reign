@@ -4,6 +4,7 @@
     "com.discord.game-sdk": "3.1.0",
     "com.unity.2d.sprite": "1.0.0",
     "com.unity.ai.navigation": "1.1.7",
+    "com.unity.device-simulator.devices": "1.0.1",
     "com.unity.feature.2d": "2.0.1",
     "com.unity.feature.characters-animation": "1.0.0",
     "com.unity.feature.vr": "1.0.0",
