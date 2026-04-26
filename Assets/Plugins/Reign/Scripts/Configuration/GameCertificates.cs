@@ -4,7 +4,7 @@ namespace Reign.Generics
     {
         public const string GAME_NAME = "My Reign Game";
         public const string VERSION = "1.0";
-        internal const bool IS_DEBUG = true;
+        internal const bool IS_DEBUG = false;
 
         public const bool SAVE_SYSTEM_ENABLED = true;
         internal const bool SAVE_ON_QUIT = true;

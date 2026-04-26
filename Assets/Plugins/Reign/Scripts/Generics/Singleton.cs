@@ -23,7 +23,7 @@ namespace Reign.Generics
 
                 if (!Application.isPlaying) return null;
 
-                instance = FindObjectOfType<T>();
+                instance = FindAnyObjectByType<T>();
                 return instance;
             }
         }

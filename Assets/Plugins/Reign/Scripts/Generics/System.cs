@@ -21,7 +21,7 @@ namespace Reign.Systems
 
                 if (!Application.isPlaying) return null;
 
-                instance = FindObjectOfType<T>();
+                instance = FindAnyObjectByType<T>();
                 return instance;
             }
         }

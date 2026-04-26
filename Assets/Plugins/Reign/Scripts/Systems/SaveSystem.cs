@@ -55,7 +55,7 @@ namespace Reign.Systems
         {
             // Start from MonoBehaviour and not ReignMonoBehaviour because it inherits MonoBehaviour
 
-            var scriptList = FindObjectsOfType<MonoBehaviour>(true).OfType<IDataHandler>().ToList();
+            var scriptList = FindObjectsByType<MonoBehaviour>(FindObjectsInactive.Include).OfType<IDataHandler>().ToList();
             return scriptList;
         }
 
