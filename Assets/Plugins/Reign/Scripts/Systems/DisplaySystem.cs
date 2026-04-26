@@ -13,6 +13,8 @@ namespace Reign.Systems
 
         public void SaveData(ref GameData DATA)
         {
+            // Save current fullscreen option
+            DATA.screenResolution.fullscreen = Screen.fullScreen;
         }
 
         private void Update()

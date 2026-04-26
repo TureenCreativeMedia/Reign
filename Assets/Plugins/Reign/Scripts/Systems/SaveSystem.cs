@@ -1,6 +1,12 @@
+#pragma warning disable CS0162 // Unreachable code detected
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization.Formatters;
+using System.Threading;
 using System.Threading.Tasks;
+using Reign.Generics;
 using Reign.Generics.Input;
 using Reign.Generics.Saving;
 using Reign.Generics.Visuals;
@@ -58,39 +64,80 @@ namespace Reign.Systems
             dataHandlers = GetDataHandlers();
         }
 
-        /// <summary>
-        /// Load game data in every present data handler
-        /// </summary>
-        /// <returns></returns>
-        internal async Task LoadGameData()
+        private void LoadHandlers()
         {
-            gameData = await saveFileHandler.LoadAsync();
-
-            // Fallback
-            gameData = new GameData();
-
             foreach (var handler in dataHandlers)
             {
                 handler.LoadData(gameData);
             }
+        }
+
+        private void SaveHandlers()
+        {
+            foreach (var handler in dataHandlers)
+            {
+                handler.SaveData(ref gameData);
+            }
+        }
+
+        /// <summary>
+        /// Load game data (asynchronously) in every present data handler
+        /// </summary>
+        /// <returns></returns>
+        public async Task LoadGameData()
+        {
+            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
+            {
+                Debug.Log("Data tried to load, but SAVE_SYSTEM_ENABLED flag is false");
+                return;
+            }
+
+            gameData = await saveFileHandler.LoadAsync();
+
+            // Fallback
+            gameData ??= new GameData();
+
+            LoadHandlers();
 
             Debug.Log("Loaded data successfully");
         }
 
         /// <summary>
-        /// Save game data to every present data handler
+        /// Save game data (asynchronously) to every present data handler
         /// </summary>
         /// <returns></returns>
-        internal async Task SaveGameData()
+        public async Task SaveGameDataAsync()
         {
-            // Save to all handlers
-
-            foreach (var handler in dataHandlers)
+            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
             {
-                handler.SaveData(ref gameData);
+                Debug.Log("Data tried to save, but SAVE_SYSTEM_ENABLED flag is false");
+                return;
             }
 
+            // Save to all handlers
+            SaveHandlers();
+
             await saveFileHandler.SaveAsync(gameData);
+
+            Debug.Log("Saved data successfully");
+        }
+
+        /// <summary>
+        /// Save game data (synchronously) to every present data handler
+        /// </summary>
+        /// <returns></returns>
+        public void SaveGameDataSync()
+        {
+            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
+            {
+                Debug.Log("Data tried to save, but SAVE_SYSTEM_ENABLED flag is false");
+                return;
+            }
+
+            // Save to all handlers
+            SaveHandlers();
+
+            saveFileHandler.SaveSync(gameData);
 
             Debug.Log("Saved data successfully");
         }
@@ -98,24 +145,54 @@ namespace Reign.Systems
         // Runtime
         private async Task SetupAsync()
         {
+            if (!GameCertificates.SAVE_SYSTEM_ENABLED) return;
+
             RefreshHandlers();
+
             await LoadGameData();
+        }
+
+        private void OnApplicationQuit()
+        {
+            if (GameCertificates.SAVE_ON_QUIT)
+            {
+                SaveGameDataSync();
+            }
         }
 
         private void OnEnable()
         {
             // For every scene loaded, setup.
-            SceneManager.activeSceneChanged += OnChangeScene;
+            SceneManager.sceneLoaded += OnSceneLoaded;
         }
 
         private void OnDisable()
         {
-            SceneManager.activeSceneChanged -= OnChangeScene;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
-        private async void OnChangeScene(Scene a, Scene b)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
-            await SetupAsync();
+            StartCoroutine(Setup());
+        }
+
+        private IEnumerator Setup()
+        {
+            yield return null;
+            RefreshHandlers();
+            RunSetup();
+        }
+
+        private async void RunSetup()
+        {
+            try
+            {
+                await SetupAsync();
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogError(e);
+            }
         }
     }
 }

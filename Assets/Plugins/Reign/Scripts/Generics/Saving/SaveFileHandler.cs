@@ -22,7 +22,7 @@ namespace Reign.Generics.Saving
         /// Save asynchronously by writing all bytes to the save path
         /// </summary>
         /// <param name="data"></param>
-        /// <returns></returns>
+        /// <returns>Awaitable task</returns>
         internal async Task<bool> SaveAsync(GameData data)
         {
             try
@@ -49,9 +49,35 @@ namespace Reign.Generics.Saving
         }
 
         /// <summary>
+        /// Alternative to SaveAsync() where it is instead synchronous
+        /// </summary>
+        /// <param name="data"></param>
+        internal void SaveSync(GameData data)
+        {
+            try
+            {
+                string directory = Path.GetDirectoryName(SavePath);
+
+                if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                string json = JsonConvert.SerializeObject(data, Formatting.Indented);
+                byte[] fileBytes = DoEncrypt ? Encrypt(json) : Encoding.UTF8.GetBytes(json);
+
+                File.WriteAllBytes(SavePath, fileBytes);
+            }
+            catch (Exception e)
+            {
+                Debug.LogError($"Save failed: {e}");
+            }
+        }
+
+        /// <summary>
         /// Load asynchronously from the save path
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Awaitable task</returns>
         internal async Task<GameData> LoadAsync()
         {
             // Async load, create new data if the file is missing
@@ -97,7 +123,7 @@ namespace Reign.Generics.Saving
         /// Encrypt plaintext using GameCertificates' password and salt
         /// </summary>
         /// <param name="plaintext"></param>
-        /// <returns>byte[]</returns>
+        /// <returns>Byte array</returns>
         private byte[] Encrypt(string plaintext)
         {
             using Aes aes = Aes.Create();
@@ -132,7 +158,7 @@ namespace Reign.Generics.Saving
         /// Decrypt byte array back into plaintext using GameCertificates' password and salt
         /// </summary>
         /// <param name="cipher"></param>
-        /// <returns>string</returns>
+        /// <returns>Plaintext string</returns>
         private string Decrypt(byte[] cipher)
         {
             using Aes aes = Aes.Create();

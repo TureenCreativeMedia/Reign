@@ -31,7 +31,7 @@ namespace Reign
         }
 
         /// <summary>
-        /// Does the script have any required systems, if so, are they present?
+        /// Does the script have any required systems? If so, are they present?
         /// </summary>
         /// <returns>bool</returns>
         public bool HasRequiredSystems()
