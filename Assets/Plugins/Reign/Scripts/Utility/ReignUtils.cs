@@ -7,14 +7,6 @@ namespace Reign.Utility
     public static class ReignUtils
     {
         /// <summary>
-        /// Return the type of generic T
-        /// </summary>
-        public static Type GetType<T>()
-        {
-            return typeof(T);
-        }
-
-        /// <summary>
         /// Convert linear float to decibel.
         /// </summary>
         public static float FloatToDecibels(float lin)

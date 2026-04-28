@@ -87,11 +87,8 @@ namespace Reign.Systems
 
         private void Disconnect()
         {
-            if (discord != null)
-            {
-                discord.Dispose();
-                discord = null;
-            }
+            discord?.Dispose();
+            discord = null;
         }
 
         private void AttemptConnection()

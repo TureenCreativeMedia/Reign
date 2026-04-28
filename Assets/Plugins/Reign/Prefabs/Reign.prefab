@@ -394,6 +394,7 @@ MonoBehaviour:
   - {fileID: 7330508765402566466}
   - {fileID: 7182083637351474559}
   - {fileID: 5032680422019243299}
+  - {fileID: 8557099285751241260}
 --- !u!114 &1042509759720609901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +437,9 @@ MonoBehaviour:
     opposed to AppData scriptable object from previous Reign versions\n\n- Audio
     system now uses a master mixer channel by default, and assigns to the exposed
     volume parameter in LoadData()\n\n- Added many useful utility functions to ReignUtils.cs\n\n-
-    Added Reign Essentials (Built-in scripts for Reign)"
+    Added Reign Essentials (Built-in scripts for Reign)\n\n- Added object pooling
+    with PoolSystem\n\n- Made scene loading and transition asynchronous\n\n- Refactored
+    how DiscordSystem handles default RPC"
 --- !u!1 &8643818070393080627
 GameObject:
   m_ObjectHideFlags: 0
@@ -539,6 +542,7 @@ GameObject:
   - component: {fileID: 7330508765402566466}
   - component: {fileID: 7182083637351474559}
   - component: {fileID: 5032680422019243299}
+  - component: {fileID: 8557099285751241260}
   m_Layer: 0
   m_Name: Systems
   m_TagString: Untagged
@@ -666,3 +670,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
   loadOverlay: {fileID: 8070653452871922402}
+--- !u!114 &8557099285751241260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904663793570437277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53b2c000f0005dc4ca8b1d9fe7966110, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Reign.Systems.PoolSystem
+  dontDestroyOnLoad: 0

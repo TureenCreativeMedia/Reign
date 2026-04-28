@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Android;
 
 namespace Reign.Generics
 {
@@ -51,3 +50,4 @@ namespace Reign.Generics
         }
     }
 }
+

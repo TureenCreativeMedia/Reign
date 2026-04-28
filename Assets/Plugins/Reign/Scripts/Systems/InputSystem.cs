@@ -16,7 +16,7 @@ namespace Reign.Systems
         /// Toggle the ability to use GetInput()
         /// </summary>
         /// <param name="isInputsEnabled"></param>
-        internal void SetInputsEnabled(bool isInputsEnabled)
+        public void SetInputsEnabled(bool isInputsEnabled)
         {
             inputsEnabled = isInputsEnabled;
         }
@@ -27,7 +27,7 @@ namespace Reign.Systems
         /// <param name="name"></param>
         /// <param name="inputType"></param>
         /// <returns>bool</returns>
-        internal bool GetInput(string name, InputType inputType = InputType.DOWN)
+        public bool GetInput(string name, InputType inputType = InputType.DOWN)
         {
             if (!inputsEnabled) return false;
 

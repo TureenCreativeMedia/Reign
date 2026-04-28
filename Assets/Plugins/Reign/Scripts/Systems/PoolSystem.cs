@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Reign.Interfaces;
 using Reign.Utility;
 using UnityEngine;
-using UnityEngine.Localization.SmartFormat.Utilities;
 
 namespace Reign.Systems
 {
@@ -27,7 +26,7 @@ namespace Reign.Systems
         /// </summary>
         public T Spawn<T>(T prefab) where T : MonoBehaviour, IPoolable
         {
-            Type type = ReignUtils.GetType<T>();
+            Type type = typeof(T);
 
             T obj;
             Queue<IPoolable> singular = GetPool(type);
