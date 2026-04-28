@@ -1,14 +1,11 @@
 using System.Threading.Tasks;
 using UnityEngine.SceneManagement;
 using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
-using UnityEngine.Events;
-using System;
 
 namespace Reign.Systems
 {
-    public class SceneLoadSystem : System<SceneLoadSystem>
+    public sealed class SceneLoadSystem : System<SceneLoadSystem>
     {
         [SerializeField] Image loadOverlay;
 

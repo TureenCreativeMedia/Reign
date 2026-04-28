@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace Reign.Generics.Audio
 {
     [Serializable]
-    internal class AudioPoolGroup
+    public class AudioPoolGroup
     {
         public string name;
         [AllowNesting] public List<AudioPoolEntry> audioPoolEntries = new();

@@ -6,7 +6,7 @@ using System;
 
 namespace Reign.Systems
 {
-    public class InputSystem : System<InputSystem>, IDataHandler
+    public sealed class InputSystem : System<InputSystem>, IDataHandler
     {
         public Dictionary<string, KeyCode[]> Inputs { get; private set; }
 

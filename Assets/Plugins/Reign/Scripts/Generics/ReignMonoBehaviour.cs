@@ -6,12 +6,12 @@ namespace Reign.Generics
 {
     public class ReignMonoBehaviour : MonoBehaviour
     {
-        internal bool TrackActiveTime { get; private set; } = false;
+        public bool TrackActiveTime { get; private set; } = false;
 
         /// <summary>
         /// Get the current active time only if the object is tracking it
         /// </summary>
-        internal float ActiveTime
+        public float ActiveTime
         {
             get
             {
@@ -30,7 +30,7 @@ namespace Reign.Generics
         /// <summary>
         /// Get children of this ReignMonoBehaviour
         /// </summary>
-        internal IEnumerable<Transform> GetChildren
+        public IEnumerable<Transform> GetChildren
         {
             get
             {

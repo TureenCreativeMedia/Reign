@@ -20,7 +20,7 @@ namespace Reign.Systems
         public long endUnixTimestamp;
     }
 
-    public class DiscordSystem : System<DiscordSystem>
+    public sealed class DiscordSystem : System<DiscordSystem>
     {
         [SerializeField] private DiscordSystemData defaultDiscordSystemData;
 
