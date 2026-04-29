@@ -1,30 +1,43 @@
 using System;
-using UnityEditor;
 using UnityEngine;
 
 namespace Reign.Utility
 {
-    public static class ReignUtils
+    public static class ReignUtility
     {
+        /// <summary>
+        /// Make a transform point towards a point with a speed (less than or equal to 0 will be instant)
+        /// </summary>
+        public static void PointTowards(Transform pointer, Vector3 point, float speed = 0)
+        {
+            Vector3 direction = (point - pointer.position).normalized;
+            Quaternion target = Quaternion.LookRotation(direction);
+
+            if (speed <= 0)
+            {
+                pointer.rotation = target;
+            }
+            else
+            {
+                pointer.rotation = Quaternion.Slerp(pointer.rotation, target, Time.deltaTime / speed);
+            }
+        }
+
         /// <summary>
         /// Convert linear float to decibel.
         /// </summary>
         public static float FloatToDecibels(float lin)
         {
-            float dB;
-
             if (lin > 0.0f)
             {
                 // If linear float is greater than 0.0f, convert it to decibel
-                dB = 20.0f * Mathf.Log10(lin);
+                return 20.0f * Mathf.Log10(lin);
             }
             else
             {
                 // Otherwise, set it to the absolute minimum decibel value
-                dB = -144.0f;
+                return -144.0f;
             }
-
-            return dB;
         }
 
         /// <summary>
@@ -33,8 +46,7 @@ namespace Reign.Utility
         public static float DecibelsToFloat(float dB)
         {
             // Use the decibel to linear conversion, 10^db/20
-            float lin = Mathf.Pow(10.0f, dB / 20.0f);
-            return lin;
+            return Mathf.Pow(10.0f, dB / 20.0f);
         }
 
         /// <summary>
@@ -96,7 +108,7 @@ namespace Reign.Utility
         /// <summary>
         /// Convert a Vector2 to a Vector3
         /// </summary>
-        public static Vector3 ToVector3(Vector2 vec)
+        public static Vector3 Vector2ToVector3(Vector2 vec)
         {
             return new(vec.x, vec.y, 0);
         }
@@ -104,7 +116,7 @@ namespace Reign.Utility
         /// <summary>
         /// Return new Vector2 replacing each co-ordinate with absolute
         /// </summary>
-        public static Vector2 ToAbsolute(Vector2 vec)
+        public static Vector2 Vector2ToAbsolute(Vector2 vec)
         {
             return new Vector2
             (
@@ -116,7 +128,7 @@ namespace Reign.Utility
         /// <summary>
         /// Return new Vector3 replacing each co-ordinate with absolute
         /// </summary>
-        public static Vector3 ToAbsolute(Vector3 vec)
+        public static Vector3 Vector3ToAbsolute(Vector3 vec)
         {
             return new Vector3
             (
@@ -189,7 +201,7 @@ namespace Reign.Utility
         /// </summary>
         public static long Factorial(int number)
         {
-            if (number < 0) throw new ArgumentException($"Number ({number}) must be greater than zero.");
+            if (number < 0) throw new ArgumentException($"Number ({number}) must be greater than or equal to zero.");
             return (number == 0) ? 1 : number * Factorial(number - 1);
         }
     }

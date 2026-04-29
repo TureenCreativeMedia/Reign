@@ -1,4 +1,4 @@
-using Reign.Generics;
+using Reign.Generic;
 using Reign.Interfaces;
 
 namespace Reign.Essentials

@@ -1,4 +1,4 @@
-namespace Reign.Generics
+namespace Reign.Generic
 {
     public class GameCertificates
     {

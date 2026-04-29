@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Discord;
-using Reign.Generics;
+using Reign.Generic;
 using System;
 
 namespace Reign.Systems
@@ -33,8 +33,7 @@ namespace Reign.Systems
         /// <summary>
         /// Set current Discord RPC data
         /// </summary>
-        /// <param name="data">Data to set</param>
-        internal void SetData(DiscordSystemData data)
+        public void SetData(DiscordSystemData data)
         {
             if (!data.Equals(currentDiscordSystemSettings))
             {
@@ -46,8 +45,7 @@ namespace Reign.Systems
         /// <summary>
         /// Get current Discord RPC data
         /// </summary>
-        /// <returns>DiscordSystemData</returns>
-        internal DiscordSystemData GetCurrent()
+        public DiscordSystemData GetCurrent()
         {
             return currentDiscordSystemSettings;
         }
@@ -55,7 +53,7 @@ namespace Reign.Systems
         /// <summary>
         /// Set current data's start timestamp to the current unix time 
         /// </summary>
-        internal void ResetTimestamp()
+        public void ResetTimestamp()
         {
             currentDiscordSystemSettings.startUnixTimestamp = DateTimeOffset.UtcNow.ToUnixTimeSeconds();
         }

@@ -1,4 +1,4 @@
-using Reign.Generics;
+using Reign.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 

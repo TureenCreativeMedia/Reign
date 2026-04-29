@@ -3,7 +3,7 @@ using Reign.Interfaces;
 using Reign.Systems;
 using UnityEngine;
 
-namespace Reign.Generics.Input
+namespace Reign.Generic.Input
 {
     public class InputMap
     {

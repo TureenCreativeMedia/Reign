@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Reign.Generics.Audio
+namespace Reign.Generic.Audio
 {
     [CreateAssetMenu(fileName = "New Audio Pool", menuName = "Reign/New Audio Pool")]
     public class AudioPool : ScriptableObject

@@ -2,7 +2,7 @@ using System;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace Reign.Generics.Audio
+namespace Reign.Generic.Audio
 {
     [Serializable]
     public class AudioPoolEntry

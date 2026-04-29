@@ -7,7 +7,7 @@ using Reign.Systems;
 using UnityEngine;
 using Newtonsoft.Json;
 
-namespace Reign.Generics.Saving
+namespace Reign.Generic.Saving
 {
     public sealed class SaveFileHandler
     {

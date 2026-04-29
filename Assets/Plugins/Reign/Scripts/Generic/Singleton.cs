@@ -2,7 +2,7 @@ using System.Collections;
 using System.Linq;
 using UnityEngine;
 
-namespace Reign.Generics
+namespace Reign.Generic
 {
     /// <summary>
     /// A ReignMonoBehaviour that can only have one public static instance

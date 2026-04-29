@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Reign.Generics
+namespace Reign.Generic
 {
     public class ReignMonoBehaviour : MonoBehaviour
     {

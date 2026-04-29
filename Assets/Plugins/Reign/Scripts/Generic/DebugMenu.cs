@@ -4,7 +4,7 @@ using Reign.Systems;
 using TMPro;
 using UnityEngine;
 
-namespace Reign.Generics
+namespace Reign.Generic
 {
     public class DebugMenu : MonoBehaviour
     {

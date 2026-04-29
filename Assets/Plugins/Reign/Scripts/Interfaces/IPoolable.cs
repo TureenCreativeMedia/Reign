@@ -1,5 +1,3 @@
-using Reign.Generics;
-
 namespace Reign.Interfaces
 {
     public interface IPoolable

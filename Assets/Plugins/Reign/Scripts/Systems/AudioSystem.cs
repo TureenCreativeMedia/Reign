@@ -1,10 +1,11 @@
 using UnityEngine;
-using Reign.Generics.Audio;
+using Reign.Generic.Audio;
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine.Audio;
 using Reign.Interfaces;
 using System.Threading.Tasks;
+
 namespace Reign.Systems
 {
     public sealed class AudioSystem : System<AudioSystem>, IDataHandler
@@ -140,7 +141,7 @@ namespace Reign.Systems
 
             if (source != null)
             {
-                Destroy(source.gameObject);
+                Object.Destroy(source.gameObject);
             }
         }
 

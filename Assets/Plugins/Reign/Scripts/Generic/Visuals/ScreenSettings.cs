@@ -1,4 +1,4 @@
-namespace Reign.Generics.Visuals
+namespace Reign.Generic.Visuals
 {
     public class ScreenSettings
     {
