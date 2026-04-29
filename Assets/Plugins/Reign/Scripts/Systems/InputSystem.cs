@@ -3,6 +3,7 @@ using Reign.Interfaces;
 using Reign.Enums;
 using UnityEngine;
 using System;
+using Reign.Generic.Saving;
 
 namespace Reign.Systems
 {

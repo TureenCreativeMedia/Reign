@@ -1,4 +1,5 @@
 using UnityEngine;
+using Reign.Generic.Saving;
 using Reign.Generic.Audio;
 using System.Collections.Generic;
 using System.Collections;
@@ -16,6 +17,8 @@ namespace Reign.Systems
 
         public void OnValidate()
         {
+            if (audioPool == null || audioEntries == null) return;
+
             foreach (AudioPoolGroup group in audioPool.audioGroups)
             {
                 foreach (AudioPoolEntry entry in group.audioPoolEntries)
@@ -42,8 +45,8 @@ namespace Reign.Systems
         /// <returns></returns>
         public AudioPoolEntry GetEntry(string name)
         {
-            AudioPoolEntry entry = null; // Initialise as null
-            audioEntries?.TryGetValue(name, out entry);
+            AudioPoolEntry entry = null;                // Initialise as null
+            audioEntries?.TryGetValue(name, out entry); // Try get value and output entry
 
             return entry;
         }

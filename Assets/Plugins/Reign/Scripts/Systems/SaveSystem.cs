@@ -14,30 +14,6 @@ using UnityEngine.SceneManagement;
 
 namespace Reign.Systems
 {
-    [System.Serializable]
-    public sealed class GameData
-    {
-        public ScreenSettings screenResolution;
-        public InputMap inputMap;
-
-        public float masterAudioVolume;
-
-        public GameData()
-        {
-            screenResolution = new ScreenSettings(1280, 720, false, true, true);
-
-            masterAudioVolume = -2.0f; // in Decibels
-
-            inputMap = new InputMap()
-            {
-                inputs = new Dictionary<string, KeyCode[]>()
-                {
-                    {"any", new KeyCode[] { KeyCode.None }}
-                }
-            };
-        }
-    }
-
     [DefaultExecutionOrder(-1)]
     public sealed class SaveSystem : System<SaveSystem>
     {
@@ -49,7 +25,7 @@ namespace Reign.Systems
         /// Return a list of the present data handlers in the scene
         /// </summary>
         /// <returns></returns>
-        internal static List<IDataHandler> GetDataHandlers()
+        public static List<IDataHandler> GetDataHandlers()
         {
             // Start from MonoBehaviour and not ReignMonoBehaviour because it inherits MonoBehaviour
 
