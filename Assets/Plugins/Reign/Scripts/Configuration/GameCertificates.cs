@@ -1,3 +1,5 @@
+using Reign.Systems;
+
 namespace Reign.Generic
 {
     public sealed class GameCertificates
@@ -16,5 +18,17 @@ namespace Reign.Generic
 
         public const bool DISCORD_ENABLED = true;
         public const long DISCORD_APP_ID = 1453862071543271508;
+
+        public static readonly DiscordSystemData DEFAULT_DISCORD_RPC_DATA = new()
+        {
+            details = "",
+            state = "",
+            largeImage = "",
+            largeImageText = "",
+            smallImage = "",
+            smallImageText = "",
+            startUnixTimestamp = 0,
+            endUnixTimestamp = 0
+        };
     }
 }

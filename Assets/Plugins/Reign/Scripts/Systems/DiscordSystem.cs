@@ -22,12 +22,12 @@ namespace Reign.Systems
 
     public sealed class DiscordSystem : System<DiscordSystem>
     {
-        [SerializeField] private DiscordSystemData defaultDiscordSystemData;
+        private DiscordSystemData DefaultDiscordSystemData => GameCertificates.DEFAULT_DISCORD_RPC_DATA;
 
-        public bool canConnect { get; private set; } = false;
-        public bool isConnected { get; private set; } = false;
+        public bool CanConnect { get; private set; } = false;
+        public bool IsConnected { get; private set; } = false;
         private DiscordSystemData currentDiscordSystemSettings;
-        public Discord.Discord discord { get; private set; } = null;
+        public Discord.Discord Discord { get; private set; } = null;
         private ActivityManager manager;
 
         /// <summary>
@@ -60,14 +60,14 @@ namespace Reign.Systems
 
         private void Start()
         {
-            canConnect = GameCertificates.DISCORD_ENABLED;
+            CanConnect = GameCertificates.DISCORD_ENABLED;
 
-            if (defaultDiscordSystemData.startUnixTimestamp == 0)
+            if (DefaultDiscordSystemData.startUnixTimestamp == 0)
             {
                 ResetTimestamp();
             }
 
-            SetData(defaultDiscordSystemData);
+            SetData(DefaultDiscordSystemData);
 
             AttemptConnection();
         }
@@ -79,29 +79,29 @@ namespace Reign.Systems
 
         private void Update()
         {
-            canConnect = !isConnected;
+            CanConnect = !IsConnected;
             AttemptCallbacks();
         }
 
         private void Disconnect()
         {
-            discord?.Dispose();
-            discord = null;
+            Discord?.Dispose();
+            Discord = null;
         }
 
         private void AttemptConnection()
         {
-            if (!canConnect)
+            if (!CanConnect)
             {
                 Disconnect();
                 return;
             }
 
-            if (discord == null)
+            if (Discord == null)
             {
                 try
                 {
-                    discord = new Discord.Discord(GameCertificates.DISCORD_APP_ID, (ulong)CreateFlags.NoRequireDiscord);
+                    Discord = new Discord.Discord(GameCertificates.DISCORD_APP_ID, (ulong)CreateFlags.NoRequireDiscord);
                     UpdateStatus();
                 }
                 catch (Exception e)
@@ -114,11 +114,11 @@ namespace Reign.Systems
 
         private void AttemptCallbacks()
         {
-            if (discord == null) return;
+            if (Discord == null) return;
 
             try
             {
-                discord.RunCallbacks();
+                Discord.RunCallbacks();
             }
             catch
             {
@@ -128,11 +128,11 @@ namespace Reign.Systems
 
         private void UpdateStatus()
         {
-            if (discord == null) return;
+            if (Discord == null) return;
 
             try
             {
-                manager ??= discord.GetActivityManager();
+                manager ??= Discord.GetActivityManager();
 
                 Activity activity = new()
                 {
@@ -155,7 +155,7 @@ namespace Reign.Systems
 
                 manager.UpdateActivity(activity, result =>
                 {
-                    isConnected = result == Result.Ok;
+                    IsConnected = result == Result.Ok;
                 });
             }
             catch (Exception exception)

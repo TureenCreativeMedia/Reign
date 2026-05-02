@@ -27,7 +27,7 @@ namespace Reign.Generic
         {
             text.text = $@"{GameCertificates.GAME_NAME} v{GameCertificates.VERSION}<size=75%>
 • Reign v{ReignServiceDetails.REIGN_VERSION}
-• Discord Status: {DiscordSystem.Instance.isConnected}";
+• Discord Status: {DiscordSystem.Instance.IsConnected}";
         }
     }
 }

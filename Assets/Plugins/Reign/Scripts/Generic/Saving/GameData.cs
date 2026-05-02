@@ -19,13 +19,7 @@ namespace Reign.Generic.Saving
 
             masterAudioVolume = -2.0f; // in Decibels
 
-            inputMap = new InputMap()
-            {
-                inputs = new Dictionary<string, KeyCode[]>()
-                {
-                    {"any", new KeyCode[] { KeyCode.None }}
-                }
-            };
+            inputMap = new InputMap();
         }
     }
 }

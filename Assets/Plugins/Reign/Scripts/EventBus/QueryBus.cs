@@ -18,9 +18,6 @@ namespace Reign.Events
         /// <summary>
         /// Register handler for a specific query type and prevents type mismatch
         /// </summary>
-        /// <typeparam name="TQuery">Query</typeparam>
-        /// <typeparam name="TResponse">Return type</typeparam>
-        /// <param name="handler">Function to take TQuery and return TResponse</param>
         public static void Register<TQuery, TResponse>(Func<TQuery, Task<TResponse>> handler) where TQuery : IQuery<TResponse>
         {
             // Get type of query and store in handler dictionary
@@ -31,11 +28,6 @@ namespace Reign.Events
         /// <summary>
         /// Execute a query
         /// </summary>
-        /// <typeparam name="TQuery"></typeparam>
-        /// <typeparam name="TResponse"></typeparam>
-        /// <param name="query"></param>
-        /// <returns>Async operation.</returns>
-        /// <exception cref="InvalidOperationException"></exception>
         public static async Task<TResponse> Query<TQuery, TResponse>(TQuery query) where TQuery : IQuery<TResponse>
         {
             // Look for type of query in handlers

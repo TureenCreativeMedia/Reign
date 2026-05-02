@@ -6,7 +6,39 @@ namespace Reign.Utility
     public static class ReignUtility
     {
         /// <summary>
-        /// Make a transform point towards a point with a speed (less than or equal to 0 will be instant)
+        /// Convert a hex string to a Color32
+        /// </summary>
+        public static Color32 HexToColor32(string hex)
+        {
+            hex = hex.Replace("#", "");
+
+            byte r = byte.Parse(hex[..2], System.Globalization.NumberStyles.HexNumber);
+            byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+            byte a = 255;
+
+            if (hex.Length >= 8)
+            {
+                a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            return new Color32(r, g, b, a);
+        }
+
+        /// <summary>
+        /// Convert a Color32 to a hex string
+        /// </summary>
+        public static string Color32ToHex(Color32 color, bool includeAlpha)
+        {
+            string h = $"#{color.r:X2}{color.g:X2}{color.b:X2}";
+            if (includeAlpha) h += $"{color.a:X2}";
+
+            return h;
+        }
+
+        /// <summary>
+        /// Make a transform point towards a point with a speed (If speed <= 0, rotation will be instant. But if speed >= 0, 
+        /// rotation will gradual so must be called repeatedly)
         /// </summary>
         public static void PointTowards(Transform pointer, Vector3 point, float speed = 0)
         {
@@ -19,7 +51,7 @@ namespace Reign.Utility
             }
             else
             {
-                pointer.rotation = Quaternion.Slerp(pointer.rotation, target, Time.deltaTime / speed);
+                pointer.rotation = Quaternion.RotateTowards(pointer.rotation, target, Time.deltaTime / speed);
             }
         }
 
