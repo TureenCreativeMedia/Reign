@@ -5,26 +5,14 @@ namespace Reign.Generic
 {
     public class ReignMonoBehaviour : MonoBehaviour
     {
-        public bool TrackActiveTime { get; private set; } = false;
+        public readonly bool TrackInternalTime = false;
+        public float InternalTimer {get; private set;} = 0.0f;
 
-        /// <summary>
-        /// Get the current active time only if the object is tracking it
-        /// </summary>
-        public float ActiveTime
+        private void Update()
         {
-            get
-            {
-                if (!TrackActiveTime)
-                {
-                    Debug.LogWarning("Unable to parse active time.");
-                    return 0f;
-                }
-
-                return _activeTime;
-            }
+            if (!TrackInternalTime) return;
+            InternalTimer += Time.unscaledDeltaTime;
         }
-
-        private float _activeTime = 0.0f;
 
         /// <summary>
         /// Get children of this ReignMonoBehaviour
@@ -37,15 +25,6 @@ namespace Reign.Generic
                 {
                     yield return transform.GetChild(i);
                 }
-            }
-        }
-
-        void Update()
-        {
-            // Only update if we're actually tracking
-            if (TrackActiveTime)
-            {
-                _activeTime += Time.unscaledDeltaTime;
             }
         }
     }

@@ -1,10 +1,19 @@
 using System;
+using Reign.Generic;
 using UnityEngine;
 
 namespace Reign.Utility
 {
     public static class ReignUtility
     {
+        /// <summary>
+        /// Returns detailed information about the current Reign Service
+        /// </summary>
+        public static string GetReignInfo()
+        {
+            return $"v{ReignServiceDetails.REIGN_VERSION} | Released: {ReignServiceDetails.RELEASE_DATE}";
+        }
+
         /// <summary>
         /// Convert a hex string to a Color32
         /// </summary>

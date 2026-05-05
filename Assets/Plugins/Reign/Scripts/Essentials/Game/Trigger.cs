@@ -14,14 +14,14 @@ namespace Reign.Essentials
         [SerializeField] private UnityEvent onEnter;
         [SerializeField] private UnityEvent onExit;
 
-        void Awake()
+        private void Awake()
         {
             colliderReference = GetComponent<BoxCollider>();
 
             if (colliderReference != null) colliderReference.isTrigger = true;
         }
 
-        void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (triggerEnabled && (other.CompareTag(searchTag) || string.IsNullOrEmpty(searchTag)))
             {
@@ -29,12 +29,17 @@ namespace Reign.Essentials
             }
         }
 
-        void OnTriggerExit(Collider other)
+        private void OnTriggerExit(Collider other)
         {
             if (triggerEnabled && (other.CompareTag(searchTag) || string.IsNullOrEmpty(searchTag)))
             {
                 onExit?.Invoke();
             }
+        }
+
+        private void OnDestroy()
+        {
+            onExit?.Invoke();
         }
 
         public void EnableTrigger() => triggerEnabled = true;

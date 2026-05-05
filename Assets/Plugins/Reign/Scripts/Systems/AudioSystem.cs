@@ -32,7 +32,6 @@ namespace Reign.Systems
         /// Check if audio entries dictionary contains the key of name
         /// </summary>
         /// <param name="name">Audio entry key</param>
-        /// <returns>bool</returns>
         public bool HasSound(string name)
         {
             return audioEntries != null && audioEntries.ContainsKey(name);
@@ -42,7 +41,6 @@ namespace Reign.Systems
         /// Return entry in audio entries dictionary by name
         /// </summary>
         /// <param name="name"></param>
-        /// <returns></returns>
         public AudioPoolEntry GetEntry(string name)
         {
             AudioPoolEntry entry = null;                // Initialise as null
@@ -58,7 +56,6 @@ namespace Reign.Systems
         /// <param name="entry">Audio pool entry to parse data from</param>
         /// <param name="pos">Nullable Vector3 to place the source transform position at</param>
         /// <param name="loop">If the source should loop</param>
-        /// <returns></returns>
         private static void SourceSetup(AudioSource source, AudioPoolEntry entry, Vector3? pos, bool loop = false)
         {
             source.loop = loop;
@@ -119,7 +116,6 @@ namespace Reign.Systems
         /// <param name="index">Index of entry's clip array to pull from</param>
         /// <param name="loop">If the source should loop</param>
         /// <param name="destroyOnComplete">If the game object should be destroyed when the sound is finished</param>
-        /// <returns></returns>
         public AudioSource PlayCreateInstance(string name, Vector3? pos, int index = 0, bool loop = false, bool destroyOnComplete = true)
         {
             GameObject newSound = new($"Sound Instance ({name})");
