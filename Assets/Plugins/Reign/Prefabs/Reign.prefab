@@ -178,7 +178,6 @@ MonoBehaviour:
   - {fileID: 3602144223584130361}
   - {fileID: 4047937867864585987}
   - {fileID: 10333360435678731}
-  - {fileID: 7330508765402566466}
   - {fileID: 7182083637351474559}
   - {fileID: 5032680422019243299}
   - {fileID: 8557099285751241260}
@@ -217,21 +216,15 @@ MonoBehaviour:
     multiple clips per entry and playing one index when using any variation of Play()\n\n-
     Made EventBus and QueryBus seperate scripts\n\n- Made EventBus and QueryBus async
     and thread safe\n\n- Made EventBus type safe\n\n- Made SaveSystem asynchronous
-    to avoid long stutters between saving and loading\n\n- Added InputMap which contains
-    input dictionary and helper functions for overriding and saving keybinds\n\n-
-    Made InputSystem and SaveSystem contain InputMap class \n\n- Optimised DiscordSystem
-    to reduce update calls\n\n- Input map standard is now lowercase IDs opposed to
-    camelcase in previous Reign versions\n\n- Moved all app configuration to GameCertificates.cs
+    to avoid long stutters between saving and loading \n\n- Optimised DiscordSystem
+    to reduce update calls\n\n- Moved all app configuration to GameCertificates.cs
     opposed to AppData scriptable object from previous Reign versions\n\n- Audio
     system now uses a master mixer channel by default, and assigns to the exposed
     volume parameter in LoadData()\n\n- Added many useful utility functions to ReignUtils.cs\n\n-
     Added Reign Essentials (Built-in scripts for Reign)\n\n- Added object pooling
     with PoolSystem\n\n- Made scene loading and transition asynchronous\n\n- Refactored
-    how DiscordSystem handles default RPC\n\n- InputSystem now returns false if Inputs
-    dictionary is missing\n\n- InputSystem now supports composite inputs (must have
-    all keys held down)\n\n- Added a toggle for Reign logging after finding all required
-    systems or successfully loading\n\n- Altered where default inputs are saved (Moved
-    from GameData.cs constructor to InputMap.cs private readonly dictionary\n"
+    how DiscordSystem handles default RPC\n\n- Added a toggle for Reign logging after
+    finding all required systems or successfully loading\n\n- Removed custom InputSystem\n"
 --- !u!1 &8643818070393080627
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +323,6 @@ GameObject:
   - component: {fileID: 4047937867864585987}
   - component: {fileID: 10333360435678731}
   - component: {fileID: 6555218448291149555}
-  - component: {fileID: 7330508765402566466}
   - component: {fileID: 7182083637351474559}
   - component: {fileID: 5032680422019243299}
   - component: {fileID: 8557099285751241260}
@@ -412,19 +404,6 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
---- !u!114 &7330508765402566466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8904663793570437277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a604dad6a87eec043950b92ba44bb035, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
 --- !u!114 &7182083637351474559
 MonoBehaviour:
   m_ObjectHideFlags: 0

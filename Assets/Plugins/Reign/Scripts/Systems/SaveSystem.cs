@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Reign.Generic;
-using Reign.Generic.Input;
 using Reign.Generic.Saving;
 using Reign.Generic.Visuals;
 using Reign.Interfaces;
