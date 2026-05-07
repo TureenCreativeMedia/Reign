@@ -11,20 +11,19 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 ---
 
 ### Crediting Purple Swing
-Depending on the circumstance:
 
-Open source software [STRICT] - Disclaim in the README.md or any main information page that '[Reign](https://github.com/Purple-Swing/Reign) by ©Purple Swing was used in the creation of the software.'
+All projects that use **Purple Swing's Reign** must either state so in documentation, their `LICENSE.md` or in their `README.md`.
 
-Closed source/Internal software [LESS STRICT] - Should say anywhere atleast once that ©Purple Swing created Reign which the software is using, this includes files and folders of Reign itself (e.g. /Plugins/Reign)
-
-Undownloadable/Private software [NO TERMS] - Doesn't have to credit ©Purple Swing anywhere as it is completely private
+Proprietary/Closed-source software is not an exception.
 
 ---
 
-### Clearing Up Misunderstandings
+### Info
 
-- Reign is a tool used for Unity Game Development, nothing more. Therefore, it is free to use as long as you agree to the LICENSE and Crediting section.
-- Reign can only be installed from the [GitHub Releases Page](https://github.com/Purple-Swing/Reign/releases)
+- Reign is a tool used for Unity Game Development, nothing more. Therefore, it can be used for free as long as you agree to the terms above.
+- Reign can only be installed from the [GitHub Releases page](https://github.com/Purple-Swing/Reign/releases)
+- Reign will continue development until **Purple Swing** sees it fit for production, this includes changes after 1.0
+- **Purple Swing** assumes no responsibility or liability toward the user's usage of Reign
 
 ---
 
