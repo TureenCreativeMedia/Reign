@@ -1,6 +1,6 @@
 {
     "version": 1,
-    "name": "InputActions",
+    "name": "ProjectWideInputActions",
     "maps": [
         {
             "name": "Player",

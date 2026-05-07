@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Reign.Systems;
 
 namespace Reign.Generic
@@ -6,6 +7,7 @@ namespace Reign.Generic
     {
         public const string GAME_NAME = "My Reign Game";
         public const string VERSION = "1.0";
+        public static readonly IReadOnlyList<string> AUTHORS = new[] { "" };
         public const bool IS_DEBUG = false;
 
         public const bool SAVE_SYSTEM_ENABLED = true;

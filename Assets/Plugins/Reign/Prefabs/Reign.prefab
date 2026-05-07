@@ -178,6 +178,7 @@ MonoBehaviour:
   - {fileID: 3602144223584130361}
   - {fileID: 4047937867864585987}
   - {fileID: 10333360435678731}
+  - {fileID: 4839786222719983056}
   - {fileID: 7182083637351474559}
   - {fileID: 5032680422019243299}
   - {fileID: 8557099285751241260}
@@ -323,6 +324,7 @@ GameObject:
   - component: {fileID: 4047937867864585987}
   - component: {fileID: 10333360435678731}
   - component: {fileID: 6555218448291149555}
+  - component: {fileID: 4839786222719983056}
   - component: {fileID: 7182083637351474559}
   - component: {fileID: 5032680422019243299}
   - component: {fileID: 8557099285751241260}
@@ -389,6 +391,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 0
+  globalVolume: {fileID: 4669575924893501924}
 --- !u!114 &6555218448291149555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,6 +407,21 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+--- !u!114 &4839786222719983056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8904663793570437277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55f874045c44eeadaa4ac14eb38b93a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp-firstpass::Reign.InputSystem
+  dontDestroyOnLoad: 0
+  ActiveActionMapIndex: 0
+  inputActions: {fileID: -944628639613478452, guid: 1f56ef3feffd44ee5bda5196196d8ac4, type: 3}
 --- !u!114 &7182083637351474559
 MonoBehaviour:
   m_ObjectHideFlags: 0

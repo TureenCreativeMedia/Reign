@@ -15,9 +15,9 @@ namespace Reign
         {
             if (!log) return;
 
-            if (IsUsable())
+            if (HasRequiredSystems())
             {
-                Debug.Log($"<color=#008ec2ff><b>Started Reign v{ReignServiceDetails.REIGN_VERSION}</b></color>");
+                Debug.Log($"<color=#008ec2ff><b>Initialised Reign v{ReignServiceDetails.REIGN_VERSION}</b></color>");
             }
             else
             {
@@ -25,17 +25,9 @@ namespace Reign
             }
         }
 
-        private bool IsUsable()
-        {
-            // Leave space for other requirements later
-
-            return HasRequiredSystems();
-        }
-
         /// <summary>
         /// Does the script have any required systems? If so, are they present?
         /// </summary>
-        /// <returns>bool</returns>
         public bool HasRequiredSystems()
         {
             bool success = !requiredSystems.Any() || requiredSystems.All(system => system != null);
