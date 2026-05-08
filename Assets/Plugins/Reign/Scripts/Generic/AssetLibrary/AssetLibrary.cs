@@ -25,16 +25,24 @@ namespace Reign.Generic.AssetLibrary
         }
 
         /// <summary>
-        /// Get values of the dictionary as a List<T>
+        /// Get first value in asset entries of type T
         /// </summary>
-        public List<T> GetValues()
+        public Type GetFirstValueOfType<Type>()
+        {
+            return GetValuesOfType<Type>().FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Get list of values of type T
+        /// </summary>
+        public List<Type> GetValuesOfType<Type>()
         {
             if (assets == null)
             {
                 Validate();
             }
 
-            return assets.Values.ToList();
+            return assets.Values.OfType<Type>().ToList();
         }
 
         /// <summary>

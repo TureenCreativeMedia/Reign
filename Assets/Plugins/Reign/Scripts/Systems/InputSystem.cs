@@ -99,7 +99,7 @@ namespace Reign.Systems
             {
                 InputType.PRESSED => action.wasPressedThisFrame,
                 InputType.RELEASED => action.wasReleasedThisFrame,
-                InputType.PRESSING => action.IsPressed(),
+                InputType.PRESSING => action.isPressed,
                 _ => false
             };
         }

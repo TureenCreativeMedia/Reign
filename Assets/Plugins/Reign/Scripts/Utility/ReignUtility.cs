@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Reign.Generic;
+using UnityEditor;
 using UnityEngine;
 
 namespace Reign.Utility
@@ -246,5 +247,26 @@ namespace Reign.Utility
             if (number < 0) throw new ArgumentException($"Number ({number}) must be greater than or equal to zero.");
             return (number == 0) ? 1 : number * Factorial(number - 1);
         }
+
+#if UNITY_EDITOR
+        /// <summary>
+        /// Instantiate a prefab in the Unity Editor 
+        /// </summary>
+        public static void InstantiatePrefabInEditor(string path)
+        {
+            var prefab = AssetDatabase.LoadAssetAtPath<GameObject>(path);
+
+            if (prefab == null)
+            {
+                Debug.LogError("Prefab not found!");
+                return;
+            }
+
+            var instance = (GameObject)PrefabUtility.InstantiatePrefab(prefab);
+            Undo.RegisterCreatedObjectUndo(instance, "Spawn Prefab");
+
+            instance.name = prefab.name;
+        }
+#endif
     }
 }
