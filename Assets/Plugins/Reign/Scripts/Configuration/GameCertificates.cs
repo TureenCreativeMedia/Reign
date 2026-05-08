@@ -13,7 +13,7 @@ namespace Reign.Generic
         public const bool SAVE_SYSTEM_ENABLED = true;
         public const bool SAVE_ON_QUIT = true;
         public const string SAVE_FILE_DIRECTORY = "save.REIGN";
-        internal const bool SAVE_ENCRYPT = false;
+        internal const bool SAVE_ENCRYPT = true;
         internal const string SAVE_PASSWORD = "my_reign_game_save_password";
         internal const string SAVE_SALT = "my_reign_game_save_salt";
         internal const int SAVE_ITERATIONS = 2048;

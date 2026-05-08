@@ -12,32 +12,46 @@ namespace Reign.Editor
         bool tryAddReign = true;
         bool tryCreateCam = true;
 
-        [MenuItem("Reign/Reign Tools")]
+        [MenuItem("Reign/Reign Service")]
         public static void ShowWindow()
         {
-            GetWindow<ReignEditorWindow>($"Reign Tools");
+            GetWindow<ReignEditorWindow>($"Reign Service");
         }
 
         private void OnGUI()
         {
-            GUILayout.Label($"Reign Tools | v{ReignServiceDetails.REIGN_TOOLS_VERSION}", EditorStyles.whiteLargeLabel);
 
-            GUILayout.Label($"Reign v{ReignServiceDetails.REIGN_VERSION} - Released {ReignServiceDetails.RELEASE_DATE}", EditorStyles.centeredGreyMiniLabel);
 
-            GUILayout.Space(10);
+            string contributors = "";
+
+            for (int i = 0; i < ReignServiceDetails.CONTRIBUTORS.Count; ++i)
+            {
+                if (i <= 0)
+                {
+                    contributors += $"{ReignServiceDetails.CONTRIBUTORS[i]}";
+                }
+                else
+                {
+                    contributors += $", {ReignServiceDetails.CONTRIBUTORS[i]}";
+                }
+            }
+
+            GUILayout.Label("Reign Details", EditorStyles.whiteLargeLabel);
+
+            GUILayout.Label($"Version: {ReignServiceDetails.REIGN_VERSION}\nTools Version: {ReignServiceDetails.REIGN_TOOLS_VERSION}\nDate: {ReignServiceDetails.RELEASE_DATE}\nContributors: {contributors}", EditorStyles.label);
+
+            GUILayout.Space(20);
+
+            GUILayout.Label($"Reign Tools", EditorStyles.whiteLargeLabel);
 
             tryAddReign = GUILayout.Toggle(tryAddReign, "Try Add Reign Prefab");
             tryCreateCam = GUILayout.Toggle(tryCreateCam, "Try Add Camera");
 
-
-            GUILayout.Space(10);
-
-            if (GUILayout.Button($"Add Reign Dependencies to Scene '{EditorSceneManager.GetActiveScene().name}'"))
+            GUILayout.Space(5);
+            if (GUILayout.Button($"Add Reign Dependencies To Current Scene"))
             {
                 SetupScene();
             }
-
-            GUILayout.Space(10);
         }
 
         private void SetupScene()
