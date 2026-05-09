@@ -1,6 +1,6 @@
-<h1 align="center">
+<p align="center">
     <img src="/Assets/Plugins/Reign/Graphics/Branding/ReignLogo.png" width="500px">
-</h1>
+</p>
 
 <h3 align="center">
     © PURPLE SWING | 2025-2026
@@ -37,8 +37,10 @@ Reign — created by [Purple Swing](https://github.com/Purple-Swing) — is a **
 ### Development
 
 #### Versioning Scheme
+
 <img src="/GitHub/VersioningScheme.png" width=70%></img>
 
 #### Versions
-- "Legacy" - 0.5.0.1 and prior - ``🟨 Deprecated, no longer supported or recommended``
-- "Modern" - 1.0.0.0+ - ``🟨 In development``
+
+- "Legacy" - 0.5.0.1 and prior - `🟨 Deprecated, no longer supported or recommended`
+- "Modern" - 1.0.0.0+ - `🟨 Functional, in development`

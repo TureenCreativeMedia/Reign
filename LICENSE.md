@@ -1,4 +1,4 @@
-# MIT License
+# License
 
 **© 2026 Purple Swing**
 
@@ -12,19 +12,40 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
 
 ### Crediting Purple Swing
 
-All projects that use **Purple Swing's Reign** must either state so in documentation, their `LICENSE.md` or in their `README.md`.
+Open source projects that use Reign must either state so in documentation, their `LICENSE.md` or in their `README.md`. They should also credit the authors of Reign, Purple Swing. Proprietary software must firmly declare the same in their EULA.
 
-Proprietary/Closed-source software is not an exception.
+Direct Example:
+
+```
+THE COPYRIGHT HOLDERS OR AUTHORS EXPRESS TRUST IN REIGN BY PURPLE SWING FOR THE INFRASTRUCTURE OF THE SOFTWARE.
+```
+
+---
+
+### Fonts
+
+Purple Swing have heavy gratitude for people whose work is featured in Reign, authors of the stock fonts featured in Reign are listed below. All licenses have been reviewed to make sure that they permit commercial use.
+
+- Ari-W9500 by Catterio Sylt
+- Edgecutting by RandomMaerks
+- Em One by Luboslav Boyanov, Stan Partalev and Mirela Belova from Type Forward
+- Just Sans by Jacob Cass
+- Les Flos by Jonathan Richard
+- Midnight Letters by GGBotNet
+- Super VCR Mono by ASmolBoy
+- Squarish by ZF2334 (a.k.a. S.Z.)
+- Glora Pro by Zelow Type (a.k.a. Z.T.)
+- Nature by Zelow Type
 
 ---
 
 ### Info
 
 - Reign is a tool used for Unity Game Development, nothing more. Therefore, it can be used for free as long as you agree to the terms above.
-- Reign can only be installed from the [GitHub Releases page](https://github.com/Purple-Swing/Reign/releases)
-- Reign will continue development until **Purple Swing** sees it fit for production, this includes changes after 1.0
-- **Purple Swing** assumes no responsibility or liability toward the user's usage of Reign
+- Reign can only be installed from the [GitHub Releases page](https://github.com/Purple-Swing/Reign/releases), please make sure you download any software by Purple Swing from a trusted location.
+- Reign will continue development until Purple Swing see it fit for production, this includes changes after version 1.0
+- Purple Swing assume no responsibility or liability toward the user's usage of Reign as stated in the MIT License agreement.
 
 ---
 
-[*More about the MIT License*](https://en.wikipedia.org/wiki/MIT_License)
+[_More about the MIT License_](https://en.wikipedia.org/wiki/MIT_License)
