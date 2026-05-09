@@ -12,7 +12,7 @@ namespace Reign.Generic
 
         private void Start()
         {
-            if (!GameCertificates.IS_DEBUG)
+            if (!Reign.currentGameCertificates.IS_DEBUG)
             {
                 Destroy(gameObject);
             }
@@ -25,7 +25,7 @@ namespace Reign.Generic
 
         private void Refresh()
         {
-            text.text = $@"{GameCertificates.GAME_NAME} v{GameCertificates.VERSION}<size=75%>
+            text.text = $@"{Reign.currentGameCertificates.GAME_NAME} v{Reign.currentGameCertificates.VERSION}<size=75%>
 • Reign v{ReignServiceDetails.REIGN_VERSION}
 • Discord Status: {DiscordSystem.Instance.IsConnected}";
         }

@@ -11,10 +11,10 @@ namespace Reign.Generic.Saving
 {
     public sealed class SaveFileHandler
     {
-        private byte[] Pass => Encoding.UTF8.GetBytes(GameCertificates.SAVE_PASSWORD);
-        private byte[] Salt => Encoding.UTF8.GetBytes(GameCertificates.SAVE_SALT);
-        private string SavePath => Path.Combine(Application.persistentDataPath, GameCertificates.SAVE_FILE_DIRECTORY);
-        private bool DoEncrypt => GameCertificates.SAVE_ENCRYPT;
+        private byte[] Pass => Encoding.UTF8.GetBytes(Reign.currentGameCertificates.SAVE_PASSWORD);
+        private byte[] Salt => Encoding.UTF8.GetBytes(Reign.currentGameCertificates.SAVE_SALT);
+        private string SavePath => Path.Combine(Application.persistentDataPath, Reign.currentGameCertificates.SAVE_FILE_DIRECTORY);
+        private bool DoEncrypt => Reign.currentGameCertificates.SAVE_ENCRYPT;
 
         #region API
 
@@ -134,7 +134,7 @@ namespace Reign.Generic.Saving
             using var key = new Rfc2898DeriveBytes(
                 Pass,
                 Salt,
-                GameCertificates.SAVE_ITERATIONS,
+                Reign.currentGameCertificates.SAVE_ITERATIONS,
                 HashAlgorithmName.SHA256
             );
 
@@ -169,7 +169,7 @@ namespace Reign.Generic.Saving
             using var key = new Rfc2898DeriveBytes(
                 Pass,
                 Salt,
-                GameCertificates.SAVE_ITERATIONS,
+                Reign.currentGameCertificates.SAVE_ITERATIONS,
                 HashAlgorithmName.SHA256
             );
 

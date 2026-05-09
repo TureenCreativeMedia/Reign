@@ -20,8 +20,6 @@ namespace Reign.Editor
 
         private void OnGUI()
         {
-
-
             string contributors = "";
 
             for (int i = 0; i < ReignServiceDetails.CONTRIBUTORS.Count; ++i)

@@ -1,27 +1,32 @@
 using System.Collections.Generic;
 using Reign.Systems;
+using UnityEngine;
 
 namespace Reign.Generic
 {
-    public sealed class GameCertificates
+    [CreateAssetMenu(fileName = "Game Certificates", menuName = "Reign/New Game Certificates")]
+    public sealed class GameCertificates : ScriptableObject
     {
-        public const string GAME_NAME = "My Reign Game";
-        public const string VERSION = "1.0";
-        public static readonly IReadOnlyList<string> AUTHORS = new[] { "" };
-        public const bool IS_DEBUG = false;
+        [Header("Game Settings")]
+        public string GAME_NAME = "My Reign Game";
+        public string VERSION = "1.0";
+        public List<string> AUTHORS = new();
+        public bool IS_DEBUG = false;
 
-        public const bool SAVE_SYSTEM_ENABLED = true;
-        public const bool SAVE_ON_QUIT = true;
-        public const string SAVE_FILE_DIRECTORY = "save.REIGN";
-        internal const bool SAVE_ENCRYPT = true;
-        internal const string SAVE_PASSWORD = "my_reign_game_save_password";
-        internal const string SAVE_SALT = "my_reign_game_save_salt";
-        internal const int SAVE_ITERATIONS = 2048;
+        [Header("Save System")]
+        public bool SAVE_SYSTEM_ENABLED = true;
+        public bool SAVE_ENCRYPT = true;
+        public bool SAVE_ON_QUIT = true;
+        public string SAVE_FILE_DIRECTORY = "save.REIGN";
+        public string SAVE_PASSWORD = "my_reign_game_save_password";
+        public string SAVE_SALT = "my_reign_game_save_salt";
+        public int SAVE_ITERATIONS = 2048;
 
-        public const bool DISCORD_ENABLED = true;
-        public const long DISCORD_APP_ID = 1453862071543271508;
+        [Header("Discord")]
+        public bool DISCORD_ENABLED = true;
+        public long DISCORD_APP_ID = 1453862071543271508;
 
-        public static readonly DiscordSystemData DEFAULT_DISCORD_RPC_DATA = new()
+        public DiscordSystemData DEFAULT_DISCORD_RPC_DATA = new()
         {
             details = "",
             state = "",

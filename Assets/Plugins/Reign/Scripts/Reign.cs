@@ -3,16 +3,22 @@ using Reign.Generic;
 using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 
 namespace Reign
 {
+    [DefaultExecutionOrder(-100)]
     public sealed class Reign : Singleton<Reign>
     {
         [SerializeField] private List<SystemBase> requiredSystems;
         [SerializeField] private bool log;
+        [SerializeField] private string gameCertifciatesAssetDirectory = "Assets/ScriptableObjects/Game Certificates.asset";
+        public static GameCertificates currentGameCertificates;
 
         private void Awake()
         {
+            currentGameCertificates = AssetDatabase.LoadAssetAtPath<GameCertificates>(gameCertifciatesAssetDirectory);
+
             if (!log) return;
 
             if (HasRequiredSystems())

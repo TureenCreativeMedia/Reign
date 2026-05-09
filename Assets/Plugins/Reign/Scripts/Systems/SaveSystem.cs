@@ -57,7 +57,7 @@ namespace Reign.Systems
         /// <returns></returns>
         public async Task LoadGameData()
         {
-            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
+            if (!Reign.currentGameCertificates.SAVE_SYSTEM_ENABLED)
             {
                 Debug.Log("Data tried to load, but SAVE_SYSTEM_ENABLED flag is false");
                 return;
@@ -79,7 +79,7 @@ namespace Reign.Systems
         /// <returns></returns>
         public async Task SaveGameDataAsync()
         {
-            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
+            if (!Reign.currentGameCertificates.SAVE_SYSTEM_ENABLED)
             {
                 Debug.Log("Data tried to save, but SAVE_SYSTEM_ENABLED flag is false");
                 return;
@@ -99,7 +99,7 @@ namespace Reign.Systems
         /// <returns></returns>
         public void SaveGameDataSync()
         {
-            if (!GameCertificates.SAVE_SYSTEM_ENABLED)
+            if (!Reign.currentGameCertificates.SAVE_SYSTEM_ENABLED)
             {
                 Debug.Log("Data tried to save, but SAVE_SYSTEM_ENABLED flag is false");
                 return;
@@ -116,7 +116,7 @@ namespace Reign.Systems
         // Runtime
         private async Task SetupAsync()
         {
-            if (!GameCertificates.SAVE_SYSTEM_ENABLED) return;
+            if (!Reign.currentGameCertificates.SAVE_SYSTEM_ENABLED) return;
 
             RefreshHandlers();
 
@@ -125,7 +125,7 @@ namespace Reign.Systems
 
         private void OnApplicationQuit()
         {
-            if (GameCertificates.SAVE_ON_QUIT)
+            if (Reign.currentGameCertificates.SAVE_ON_QUIT)
             {
                 SaveGameDataSync();
             }

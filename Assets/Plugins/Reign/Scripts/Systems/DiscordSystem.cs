@@ -22,7 +22,7 @@ namespace Reign.Systems
 
     public sealed class DiscordSystem : System<DiscordSystem>
     {
-        private DiscordSystemData DefaultDiscordSystemData => GameCertificates.DEFAULT_DISCORD_RPC_DATA;
+        private DiscordSystemData DefaultDiscordSystemData => Reign.currentGameCertificates.DEFAULT_DISCORD_RPC_DATA;
 
         public bool CanConnect { get; private set; } = false;
         public bool IsConnected { get; private set; } = false;
@@ -60,7 +60,7 @@ namespace Reign.Systems
 
         private void Start()
         {
-            CanConnect = GameCertificates.DISCORD_ENABLED;
+            CanConnect = Reign.currentGameCertificates.DISCORD_ENABLED;
 
             if (DefaultDiscordSystemData.startUnixTimestamp == 0)
             {
@@ -101,7 +101,7 @@ namespace Reign.Systems
             {
                 try
                 {
-                    Discord = new Discord.Discord(GameCertificates.DISCORD_APP_ID, (ulong)CreateFlags.NoRequireDiscord);
+                    Discord = new Discord.Discord(Reign.currentGameCertificates.DISCORD_APP_ID, (ulong)CreateFlags.NoRequireDiscord);
                     UpdateStatus();
                 }
                 catch (Exception e)

@@ -39,7 +39,7 @@ namespace Reign.Essentials
                     fpsSamples.Add(fps);
                 }
 
-                if (gui && GameCertificates.IS_DEBUG)
+                if (gui && Reign.currentGameCertificates.IS_DEBUG)
                 {
                     // Change display text
                     displayText = trackAverage ? $"FPS: {fps:F1}\nAVERAGE: {GetAverageFPS(fpsSamples):F1}" : $"FPS: {fps:F1}";
@@ -52,7 +52,7 @@ namespace Reign.Essentials
 
         private void OnGUI()
         {
-            if (!gui || !GameCertificates.IS_DEBUG) return;
+            if (!gui || !Reign.currentGameCertificates.IS_DEBUG) return;
 
             GUIStyle style = new(GUI.skin.label)
             {
