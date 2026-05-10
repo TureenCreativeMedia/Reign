@@ -29,24 +29,37 @@ namespace Reign.Systems
         }
 
         /// <summary>
-        /// Check if audio entries dictionary contains the key of name
+        /// Check if audio entries contains the key of name
         /// </summary>
-        /// <param name="name">Audio entry key</param>
         public bool HasSound(string name)
         {
             return audioEntries != null && audioEntries.ContainsKey(name);
         }
 
         /// <summary>
-        /// Return entry in audio entries dictionary by name
+        /// Return entry in audio entries by name
         /// </summary>
-        /// <param name="name"></param>
         public AudioPoolEntry GetEntry(string name)
         {
             AudioPoolEntry entry = null;                // Initialise as null
             audioEntries?.TryGetValue(name, out entry); // Try get value and output entry
 
             return entry;
+        }
+
+        /// <summary>
+        /// Get random audio clip from audio entries
+        /// </summary>
+        public AudioClip GetRandomClip(string entryName)
+        {
+            var entry = GetEntry(entryName);
+
+            if (entry.clips.Length == 0)
+            {
+                return entry.clips[0];
+            }
+
+            return entry.clips[Random.Range(0, entry.clips.Length)];
         }
 
         /// <summary>
@@ -140,13 +153,12 @@ namespace Reign.Systems
 
             if (source != null)
             {
-                Object.Destroy(source.gameObject);
+                Destroy(source.gameObject);
             }
         }
 
         public void LoadData(GameData DATA)
         {
-            // masterAudioVolume should save and load in dB
             masterAudioMixerGroup.audioMixer.SetFloat("Volume", DATA.masterAudioVolume);
         }
 

@@ -1,5 +1,5 @@
 using System;
-using System.Collections.Generic;
+using System.Collections;
 using Reign.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -14,6 +14,26 @@ namespace Reign.Utility
         public static string GetReignInfo()
         {
             return $"v{ReignServiceDetails.REIGN_VERSION} | Released: {ReignServiceDetails.RELEASE_DATE}";
+        }
+
+
+        /// <summary>
+        /// Set time scale to 0 for a certain amount of time
+        /// </summary>
+        public static IEnumerator TimeStop(float length)
+        {
+            float og = Time.timeScale;
+            Time.timeScale = 0f;
+
+            float curTime = 0f;
+
+            while (curTime < length)
+            {
+                curTime += Time.unscaledDeltaTime;
+                yield return null;
+            }
+
+            Time.timeScale = og;
         }
 
         /// <summary>

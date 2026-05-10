@@ -32,6 +32,18 @@ namespace Reign
         }
 
         /// <summary>
+        /// Close the game window both in editor and in standalone circumstances
+        /// </summary>
+        public void Quit()
+        {
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#else
+            Application.Quit();
+#endif
+        }
+
+        /// <summary>
         /// Does the script have any required systems? If so, are they present?
         /// </summary>
         public bool HasRequiredSystems()
