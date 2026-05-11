@@ -11,15 +11,15 @@ namespace Reign.Generic
         public string GAME_NAME = "My Reign Game";
         public string VERSION = "1.0";
         public List<string> AUTHORS = new();
-        public bool IS_DEBUG = false;
+        public bool IS_DEBUG = true;
 
         [Header("Save System")]
         public bool SAVE_SYSTEM_ENABLED = true;
         public bool SAVE_ENCRYPT = true;
         public bool SAVE_ON_QUIT = true;
         public string SAVE_FILE_DIRECTORY = "save.REIGN";
-        public string SAVE_PASSWORD = "my_reign_game_save_password";
-        public string SAVE_SALT = "my_reign_game_save_salt";
+        public string SAVE_PASSWORD = "save_password";
+        public string SAVE_SALT = "save_salt";
         public int SAVE_ITERATIONS = 2048;
 
         [Header("Discord")]

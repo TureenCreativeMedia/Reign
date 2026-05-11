@@ -24,7 +24,7 @@ namespace Reign.Systems
         /// <summary>
         /// Spawn an object from object pool
         /// </summary>
-        public T Spawn<T>(T prefab) where T : MonoBehaviour, IPoolable
+        public T Spawn<T>(GameObject prefab) where T : MonoBehaviour, IPoolable
         {
             Type type = typeof(T);
 
@@ -37,7 +37,15 @@ namespace Reign.Systems
             }
             else
             {
-                obj = Instantiate(prefab);
+                var instance = Instantiate(prefab);
+
+                instance.TryGetComponent<T>(out obj);
+
+                if (obj == null)
+                {
+                    Debug.LogError($"Prefab instance had no component of type {typeof(T)}");
+                    return null;
+                }
             }
 
             obj.OnSpawn();

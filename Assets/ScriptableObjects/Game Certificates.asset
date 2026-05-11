@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41af2895dc40f534186283b075427f4b, type: 3}
   m_Name: Game Certificates
   m_EditorClassIdentifier: Assembly-CSharp-firstpass::Reign.Generic.GameCertificates
-  GAME_NAME: My Reign Game
+  GAME_NAME: My Game
   VERSION: 1.0.0
   AUTHORS: []
   IS_DEBUG: 1
-  CERTIFICATES_DECIDE_WINDOW_SETTINGS: 1
   SAVE_SYSTEM_ENABLED: 1
   SAVE_ENCRYPT: 1
   SAVE_ON_QUIT: 1
