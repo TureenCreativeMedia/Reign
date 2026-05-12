@@ -38,8 +38,10 @@ Purple Swing have heavy gratitude for people whose work is featured in Reign, th
 
 ### Info
 
+Reign — created by [Purple Swing](https://github.com/Purple-Swing) — is a **lightweight and performant** group of systems and assets that aid Unity game development by adding built-in features to speed up development, built without AI. 
+
 - Reign can be used as long as you agree to the terms above.
 - Reign uses a permissive license, meaning it can be used in proprietary software.
 - Please ensure you **only** download Reign from the [GitHub Releases page](https://github.com/Purple-Swing/Reign/releases).
 - Reign will continue development until Purple Swing see it fit for production, this includes changes after release 1
-- Purple Swing assume no responsibility or liability toward the user's usage of Reign as stated in the MIT License agreement.
+- Purple Swing assume no responsibility or liability toward the user's usage of Reign as stated in the MIT License.

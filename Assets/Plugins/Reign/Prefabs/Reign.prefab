@@ -237,23 +237,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49570b694e1bd204489e5e5f5696e3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  comment: "             REIGN v1.0.0.0\n---------------------------------------\n\n=----------
-    CHANGELOG ----------=\n\n- Updated Unity version to 6000.4.4f1\n\n- Recreated
-    Reign and its systems from scratch for the final time\n\n- Made Audio System
-    capable of using multiple clips per entry and playing one index when using any
-    variation of Play()\n\n- Made EventBus and QueryBus seperate scripts\n\n- Made
-    EventBus and QueryBus async and thread safe\n\n- Made EventBus type safe\n\n-
-    Made SaveSystem asynchronous to avoid long stutters between saving and loading
-    \n\n- Less wasteful Discord Remote Procedure Calls\n\n- Audio system now uses
-    a master mixer channel by default, and assigns to the exposed volume parameter
-    in LoadData()\n\n- Added many useful utility functions to ReignUtils.cs\n\n-
-    Added Reign Essentials (Built-in scripts for Reign)\n\n- Added Reign Internals
-    (Scripts used for testing Reign features)\n\n- Added Reign Tools Window (Helper
-    for Reign)\n\n- Added object pooling with PoolSystem\n\n- Made scene loading
-    as well as the transition asynchronous\n\n- Refactored how DiscordSystem handles
-    rich presence\n\n- Added a toggle for Reign logging after finding all required
-    systems or successfully loading\n\n- Refactored InputSystem to utilise new Input
-    System package"
+  comment: "             REIGN v1.0.0.0\n---------------------------------------\n\n=--------
+    CHANGELOG --------=\n\n- Updated Unity version to 6000.4.4f1\n\n- Recreated Reign
+    and its systems from scratch for the final time\n\n- Made Audio System capable
+    of using multiple clips per entry and playing one index when using any variation
+    of Play()\n\n- Made EventBus and QueryBus seperate scripts\n\n- Made EventBus
+    and QueryBus async and thread safe\n\n- Made EventBus type safe\n\n- Made SaveSystem
+    asynchronous to avoid long stutters between saving and loading \n\n- Less wasteful
+    Discord Remote Procedure Calls\n\n- Audio system now uses a master mixer channel
+    by default, and assigns to the exposed volume parameter in LoadData()\n\n- Added
+    many useful utility functions to ReignUtils.cs\n\n- Added Reign Essentials (Built-in
+    scripts for Reign)\n\n- Added Reign Internals (Scripts used for testing Reign
+    features)\n\n- Added Reign Tools Window (Helper for Reign)\n\n- Added object
+    pooling with PoolSystem\n\n- Made scene loading as well as the transition asynchronous\n\n-
+    Refactored how DiscordSystem handles rich presence\n\n- Added a toggle for Reign
+    logging after finding all required systems or successfully loading\n\n- Refactored
+    InputSystem to utilise new Input System package"
 --- !u!1 &8904663793570437277
 GameObject:
   m_ObjectHideFlags: 0

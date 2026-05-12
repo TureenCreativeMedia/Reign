@@ -1,8 +1,8 @@
 # Reign Documentation
 
-Let it be noted that the Reign documentation is based mainly on modern Reign (1.0.0.0+), most of the documentation will be inaccurate if followed using legacy versions.
+Note that the Reign documentation is based upon modern Reign versions (1.0.0.0+), most of the documentation will be inaccurate if followed using legacy versions.
 
-In the future, we promise to expand the documentation and create more advanced versions of Reign including new features and general bug-fixes.
+Documentation will expand as time progresses, and we create more advanced versions of Reign including new features and general improvements.
 
 [_Contribute to Reign_](/CONTRIBUTING.md)
 

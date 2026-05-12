@@ -3,7 +3,7 @@
 </p>
 
 <h3 align="center">
-    © PURPLE SWING | 2025-2026
+    © PURPLE SWING | 2026
 </h3>
 
 <p align="center">
@@ -12,9 +12,13 @@
 
 ---
 
+### 🟢 VERSION 1.0 IS NOW LIVE
+
+---
+
 ### About
 
-Reign — created by [Purple Swing](https://github.com/Purple-Swing) — is a **lightweight and performant** group of systems and assets that aid Unity game development by adding built-in features to speed up development. Reign uses the **MIT License**, which means any usage or changes are permitted as long as the original copyright (**©Purple Swing**) is credited in all copies.
+Reign is the solution to all problems when starting an ambitious Unity project. Countless systems working asynchronously to perform as well as possible, even on low-end devices, to make creating great games simple.
 
 <img src="/GitHub/ReignThumbnail.png" width="800px">
 
@@ -24,10 +28,11 @@ Reign — created by [Purple Swing](https://github.com/Purple-Swing) — is a **
 
 - Expandable cross-platform save file system
 - Easily managable audio system
-- Flexible input system which utilises the new Input System package
+- Flexible input system
 - Discord RPC support
 - Scene loading system (including transitions)
-- Large built-in utilities and libraries
+- Built-in utility classes
+- Reign Essentials and Internals
 - Asynchronous Event Bus and Query Bus
 - Object pooling
 - [DOTween (Free)](https://dotween.demigiant.com/) by Demigiant
@@ -36,11 +41,11 @@ Reign — created by [Purple Swing](https://github.com/Purple-Swing) — is a **
 
 ### Development
 
-#### Versioning Scheme
+#### Versioning
 
 <img src="/GitHub/VersioningScheme.png" width=70%></img>
 
-#### Versions
+#### Branches
 
-- "Legacy" - 0.5.0.1 and prior - `🟨 Deprecated, no longer supported or recommended`
-- "Modern" - 1.0.0.0+ - `🟨 Functional, in development`
+- "Legacy" - 0.5.0.1 and prior - `🔴 Deprecated, unrecommended`
+- "Modern" - 1.0.0.0 and up - `🟢 Fully supported`
