@@ -6,7 +6,7 @@ namespace Reign.Generic
     public class ReignMonoBehaviour : MonoBehaviour
     {
         public readonly bool TrackInternalTime = false;
-        public float InternalTimer {get; private set;} = 0.0f;
+        public float InternalTimer { get; private set; } = 0.0f;
 
         private void Update()
         {
@@ -15,7 +15,7 @@ namespace Reign.Generic
         }
 
         /// <summary>
-        /// Get children of this ReignMonoBehaviour
+        /// Get children of the transform the ReignMonoBehaviour is attached to
         /// </summary>
         public IEnumerable<Transform> GetChildren
         {

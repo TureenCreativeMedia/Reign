@@ -3,7 +3,7 @@ using Reign.Interfaces;
 
 namespace Reign.Essentials
 {
-    public class ReignObject : ReignMonoBehaviour, IPoolable
+    public class BasePoolableObject : ReignMonoBehaviour, IPoolable
     {
         public virtual void OnReclaim()
         {

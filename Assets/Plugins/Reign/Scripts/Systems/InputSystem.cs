@@ -4,7 +4,6 @@ using UnityEngine.InputSystem;
 using Reign.Enums;
 using UnityEngine.InputSystem.Controls;
 using System.Collections.Generic;
-using UnityEngine.Rendering;
 
 namespace Reign.Systems
 {

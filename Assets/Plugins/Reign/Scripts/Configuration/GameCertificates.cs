@@ -8,7 +8,7 @@ namespace Reign.Generic
     public sealed class GameCertificates : ScriptableObject
     {
         [Header("Game Settings")]
-        public string GAME_NAME = "My Reign Game";
+        public string GAME_NAME = "My Game";
         public string VERSION = "1.0";
         public List<string> AUTHORS = new();
         public bool IS_DEBUG = true;

@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using Reign.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -8,9 +9,10 @@ namespace Reign.Essentials
     public class BoxTrigger : MonoBehaviour
     {
         public BoxCollider colliderReference { get; private set; }
+        public Collider lastInteracted { get; private set; }
         public bool triggerEnabled = true;
 
-        [SerializeField] string searchTag;
+        [SerializeField, Tag] string searchTag;
         [SerializeField] private UnityEvent onEnter;
         [SerializeField] private UnityEvent onExit;
 
@@ -25,6 +27,7 @@ namespace Reign.Essentials
         {
             if (triggerEnabled && (other.CompareTag(searchTag) || string.IsNullOrEmpty(searchTag)))
             {
+                lastInteracted = other;
                 onEnter?.Invoke();
             }
         }
@@ -33,6 +36,7 @@ namespace Reign.Essentials
         {
             if (triggerEnabled && (other.CompareTag(searchTag) || string.IsNullOrEmpty(searchTag)))
             {
+                lastInteracted = other;
                 onExit?.Invoke();
             }
         }
