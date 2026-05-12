@@ -76,8 +76,8 @@ namespace Reign.Systems
 
             if (pos.HasValue)
             {
+                source.spatialBlend = entry.spatialBlend != 0.0f ? entry.spatialBlend : 1.0f;
                 source.transform.position = pos.Value;
-                source.spatialBlend = entry.spatialBlend;
             }
             else
             {
